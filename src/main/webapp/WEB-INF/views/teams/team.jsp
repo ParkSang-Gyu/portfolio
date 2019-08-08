@@ -1,8 +1,13 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<div class="jumbotron jumbotron-fluid mb-0">
-  <div class="container">
-    <div style="text-align: center;">!!SoccerCompare!!</div>     
-  </div>
-</div>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>팀 화면</h1>
+</body>
+</html>
