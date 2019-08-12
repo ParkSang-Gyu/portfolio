@@ -3,27 +3,36 @@
     pageEncoding="UTF-8"%>
 <html>
 <head>
-	<title>Home</title>
 	<style type="text/css">
-	*{
-		margin: 0;
-		padding: 0;
-		box-sizing: border-box;
-	}
-	.container-body{
-		width: 900px;
-		height: 500px;
-		line-height: 100px;
-		padding: 200px 300px;
-	}
-	</style>
+		.main{
+			width: 1140px;
+			height: 300px;
+			position: relative;
+			border: 1px solid gray;
+		}
+		.btn{
+			border-radius: 0;
+			margin-right: 0;
+		}
+	</style>	
 </head>
 <body>
-	<img alt="해당 이미지를 불러올 수 없습니다." src="../resources/img/mainbackground.jpg" width="900px" height="500px">
-	<div class="container-body">
-		<a href="<%=request.getContextPath()%>/leagues"><button>LEAGUE</button></a>
-		<a href="<%=request.getContextPath()%>/tournaments"><button>TOURNAMENT</button></a>
-		<a href="<%=request.getContextPath()%>/comparison"><button>COMPARISON</button></a>
-	</div>
+	<div>
+		<button type="button" class="btn btn-dark dropdown-toggle" data-toggle="collapse" data-target="#list1">leaguelist</button>	
+	 	<button type="button" class="btn btn-dark dropdown-toggle" data-toggle="collapse" data-target="#list2">tournamentlist</button>	
+		<a href="<%=request.getContextPath()%>/statistics"><button type="button" class="btn btn-dark">statistics</button></a>
+		<a href="<%=request.getContextPath()%>/comparison"><button type="button" class="btn btn-dark">comparison</button></a><br>	
+		<div class="collapse" id="list1">
+		   	<a class="dropdown-item" href="<%=request.getContextPath()%>/premierleague">Premier League</a>
+		   	<a class="dropdown-item" href="<%=request.getContextPath()%>/laliga">La Liga</a>
+		   	<a class="dropdown-item" href="<%=request.getContextPath()%>/bundesliga">Bundesriga</a>
+		   	<a class="dropdown-item" href="<%=request.getContextPath()%>/seriea">Seria A</a>
+	  	</div>
+	  	<div class="collapse" id="list2">
+	   		<a class="dropdown-item" href="#">Champions League</a>
+	   		<a class="dropdown-item" href="#">Europa League</a>
+	 	</div>
+ 	</div>
+	<div class="main">메인 화면</div>
 </body>
 </html>

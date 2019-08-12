@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>토너먼트 화면</h1>
+	<h1>챔피언스 리그</h1>
 </body>
 </html>

@@ -1,8 +1,27 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<div class="jumbotron jumbotron-fluid mb-0">
-  <div class="container">
-    <div style="text-align: center;">!!SoccerCompare!!</div>     
-  </div>
-</div>
+<head>
+	<style type="text/css">
+		.display{
+			display: inline-block;
+			padding-left: 10px;
+			color: gray;
+		}
+	</style>
+</head>
+<body>
+	<div class="jumbotron jumbotron-fluid mb-0">
+	  <div class="container">
+	    <a href="<%=request.getContextPath()%>/">
+			<button>
+				<div style="float: left;">!!SoccerCompare!!</div>
+			</button>
+		</a>
+	    <a href="#"><div class="display">회사소개</div></a>
+	    <a href="#"><div class="display">이용약관</div></a>
+	    <a href="#"><div class="display">제휴제안</div></a>
+	    <a href="#"><div class="display">개인정보처리방침</div></a>     
+	  </div>
+	</div>
+</body>
