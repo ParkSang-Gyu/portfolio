@@ -6,6 +6,6 @@ import kr.green.portfolio.vo.PremierLeagueVO;
 
 public interface LeagueService {
 
-	ArrayList<PremierLeagueVO> getSchedule(PremierLeagueVO plVo);
+	ArrayList<PremierLeagueVO> getSchedule(PremierLeagueVO plVo, Integer roundNum);
 
 }

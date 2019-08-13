@@ -4,10 +4,34 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+	<style type="text/css">
+		*{
+			box-sizing: border-box;
+		}
+		.info{
+			width: 1140px;
+			height: 300px;
+		}
+		.stat{
+			width: 1140px;
+			height: 300px;
+		}
+		.squad{
+			width: 1140px;
+			height: 600px;
+		}
+	</style>
+
 </head>
 <body>
-	<h1>팀 화면</h1>
+	<div class="info">
+		<img alt="사진을 불러올 수 없습니다." src="${pageContext.request.contextPath}/resources/img/teams/liverpool.png">
+	</div>
+	<div class="stat">
+		팀스탯
+	</div>
+	<div class="squad">
+		팀스쿼드
+	</div>
 </body>
 </html>

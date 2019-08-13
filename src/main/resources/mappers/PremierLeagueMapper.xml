@@ -4,6 +4,6 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.green.portfolio.dao.PremierLeagueDAO">
   <select id="getSchedule" resultType="kr.green.portfolio.vo.PremierLeagueVO">
-    select * from schedule where round = #{round}
+    select * from schedule where roundNum = #{roundNum}
   </select>
 </mapper>

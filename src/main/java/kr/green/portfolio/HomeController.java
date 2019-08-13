@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -38,9 +39,10 @@ public class HomeController {
 	    return mv;
 	}
 	@RequestMapping(value = "/premierleague",method = RequestMethod.GET)
-	public String premierleagueGet(Model model,PremierLeagueVO plVo) {
-		ArrayList<PremierLeagueVO> schedule = leagueService.getSchedule(plVo);
+	public String premierleagueGet(Model model,PremierLeagueVO plVo,Integer roundNum) {
+		ArrayList<PremierLeagueVO> schedule = leagueService.getSchedule(plVo,roundNum);
 		model.addAttribute("schedule",schedule);
+		model.addAttribute("roundNum", roundNum);
 		return "/leagues/premierleague";
 	}
 	@RequestMapping(value = "/laliga",method = RequestMethod.GET)
@@ -73,7 +75,14 @@ public class HomeController {
 		return mv;
 	}
 	@RequestMapping(value = "/teams",method = RequestMethod.GET)
-	public String teamsGet() {
+	public String teamsGet(Model model) {
+		return "/teams/team";
+	}
+	@RequestMapping(value = "/teams",method = RequestMethod.POST)
+	public String teamsPost(Model model) {
+		ClassPathResource teamLogo = new ClassPathResource("img/teams/watford.png");
+		String teamLogo2 = teamLogo.getFilename();
+		model.addAttribute("teamLogo2",teamLogo2);
 		return "/teams/team";
 	}
 	@RequestMapping(value = "/players",method = RequestMethod.GET)

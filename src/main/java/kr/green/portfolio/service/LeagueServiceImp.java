@@ -15,9 +15,9 @@ public class LeagueServiceImp implements LeagueService{
 	PremierLeagueDAO premierLeagueDao;
 	
 	@Override
-	public ArrayList<PremierLeagueVO> getSchedule(PremierLeagueVO plVo) {
+	public ArrayList<PremierLeagueVO> getSchedule(PremierLeagueVO plVo,Integer roundNum) {
 		
-		return premierLeagueDao.getSchedule(plVo);
+		return premierLeagueDao.getSchedule(plVo,roundNum);
 	}
 
 }
