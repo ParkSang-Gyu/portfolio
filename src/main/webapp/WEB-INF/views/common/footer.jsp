@@ -3,6 +3,9 @@
     pageEncoding="UTF-8"%>
 <head>
 	<style type="text/css">
+		.sitename{
+			line-height: 20px;
+		}
 		.display{
 			display: inline-block;
 			padding-left: 10px;
@@ -14,9 +17,7 @@
 	<div class="jumbotron jumbotron-fluid mb-0">
 	  <div class="container">
 	    <a href="<%=request.getContextPath()%>/">
-			<button>
-				<div style="float: left;">!!SoccerCompare!!</div>
-			</button>
+			<div class="sitename" style="float: left;">!!SoccerCompare!!</div>
 		</a>
 	    <a href="#"><div class="display">회사소개</div></a>
 	    <a href="#"><div class="display">이용약관</div></a>

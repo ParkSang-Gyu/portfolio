@@ -9,4 +9,6 @@ import kr.green.portfolio.vo.PremierLeagueVO;
 public interface PremierLeagueDAO {
 
 	ArrayList<PremierLeagueVO> getSchedule(@Param("plVo")PremierLeagueVO plVo, @Param("roundNum")Integer roundNum);
+	
+	
 }

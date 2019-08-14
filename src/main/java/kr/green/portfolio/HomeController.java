@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,10 +12,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.green.portfolio.service.LeagueService;
-import kr.green.portfolio.vo.BundesligaVO;
-import kr.green.portfolio.vo.LaLigaVO;
+import kr.green.portfolio.vo.PlayerVO;
 import kr.green.portfolio.vo.PremierLeagueVO;
-import kr.green.portfolio.vo.SerieAVO;
+import kr.green.portfolio.vo.TeamVO;
 
 /**
  * Handles requests for the application home page.
@@ -45,18 +43,6 @@ public class HomeController {
 		model.addAttribute("roundNum", roundNum);
 		return "/leagues/premierleague";
 	}
-	@RequestMapping(value = "/laliga",method = RequestMethod.GET)
-	public String laligaGet(LaLigaVO lVo) {
-		return "/leagues/laliga";
-	}
-	@RequestMapping(value = "/bundesliga",method = RequestMethod.GET)
-	public String bundesligaGet(BundesligaVO lVo) {
-		return "/leagues/bundesliga";
-	}
-	@RequestMapping(value = "/seriea",method = RequestMethod.GET)
-	public String serieaGet(SerieAVO lVo) {
-		return "/leagues/seriea";
-	}
 	@RequestMapping(value = "/championsleague",method = RequestMethod.GET)
 	public String championsleagueGet() {
 		return "/tournaments/championsleague";
@@ -75,18 +61,19 @@ public class HomeController {
 		return mv;
 	}
 	@RequestMapping(value = "/teams",method = RequestMethod.GET)
-	public String teamsGet(Model model) {
-		return "/teams/team";
-	}
-	@RequestMapping(value = "/teams",method = RequestMethod.POST)
-	public String teamsPost(Model model) {
-		ClassPathResource teamLogo = new ClassPathResource("img/teams/watford.png");
-		String teamLogo2 = teamLogo.getFilename();
-		model.addAttribute("teamLogo2",teamLogo2);
+	public String teamsGet(Model model,String team,TeamVO tVo,PlayerVO pVo,String player) {
+		ArrayList<TeamVO> teamInfo = leagueService.getTeamInfo(tVo,team);
+		ArrayList<PlayerVO> playerInfo = leagueService.getPlayerInfo(pVo,player);
+		model.addAttribute("playerInfo",playerInfo);
+		model.addAttribute("teamInfo",teamInfo);
+		model.addAttribute("name",team);
 		return "/teams/team";
 	}
 	@RequestMapping(value = "/players",method = RequestMethod.GET)
-	public String playersGet() {
+	public String playersGet(Model model,String player,PlayerVO pVo) {
+		ArrayList<PlayerVO> playerInfo = leagueService.getPlayerInfo(pVo,player);
+		model.addAttribute("playerInfo",playerInfo);
+		model.addAttribute("name",player);
 		return "/players/player";
 	}
 	
