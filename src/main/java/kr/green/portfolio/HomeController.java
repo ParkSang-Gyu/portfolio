@@ -61,10 +61,9 @@ public class HomeController {
 		return mv;
 	}
 	@RequestMapping(value = "/teams",method = RequestMethod.GET)
-	public String teamsGet(Model model,String team,TeamVO tVo,PlayerVO pVo,String player) {
+	public String teamsGet(Model model,String team,TeamVO tVo,String player,PlayerVO pVo) {
 		ArrayList<TeamVO> teamInfo = leagueService.getTeamInfo(tVo,team);
 		ArrayList<PlayerVO> playerInfo = leagueService.getPlayerInfo(pVo,player);
-		model.addAttribute("playerInfo",playerInfo);
 		model.addAttribute("teamInfo",teamInfo);
 		model.addAttribute("name",team);
 		return "/teams/team";

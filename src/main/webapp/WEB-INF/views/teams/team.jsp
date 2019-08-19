@@ -47,13 +47,6 @@
 			height: 600px;
 		}
 	</style>
-	<script type="text/javascript">
-		$(document).ready(function () {
-			$('#player').click(function () {
-				location.href = '<%=request.getContextPath()%>/team?player='+$(this).val();
-			})
-		})
-	</script>
 </head>
 <body>
 	<div class="container">
@@ -77,32 +70,45 @@
 		<h2>Team Squad</h2>
 		<div class="squad">
 			<table class="table table-striped table-hover">
-		      	<tr>
-		      		<th>이름</th>
-		      		<th>출전수</th>
-		      		<th>출전시간</th>
-		      		<th>득점</th>
-		      		<th>어시스트</th>
-		      		<th>옐로카드</th>
-		      		<th>레드카드</th>
-		      		<th>패스성공률(%)</th>
-		      		<th>평점</th>
-		      		<th>경기최우수선수</th>
-		      	</tr>
-		      	<c:forEach var="tmp" items="${playerInfo}">
+		      	<thead>
 			      	<tr>
-				        <td><a href="<%=request.getContextPath()%>/players?player=${tmp.name}">${tmp.name}</a></td>
-				        <td>${tmp.appearances}</td>
-				        <td>${tmp.minutes}</td>
-				        <td>${tmp.goals}</td>
-				        <td>${tmp.assists}</td>
-				        <td>${tmp.yellowCard}</td>
-				        <td>${tmp.redCard}</td>
-				        <td>${tmp.psr}</td>
-				        <td>${tmp.rating}</td>
-				        <td>${tmp.motm}</td>		        			       
-			      	</tr>		      	
-		      	</c:forEach>	    
+			      		<th>순위</th>
+			      		<th>이름</th>
+			      		<th>출전수</th>
+			      		<th>출전시간</th>
+			      		<th>득점</th>
+			      		<th>어시스트</th>
+			      		<th>옐로카드</th>
+			      		<th>레드카드</th>
+			      		<th>패스성공률(%)</th>
+			      		<th>평점</th>
+			      		<th>경기최우수선수</th>
+			      	</tr>
+		      	</thead>
+		      	<tbody>
+			      	<tr>
+				        <td>1</td>
+				        <c:forEach var="tmp" items="${playerInfo}">
+				        	<td><a href="<%=request.getContextPath()%>/teams?team=${tmp.hometeam}">Andrew Robertson</a></td>		        			       
+			      		</c:forEach>
+			      	</tr>
+			      	<tr>
+				        <td>2</td>
+				        <td><a href="#">Roberto Firmino</a></td>		        			       
+			      	</tr>
+			      	<tr>
+				        <td>3</td>
+				        <td><a href="#">Mohamed salah</a></td>		        			       
+			      	</tr>
+			      	<tr>
+				        <td>4</td>
+				        <td><a href="#">Trent Alexander-Arnold</a></td>		        			       
+			      	</tr>
+			      	<tr>
+				        <td>5</td>
+				        <td><a href="#">Sadio Mane</a></td>		        			       
+			      	</tr>
+		      	</tbody>	    
 	  		</table>
 		</div>
 	</div>
