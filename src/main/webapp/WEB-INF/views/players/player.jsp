@@ -13,51 +13,89 @@
 			height: 150px;
 		}
 		.img{
-			padding: 40px 0 40px;
+			padding: 0;
 			float: left;
+			width: 120px;
+			height: auto;
 		}
 		.information1{
 			width: 70px;
 			height: 25px;
 			display: inline-block;
-			font-size: 12px;
+			font-size: 15px;
 		}
 		.information2{
 			width: 100px;
 			height: 25px;
 			display: inline-block;
-			font-size: 12px;
+			font-size: 15px;
 		}
-		.name{
-			padding-top: 40px;
+		.name1{
+			width: 70px;
+		}
+		.name2{
+			width: 120px;
 		}
 		.league{
 			margin-top: 10px;
 		}
 		.stat{
 			width: 1140px;
-			height: 300px;
+			height: 100%;
 		}
 	</style>
-
 </head>
 <body>
 	<h2>Player Information</h2>
 	<div class="info">
 		<div class="img">
-			<img alt="사진을 불러올 수 없습니다." src="${pageContext.request.contextPath}/resources/img/players/${name}.jpg">
+			<img alt="사진을 불러올 수 없습니다." src="${pageContext.request.contextPath}/resources/img/players/${player}.jpg">
 		</div>
-		<c:forEach var="tmp" items="${playerInfo}">
-			<div class="information1 name">이름</div><div class="information2 name">${tmp.name}</div>
-			<div class="information1 name" style="padding-left: 10px;">국적</div><div class="information2 name" style="padding-left: 20px;">${tmp.nationality}</div><br>
-			<div class="information1 league">생년월일</div><div class="information2 league">${tmp.birth}</div>
-			<div class="information1 league" style="padding-left: 10px;">등번호</div><div class="information2 league" style="padding-left: 20px;">${tmp.backNum}</div><br>
-			<div class="information1">포지션</div><div class="information2">${tmp.position}</div>
-			<div class="information1" style="padding-left: 10px;">팀</div><div class="information2" style="padding-left: 20px;">${tmp.team}</div>
-		</c:forEach>
+		<div class="information1 name1" style="padding-top: 10px;">이름</div><div class="information2 name2">${playerInfo.player}</div>
+		<div class="information1 name1" style="padding-left: 10px;">국적</div><div class="information2 name2" style="padding-left: 20px;">${playerInfo.nationality}</div><br>
+		<div class="information1 league name1">팀</div><div class="information2 league name2">${playerInfo.team}</div>
+		<div class="information1 league name1" style="padding-left: 10px;">나이</div><div class="information2 league name2" style="padding-left: 20px;">${playerInfo.age}</div><br>
+		<div class="information1 name1" style="padding-top: 10px;">등번호</div><div class="information2 name2">${playerInfo.backNum}</div>
+		<div class="information1 name1" style="padding-left: 10px;">키</div><div class="information2 name2" style="padding-left: 20px;">${playerInfo.height}</div><br>
+		<div class="information1 name1" style="padding-top: 10px;">포지션</div><div class="information2 name2">${playerInfo.position}</div>
+		<div class="information1 name1" style="padding-left: 10px;">몸무게</div><div class="information2 name2" style="padding-left: 20px;">${playerInfo.weight}</div>
 	</div>
 	<div class="stat">
-		선수스탯
+		<h2>Player Stat</h2>
+		<table class="table table-striped table-hover">
+	      	<thead>
+		      	<tr>
+		      		<th>순위</th>
+		      		<th>이름</th>
+		      		<!-- <th>출전수</th>
+		      		<th>출전시간</th>
+		      		<th>득점</th>
+		      		<th>어시스트</th>
+		      		<th>옐로카드</th>
+		      		<th>레드카드</th>
+		      		<th>패스성공률(%)</th>
+		      		<th>평점</th>
+		      		<th>경기최우수선수</th> -->
+		      	</tr>
+	      	</thead>
+	      	<tbody>
+		      	<c:forEach var="tm" items="${playerInfo}">
+			      	<tr>
+			        	<td>${tm.num}</td>
+		        		<td><a href="<%=request.getContextPath()%>/players?player=${tm.player}">${tm.player}</a></td>
+		        		<%-- <td>${tm.appearances}</td>
+		        		<td>${tm.minutes}</td>
+		        		<td>${tm.goals}</td>
+		        		<td>${tm.assists}</td>
+		        		<td>${tm.yellowCard}</td>
+		        		<td>${tm.redCard}</td>
+		        		<td>${tm.psr}</td>
+		        		<td>${tm.rating}</td>
+		        		<td>${tm.motm}</td> --%>
+			      	</tr>
+		      	</c:forEach>
+	      	</tbody>	    
+  		</table>
 	</div>
 </body>
 </html>

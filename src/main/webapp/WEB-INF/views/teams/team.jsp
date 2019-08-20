@@ -40,12 +40,13 @@
 		}
 		.stat{
 			width: 1140px;
-			height: 300px;
+			height: 100%;
 		}
 		.squad{
 			width: 1140px;
-			height: 600px;
+			height: 100%;
 		}
+		
 	</style>
 </head>
 <body>
@@ -55,14 +56,12 @@
 			<div class="img">
 				<img alt="사진을 불러올 수 없습니다." src="${pageContext.request.contextPath}/resources/img/teams/${name}.png">
 			</div>
-			<c:forEach var="tmp" items="${teamInfo}">
-				<div class="information1 name">이름</div><div class="information2 name">${tmp.name}</div>
-				<div class="information1 name" style="padding-left: 10px;">창단연도</div><div class="information2 name" style="padding-left: 20px;">${tmp.establishment}</div><br>
-				<div class="information1 league">리그</div><div class="information2 league">${tmp.league}</div>
-				<div class="information1 league" style="padding-left: 10px;">경기장</div><div class="information2 league" style="padding-left: 20px;">${tmp.stadium}</div><br>
-				<div class="information1">연고지</div><div class="information2">${tmp.hometown}</div>
-				<div class="information1" style="padding-left: 10px;">감독</div><div class="information2" style="padding-left: 20px;">${tmp.coach}</div>
-			</c:forEach>
+			<div class="information1 name">이름</div><div class="information2 name">${teamInfo.name}</div>
+			<div class="information1 name" style="padding-left: 10px;">창단연도</div><div class="information2 name" style="padding-left: 20px;">${teamInfo.establishment}</div><br>
+			<div class="information1 league">리그</div><div class="information2 league">${teamInfo.league}</div>
+			<div class="information1 league" style="padding-left: 10px;">경기장</div><div class="information2 league" style="padding-left: 20px;">${teamInfo.stadium}</div><br>
+			<div class="information1">연고지</div><div class="information2">${teamInfo.hometown}</div>
+			<div class="information1" style="padding-left: 10px;">감독</div><div class="information2" style="padding-left: 20px;">${teamInfo.coach}</div>
 		</div>
 		<div class="stat">
 			팀스탯
@@ -86,28 +85,21 @@
 			      	</tr>
 		      	</thead>
 		      	<tbody>
-			      	<tr>
-				        <td>1</td>
-				        <c:forEach var="tmp" items="${playerInfo}">
-				        	<td><a href="<%=request.getContextPath()%>/teams?team=${tmp.hometeam}">Andrew Robertson</a></td>		        			       
-			      		</c:forEach>
-			      	</tr>
-			      	<tr>
-				        <td>2</td>
-				        <td><a href="#">Roberto Firmino</a></td>		        			       
-			      	</tr>
-			      	<tr>
-				        <td>3</td>
-				        <td><a href="#">Mohamed salah</a></td>		        			       
-			      	</tr>
-			      	<tr>
-				        <td>4</td>
-				        <td><a href="#">Trent Alexander-Arnold</a></td>		        			       
-			      	</tr>
-			      	<tr>
-				        <td>5</td>
-				        <td><a href="#">Sadio Mane</a></td>		        			       
-			      	</tr>
+			      	<c:forEach var="tm" items="${playerInfo}">
+				      	<tr>
+				        	<td>${tm.num}</td>
+			        		<td><a href="<%=request.getContextPath()%>/players?player=${tm.player}">${tm.player}</a></td>
+			        		<td>${tm.appearances}</td>
+			        		<td>${tm.minutes}</td>
+			        		<td>${tm.goals}</td>
+			        		<td>${tm.assists}</td>
+			        		<td>${tm.yellowCard}</td>
+			        		<td>${tm.redCard}</td>
+			        		<td>${tm.psr}</td>
+			        		<td>${tm.rating}</td>
+			        		<td>${tm.motm}</td>
+				      	</tr>
+			      	</c:forEach>
 		      	</tbody>	    
 	  		</table>
 		</div>

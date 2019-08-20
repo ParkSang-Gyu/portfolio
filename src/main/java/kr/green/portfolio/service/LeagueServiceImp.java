@@ -26,15 +26,21 @@ public class LeagueServiceImp implements LeagueService{
 	}
 
 	@Override
-	public ArrayList<TeamVO> getTeamInfo(TeamVO tVo,String team) {
+	public TeamVO getTeamInfo(String team) {
 		
-		return teamDao.getTeamInfo(tVo,team);
+		return teamDao.getTeamInfo(team);
 	}
 
 	@Override
-	public ArrayList<PlayerVO> getPlayerInfo(PlayerVO pVo,String player) {
+	public ArrayList<PlayerVO> getPlayerInfo(String team) {
 		
-		return teamDao.getPlayerInfo(pVo,player);
+		return teamDao.getPlayerInfo(team);
+	}
+
+	@Override
+	public PlayerVO getPlayer(String player) {
+		
+		return teamDao.getPlayer(player);
 	}
 
 }

@@ -7,6 +7,9 @@
     select * from teams where name = #{team}
   </select>
   <select id="getPlayerInfo" resultType="kr.green.portfolio.vo.PlayerVO">
-    select * from players where name = #{player}
+    select * from players where team = #{team}
+  </select>
+  <select id="getPlayer" resultType="kr.green.portfolio.vo.PlayerVO">
+    select * from players where player = #{player}
   </select>
 </mapper>

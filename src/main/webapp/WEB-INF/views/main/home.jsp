@@ -14,7 +14,7 @@
 			border-radius: 0;
 			margin-right: 0;
 		}
-	</style>	
+	</style>
 </head>
 <body>
 	<div>

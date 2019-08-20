@@ -61,19 +61,22 @@ public class HomeController {
 		return mv;
 	}
 	@RequestMapping(value = "/teams",method = RequestMethod.GET)
-	public String teamsGet(Model model,String team,TeamVO tVo,String player,PlayerVO pVo) {
-		ArrayList<TeamVO> teamInfo = leagueService.getTeamInfo(tVo,team);
-		ArrayList<PlayerVO> playerInfo = leagueService.getPlayerInfo(pVo,player);
-		model.addAttribute("teamInfo",teamInfo);
-		model.addAttribute("name",team);
-		return "/teams/team";
+	public ModelAndView teamsGet(ModelAndView mv,String team) {
+		TeamVO teamInfo = leagueService.getTeamInfo(team);
+		ArrayList<PlayerVO> playerInfo = leagueService.getPlayerInfo(team);
+		mv.addObject("teamInfo",teamInfo);
+		mv.addObject("playerInfo",playerInfo);
+		mv.addObject("name",team);
+		mv.setViewName("/teams/team");
+		return mv;
 	}
 	@RequestMapping(value = "/players",method = RequestMethod.GET)
-	public String playersGet(Model model,String player,PlayerVO pVo) {
-		ArrayList<PlayerVO> playerInfo = leagueService.getPlayerInfo(pVo,player);
-		model.addAttribute("playerInfo",playerInfo);
-		model.addAttribute("name",player);
-		return "/players/player";
+	public ModelAndView playersGet(ModelAndView mv,String player) {
+		PlayerVO playerInfo = leagueService.getPlayer(player);
+		mv.addObject("playerInfo",playerInfo);
+		mv.addObject("player",player);
+		mv.setViewName("/players/player");
+		return mv;
 	}
 	
 }

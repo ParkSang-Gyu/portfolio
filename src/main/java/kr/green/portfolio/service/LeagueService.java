@@ -10,9 +10,11 @@ public interface LeagueService {
 
 	ArrayList<PremierLeagueVO> getSchedule(PremierLeagueVO plVo, Integer roundNum);
 
-	ArrayList<TeamVO> getTeamInfo(TeamVO tVo, String team);
+	TeamVO getTeamInfo(String team);
 
-	ArrayList<PlayerVO> getPlayerInfo(PlayerVO pVo, String player);
+	ArrayList<PlayerVO> getPlayerInfo(String team);
+
+	PlayerVO getPlayer(String player);
 
 	
 }

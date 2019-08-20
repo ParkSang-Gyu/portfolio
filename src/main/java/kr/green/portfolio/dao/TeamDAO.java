@@ -9,8 +9,10 @@ import kr.green.portfolio.vo.TeamVO;
 
 public interface TeamDAO {
 
-	ArrayList<TeamVO> getTeamInfo(@Param("tVo")TeamVO tVo, @Param("team")String team);
+	TeamVO getTeamInfo(@Param("team")String team);
 
-	ArrayList<PlayerVO> getPlayerInfo(@Param("pVo")PlayerVO pVo, @Param("player")String player);
+	ArrayList<PlayerVO> getPlayerInfo(@Param("team")String team);
+
+	PlayerVO getPlayer(@Param("player")String player);
 
 }
