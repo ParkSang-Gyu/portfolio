@@ -7,6 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>스탯 비교 화면</h1>
+	<div class="container">
+		<h2>Player Comparison</h2>
+	
+	
+	</div>
 </body>
 </html>

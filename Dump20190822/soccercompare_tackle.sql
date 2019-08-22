@@ -16,33 +16,33 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `schedule`
+-- Table structure for table `tackle`
 --
 
-DROP TABLE IF EXISTS `schedule`;
+DROP TABLE IF EXISTS `tackle`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `schedule` (
+CREATE TABLE `tackle` (
   `num` int(11) NOT NULL AUTO_INCREMENT,
   `roundNum` int(11) NOT NULL,
-  `time` varchar(45) NOT NULL DEFAULT '--:--',
-  `status` varchar(45) NOT NULL DEFAULT '',
-  `homeTeam` varchar(45) DEFAULT NULL,
-  `result` varchar(45) NOT NULL DEFAULT 'vs',
-  `awayTeam` varchar(45) DEFAULT NULL,
-  `stadium` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`num`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+  `team` varchar(45) DEFAULT NULL,
+  `player` varchar(45) DEFAULT NULL,
+  `tackleAtt` int(11) NOT NULL DEFAULT '0',
+  `tackleScc` int(11) NOT NULL DEFAULT '0',
+  `tackle(%)` double NOT NULL DEFAULT '0',
+  PRIMARY KEY (`num`),
+  KEY `team_idx` (`team`)
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `schedule`
+-- Dumping data for table `tackle`
 --
 
-LOCK TABLES `schedule` WRITE;
-/*!40000 ALTER TABLE `schedule` DISABLE KEYS */;
-INSERT INTO `schedule` VALUES (1,1,'04:00','FT','Liverpool','4:1','Norwich','Anfield'),(2,1,'20:30','FT','West Ham','0:5','Manchester City','London Stadium'),(3,1,'23:00','FT','Bournemouth','1:1','Sheffield United','Vitality Stadium');
-/*!40000 ALTER TABLE `schedule` ENABLE KEYS */;
+LOCK TABLES `tackle` WRITE;
+/*!40000 ALTER TABLE `tackle` DISABLE KEYS */;
+INSERT INTO `tackle` VALUES (1,1,'Liverpool','Trent Alexander-Arnold',2,1,50),(2,1,'Liverpool','Virgil van Dijk',3,3,100),(3,1,'Liverpool','Joe Gomez',2,2,100),(4,1,'Liverpool','Andrew Robertson',1,1,100),(5,1,'Liverpool','Fabinho',9,8,88.8),(6,1,'Liverpool','Jordan Henderson',4,2,50),(7,1,'Liverpool','Roberto Firmino',3,1,33.3),(8,1,'Liverpool','Divock Origi',3,3,100),(9,1,'Liverpool','Georginio Wijnaldum',1,0,0),(10,1,'Liverpool','mohamed Salah',2,0,0),(11,1,'Liverpool','Sadio Mane',1,0,0),(12,1,'Norwich','Max Arons',3,3,100),(13,1,'Norwich','Grant Hanley',2,0,0),(14,1,'Norwich','Jamal Lewis',1,1,100),(15,1,'Norwich','Tom Trybull',5,1,20),(16,1,'Norwich','Kenny McLean',2,2,100),(17,1,'Norwich','Emiliano Buendia',2,1,50),(18,1,'Norwich','Marco Stiepermann',1,1,100),(19,1,'Norwich','Todd Cantwell',4,2,50),(20,1,'Norwich','Teemu Pukki',1,1,100),(21,1,'Norwich','Moritz Leitner',2,0,0);
+/*!40000 ALTER TABLE `tackle` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -54,4 +54,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-08-20 17:19:43
+-- Dump completed on 2019-08-22 17:14:24

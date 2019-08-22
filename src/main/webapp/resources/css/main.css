@@ -1,1 +1,15 @@
 @charset "EUC-KR";
+*{
+	box-sizing: border-box;
+}
+.container{
+	width: 1140px;
+	padding: 0;
+}
+.dropdown-menu{
+	width: 1140px;
+}
+.dropdown-menu a{
+	width: 281px;
+	display: inline-block;
+}

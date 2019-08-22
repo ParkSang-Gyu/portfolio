@@ -1,0 +1,10 @@
+@charset "EUC-KR";
+.text-center{
+	text-align: center;
+}
+.display-none{
+	display: none;
+}
+.display-block{
+	display: block;
+}

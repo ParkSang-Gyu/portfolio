@@ -16,31 +16,30 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `save`
+-- Table structure for table `goalagainst`
 --
 
-DROP TABLE IF EXISTS `save`;
+DROP TABLE IF EXISTS `goalagainst`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `save` (
+CREATE TABLE `goalagainst` (
   `num` int(11) NOT NULL AUTO_INCREMENT,
   `roundNum` int(11) NOT NULL,
   `team` varchar(45) DEFAULT NULL,
   `player` varchar(45) DEFAULT NULL,
-  `save` int(11) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`num`),
-  KEY `team_idx` (`team`)
+  `ga` int(11) NOT NULL,
+  PRIMARY KEY (`num`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `save`
+-- Dumping data for table `goalagainst`
 --
 
-LOCK TABLES `save` WRITE;
-/*!40000 ALTER TABLE `save` DISABLE KEYS */;
-INSERT INTO `save` VALUES (1,1,'Liverpool','Alisson',2),(2,1,'Liverpool','Adrian',2),(3,1,'Norwich','Tim Krul',4);
-/*!40000 ALTER TABLE `save` ENABLE KEYS */;
+LOCK TABLES `goalagainst` WRITE;
+/*!40000 ALTER TABLE `goalagainst` DISABLE KEYS */;
+INSERT INTO `goalagainst` VALUES (1,1,'Liverpool','Alisson',0),(2,1,'Liverpool','Adrian',1),(3,1,'Norwich','Tim Krul',4);
+/*!40000 ALTER TABLE `goalagainst` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -52,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-08-20 17:19:45
+-- Dump completed on 2019-08-22 17:14:24

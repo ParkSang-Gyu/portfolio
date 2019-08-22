@@ -16,31 +16,33 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `intercept`
+-- Table structure for table `schedule`
 --
 
-DROP TABLE IF EXISTS `intercept`;
+DROP TABLE IF EXISTS `schedule`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `intercept` (
+CREATE TABLE `schedule` (
   `num` int(11) NOT NULL AUTO_INCREMENT,
   `roundNum` int(11) NOT NULL,
-  `team` varchar(45) DEFAULT NULL,
-  `player` varchar(45) DEFAULT NULL,
-  `interceptScc` int(11) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`num`),
-  KEY `team_idx` (`team`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+  `time` varchar(45) NOT NULL DEFAULT '--:--',
+  `status` varchar(45) NOT NULL DEFAULT '',
+  `homeTeam` varchar(45) DEFAULT NULL,
+  `result` varchar(45) NOT NULL DEFAULT 'vs',
+  `awayTeam` varchar(45) DEFAULT NULL,
+  `stadium` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`num`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `intercept`
+-- Dumping data for table `schedule`
 --
 
-LOCK TABLES `intercept` WRITE;
-/*!40000 ALTER TABLE `intercept` DISABLE KEYS */;
-INSERT INTO `intercept` VALUES (1,1,'Liverpool','Trent Alexander-Arnold',2),(2,1,'Liverpool','Virgil van Dijk',5),(3,1,'Liverpool','Andrew Robertson',1),(4,1,'Liverpool','Fabinho',2),(5,1,'Liverpool','Georginio Wijnaldum',1),(6,1,'Liverpool','Jordan Henderson',2),(7,1,'Liverpool','Divock Origi',1),(8,1,'Norwich','Max Arons',1),(9,1,'Norwich','Ben Godfrey',4),(10,1,'Norwich','Tom Trybull',1),(11,1,'Norwich','Kenny McLean',1),(12,1,'Norwich','Emiliano Buendia',1),(13,1,'Norwich','Todd Cantwell',1),(14,1,'Norwich','Teemu Pukki',1),(15,1,'Norwich','Moritz Leitner',1);
-/*!40000 ALTER TABLE `intercept` ENABLE KEYS */;
+LOCK TABLES `schedule` WRITE;
+/*!40000 ALTER TABLE `schedule` DISABLE KEYS */;
+INSERT INTO `schedule` VALUES (1,1,'04:00','FT','Liverpool','4:1','Norwich','Anfield'),(2,1,'20:30','FT','West Ham','0:5','Manchester City','London Stadium'),(3,1,'23:00','FT','Bournemouth','1:1','Sheffield United','Vitality Stadium');
+/*!40000 ALTER TABLE `schedule` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -52,4 +54,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-08-20 17:19:44
+-- Dump completed on 2019-08-22 17:14:23

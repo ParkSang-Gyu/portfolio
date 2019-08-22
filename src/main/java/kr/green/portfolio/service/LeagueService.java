@@ -8,6 +8,8 @@ import kr.green.portfolio.vo.TeamVO;
 
 public interface LeagueService {
 
+	ArrayList<PremierLeagueVO> getFirstSchedule(PremierLeagueVO plVo, Integer roundNum);
+	
 	ArrayList<PremierLeagueVO> getSchedule(PremierLeagueVO plVo, Integer roundNum);
 
 	TeamVO getTeamInfo(String team);
@@ -15,6 +17,10 @@ public interface LeagueService {
 	ArrayList<PlayerVO> getPlayerInfo(String team);
 
 	PlayerVO getPlayer(String player);
+
+	ArrayList<TeamVO> getTeamTable(TeamVO tVo);
+
+	
 
 	
 }

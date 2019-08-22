@@ -37,10 +37,14 @@ public class HomeController {
 	    return mv;
 	}
 	@RequestMapping(value = "/premierleague",method = RequestMethod.GET)
-	public String premierleagueGet(Model model,PremierLeagueVO plVo,Integer roundNum) {
+	public String premierleagueGet(Model model,PremierLeagueVO plVo,Integer roundNum,TeamVO tVo) {
+		ArrayList<PremierLeagueVO> firstSchedule = leagueService.getFirstSchedule(plVo,roundNum);
 		ArrayList<PremierLeagueVO> schedule = leagueService.getSchedule(plVo,roundNum);
+		ArrayList<TeamVO> teamTable = leagueService.getTeamTable(tVo);
+		model.addAttribute("firstSchedule",firstSchedule);
 		model.addAttribute("schedule",schedule);
 		model.addAttribute("roundNum", roundNum);
+		model.addAttribute("teamTable",teamTable);
 		return "/leagues/premierleague";
 	}
 	@RequestMapping(value = "/championsleague",method = RequestMethod.GET)

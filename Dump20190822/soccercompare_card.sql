@@ -16,30 +16,33 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `block`
+-- Table structure for table `card`
 --
 
-DROP TABLE IF EXISTS `block`;
+DROP TABLE IF EXISTS `card`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `block` (
+CREATE TABLE `card` (
   `num` int(11) NOT NULL AUTO_INCREMENT,
   `roundNum` int(11) NOT NULL,
   `team` varchar(45) DEFAULT NULL,
   `player` varchar(45) DEFAULT NULL,
-  `blockScc` int(11) NOT NULL DEFAULT '0',
+  `yc` int(11) NOT NULL DEFAULT '0',
+  `rc` int(11) NOT NULL DEFAULT '0',
+  `ycTime` varchar(45) DEFAULT NULL,
+  `rcTime` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`num`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `block`
+-- Dumping data for table `card`
 --
 
-LOCK TABLES `block` WRITE;
-/*!40000 ALTER TABLE `block` DISABLE KEYS */;
-INSERT INTO `block` VALUES (1,1,'Liverpool','Trent Alexander-Arnold',1),(2,1,'Liverpool','Joe Gomez',1),(3,1,'Norwich','Max Arons',1),(4,1,'Norwich','Grant Hanley',1),(5,1,'Norwich','Jamal Lewis',1);
-/*!40000 ALTER TABLE `block` ENABLE KEYS */;
+LOCK TABLES `card` WRITE;
+/*!40000 ALTER TABLE `card` DISABLE KEYS */;
+INSERT INTO `card` VALUES (1,1,'Norwich','Moritz Leitner',1,0,'60\'',NULL),(2,1,'Norwich','Emiliano Buendia',1,0,'65\'',NULL);
+/*!40000 ALTER TABLE `card` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -51,4 +54,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-08-20 17:19:45
+-- Dump completed on 2019-08-22 17:14:24

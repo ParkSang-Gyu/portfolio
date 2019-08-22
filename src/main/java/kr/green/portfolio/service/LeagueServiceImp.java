@@ -20,6 +20,12 @@ public class LeagueServiceImp implements LeagueService{
 	TeamDAO teamDao;
 	
 	@Override
+	public ArrayList<PremierLeagueVO> getFirstSchedule(PremierLeagueVO plVo, Integer roundNum) {
+		
+		return premierLeagueDao.getFirstSchedule(plVo,roundNum);
+	}
+	
+	@Override
 	public ArrayList<PremierLeagueVO> getSchedule(PremierLeagueVO plVo,Integer roundNum) {
 		
 		return premierLeagueDao.getSchedule(plVo,roundNum);
@@ -41,6 +47,12 @@ public class LeagueServiceImp implements LeagueService{
 	public PlayerVO getPlayer(String player) {
 		
 		return teamDao.getPlayer(player);
+	}
+
+	@Override
+	public ArrayList<TeamVO> getTeamTable(TeamVO tVo) {
+		
+		return premierLeagueDao.getTeamTable(tVo);
 	}
 
 }

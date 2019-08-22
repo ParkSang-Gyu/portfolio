@@ -15,4 +15,6 @@ public interface TeamDAO {
 
 	PlayerVO getPlayer(@Param("player")String player);
 
+	ArrayList<TeamVO> getTeam(TeamVO tVo);
+
 }
