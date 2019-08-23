@@ -15,7 +15,7 @@
 </head>
 <body>
 	<div class="jumbotron jumbotron-fluid mb-0">
-	  <div class="container">
+	  <div class="container" style="position: absolute;">
 	    <a href="<%=request.getContextPath()%>/">
 			<div class="sitename" style="float: left;">!!SoccerCompare!!</div>
 		</a>

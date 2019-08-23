@@ -5,11 +5,14 @@
 .container{
 	width: 1140px;
 	padding: 0;
+	position: relative;
 }
-.dropdown-menu{
-	width: 1140px;
+th{
+	text-align: center;
 }
-.dropdown-menu a{
-	width: 281px;
-	display: inline-block;
+.display-none{
+	display: none;
+}
+.display-block{
+	display: block;
 }

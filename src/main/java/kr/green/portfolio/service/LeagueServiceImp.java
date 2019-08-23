@@ -5,30 +5,30 @@ import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import kr.green.portfolio.dao.PremierLeagueDAO;
+import kr.green.portfolio.dao.LeagueDAO;
 import kr.green.portfolio.dao.TeamDAO;
 import kr.green.portfolio.vo.PlayerVO;
-import kr.green.portfolio.vo.PremierLeagueVO;
+import kr.green.portfolio.vo.LeagueVO;
 import kr.green.portfolio.vo.TeamVO;
 
 @Service
 public class LeagueServiceImp implements LeagueService{
 
 	@Autowired
-	PremierLeagueDAO premierLeagueDao;
+	LeagueDAO leagueDao;
 	@Autowired
 	TeamDAO teamDao;
 	
 	@Override
-	public ArrayList<PremierLeagueVO> getFirstSchedule(PremierLeagueVO plVo, Integer roundNum) {
+	public ArrayList<LeagueVO> getFirstSchedule(LeagueVO plVo, Integer roundNum) {
 		
-		return premierLeagueDao.getFirstSchedule(plVo,roundNum);
+		return leagueDao.getFirstSchedule(plVo,roundNum);
 	}
 	
 	@Override
-	public ArrayList<PremierLeagueVO> getSchedule(PremierLeagueVO plVo,Integer roundNum) {
+	public ArrayList<LeagueVO> getSchedule(LeagueVO plVo,Integer roundNum) {
 		
-		return premierLeagueDao.getSchedule(plVo,roundNum);
+		return leagueDao.getSchedule(plVo,roundNum);
 	}
 
 	@Override
@@ -52,7 +52,7 @@ public class LeagueServiceImp implements LeagueService{
 	@Override
 	public ArrayList<TeamVO> getTeamTable(TeamVO tVo) {
 		
-		return premierLeagueDao.getTeamTable(tVo);
+		return leagueDao.getTeamTable(tVo);
 	}
 
 }

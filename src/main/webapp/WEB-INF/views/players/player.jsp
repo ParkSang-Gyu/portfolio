@@ -5,6 +5,9 @@
 <html>
 <head>
 <style type="text/css">
+th,td{
+	text-align: center;
+}
 .btn{
 	border-radius: 0;
 	margin-right: 0;
@@ -66,10 +69,10 @@ $(document).ready(function(){
 			<a href="<%=request.getContextPath()%>/statistics"><button type="button" class="btn btn-dark">statistics</button></a>
 			<a href="<%=request.getContextPath()%>/comparison"><button type="button" class="btn btn-dark">comparison</button></a><br>	
 			<div class="collapse" id="leaguelist">
-			   	<a class="dropdown-item" href="<%=request.getContextPath()%>/premierleague">Premier League</a>
-			   	<a class="dropdown-item" href="<%=request.getContextPath()%>/laliga">La Liga</a>
-			   	<a class="dropdown-item" href="<%=request.getContextPath()%>/bundesliga">Bundesriga</a>
-			   	<a class="dropdown-item" href="<%=request.getContextPath()%>/seriea">Seria A</a>
+			   	<a class="dropdown-item" href="<%=request.getContextPath()%>/premierleague?roundNum=1">Premier League</a>
+			   	<a class="dropdown-item" href="<%=request.getContextPath()%>/laliga?roundNum=1">La Liga</a>
+			   	<a class="dropdown-item" href="<%=request.getContextPath()%>/bundesliga?roundNum=1">Bundesriga</a>
+			   	<a class="dropdown-item" href="<%=request.getContextPath()%>/seriea?roundNum=1">Seria A</a>
 		  	</div>
 		  	<div class="collapse" id="tournamentlist">
 		   		<a class="dropdown-item" href="#">Champions League</a>
@@ -95,28 +98,28 @@ $(document).ready(function(){
 			<table class="table table-striped table-hover">
 		      	<thead>
 			      	<tr>
-			      		<th class="text-center">출전수</th>
-			      		<th class="text-center">출전시간</th>
-			      		<th class="text-center">득점</th>
-			      		<th class="text-center">어시스트</th>
-			      		<th class="text-center">옐로카드</th>
-			      		<th class="text-center">레드카드</th>
-			      		<th class="text-center">패스성공률(%)</th>
-			      		<th class="text-center">평점</th>
-			      		<th class="text-center">경기최우수선수</th>
+			      		<th>출전수</th>
+			      		<th>출전시간</th>
+			      		<th>득점</th>
+			      		<th>어시스트</th>
+			      		<th>옐로카드</th>
+			      		<th>레드카드</th>
+			      		<th>패스성공률(%)</th>
+			      		<th>평점</th>
+			      		<th>경기최우수선수</th>
 			      	</tr>
 		      	</thead>
 		      	<tbody>
 			      	<tr>
-		        		<td class="text-center">${playerInfo.appearances}</td>
-		        		<td class="text-center">${playerInfo.minutes}</td>
-		        		<td class="text-center">${playerInfo.goals}</td>
-		        		<td class="text-center">${playerInfo.assists}</td>
-		        		<td class="text-center">${playerInfo.yellowCard}</td>
-		        		<td class="text-center">${playerInfo.redCard}</td>
-		        		<td class="text-center">${playerInfo.psr}</td>
-		        		<td class="text-center">${playerInfo.rating}</td>
-		        		<td class="text-center">${playerInfo.motm}</td>
+		        		<td>${playerInfo.appearances}</td>
+		        		<td>${playerInfo.minutes}</td>
+		        		<td>${playerInfo.goals}</td>
+		        		<td>${playerInfo.assists}</td>
+		        		<td>${playerInfo.yellowCard}</td>
+		        		<td>${playerInfo.redCard}</td>
+		        		<td>${playerInfo.psr}</td>
+		        		<td>${playerInfo.rating}</td>
+		        		<td>${playerInfo.motm}</td>
 			      	</tr>
 		      	</tbody>	    
 	  		</table>

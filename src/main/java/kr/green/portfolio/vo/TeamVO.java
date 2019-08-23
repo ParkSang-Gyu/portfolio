@@ -8,6 +8,7 @@ public class TeamVO {
 	private int establishment;
 	private String stadium;
 	private String coach;
+	private int rank;
 	private int played;
 	private int win;
 	private int draw;
@@ -52,6 +53,12 @@ public class TeamVO {
 	}
 	public void setCoach(String coach) {
 		this.coach = coach;
+	}
+	public int getRank() {
+		return rank;
+	}
+	public void setRank(int rank) {
+		this.rank = rank;
 	}
 	public int getPlayed() {
 		return played;
@@ -105,9 +112,10 @@ public class TeamVO {
 	@Override
 	public String toString() {
 		return "TeamVO [name=" + name + ", league=" + league + ", hometown=" + hometown + ", establishment="
-				+ establishment + ", stadium=" + stadium + ", coach=" + coach + ", played=" + played + ", win=" + win
-				+ ", draw=" + draw + ", lose=" + lose + ", goalFor=" + goalFor + ", goalAgainst=" + goalAgainst
-				+ ", goalDifference=" + goalDifference + ", points=" + points + "]";
+				+ establishment + ", stadium=" + stadium + ", coach=" + coach + ", rank=" + rank + ", played=" + played
+				+ ", win=" + win + ", draw=" + draw + ", lose=" + lose + ", goalFor=" + goalFor + ", goalAgainst="
+				+ goalAgainst + ", goalDifference=" + goalDifference + ", points=" + points + "]";
 	}
+	
 	
 }

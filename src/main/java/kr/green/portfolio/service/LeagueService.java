@@ -3,14 +3,14 @@ package kr.green.portfolio.service;
 import java.util.ArrayList;
 
 import kr.green.portfolio.vo.PlayerVO;
-import kr.green.portfolio.vo.PremierLeagueVO;
+import kr.green.portfolio.vo.LeagueVO;
 import kr.green.portfolio.vo.TeamVO;
 
 public interface LeagueService {
 
-	ArrayList<PremierLeagueVO> getFirstSchedule(PremierLeagueVO plVo, Integer roundNum);
+	ArrayList<LeagueVO> getFirstSchedule(LeagueVO plVo, Integer roundNum);
 	
-	ArrayList<PremierLeagueVO> getSchedule(PremierLeagueVO plVo, Integer roundNum);
+	ArrayList<LeagueVO> getSchedule(LeagueVO plVo, Integer roundNum);
 
 	TeamVO getTeamInfo(String team);
 

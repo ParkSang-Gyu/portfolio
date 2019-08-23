@@ -5,6 +5,9 @@
 <html>
 <head>
 <style type="text/css">
+th,td{
+	text-align: center;
+}
 .btn{
 	border-radius: 0;
 	margin-right: 0;
@@ -65,10 +68,10 @@ $(document).ready(function(){
 			<a href="<%=request.getContextPath()%>/statistics"><button type="button" class="btn btn-dark">statistics</button></a>
 			<a href="<%=request.getContextPath()%>/comparison"><button type="button" class="btn btn-dark">comparison</button></a><br>	
 			<div class="collapse" id="leaguelist">
-			   	<a class="dropdown-item" href="<%=request.getContextPath()%>/premierleague">Premier League</a>
-			   	<a class="dropdown-item" href="<%=request.getContextPath()%>/laliga">La Liga</a>
-			   	<a class="dropdown-item" href="<%=request.getContextPath()%>/bundesliga">Bundesriga</a>
-			   	<a class="dropdown-item" href="<%=request.getContextPath()%>/seriea">Seria A</a>
+			   	<a class="dropdown-item" href="<%=request.getContextPath()%>/premierleague?roundNum=1">Premier League</a>
+			   	<a class="dropdown-item" href="<%=request.getContextPath()%>/laliga?roundNum=1">La Liga</a>
+			   	<a class="dropdown-item" href="<%=request.getContextPath()%>/bundesliga?roundNum=1">Bundesriga</a>
+			   	<a class="dropdown-item" href="<%=request.getContextPath()%>/seriea?roundNum=1">Seria A</a>
 		  	</div>
 		  	<div class="collapse" id="tournamentlist">
 		   		<a class="dropdown-item" href="#">Champions League</a>
@@ -92,26 +95,26 @@ $(document).ready(function(){
 			<table class="table table-striped table-hover">
 		      	<thead>
 			      	<tr>
-			      		<th class="text-center">경기수</th>
-			      		<th class="text-center">승</th>
-			      		<th class="text-center">무</th>
-			      		<th class="text-center">패</th>
-			      		<th class="text-center">득점</th>
-			      		<th class="text-center">실점</th>
-			      		<th class="text-center">득실차</th>
-			      		<th class="text-center">승점</th>
+			      		<th>경기수</th>
+			      		<th>승</th>
+			      		<th>무</th>
+			      		<th>패</th>
+			      		<th>득점</th>
+			      		<th>실점</th>
+			      		<th>득실차</th>
+			      		<th>승점</th>
 			      	</tr>
 		      	</thead>
 		      	<tbody>
 			      	<tr>
-		        		<td class="text-center">${teamInfo.played}</td>
-		        		<td class="text-center">${teamInfo.win}</td>
-		        		<td class="text-center">${teamInfo.draw}</td>
-		        		<td class="text-center">${teamInfo.lose}</td>
-		        		<td class="text-center">${teamInfo.goalFor}</td>
-		        		<td class="text-center">${teamInfo.goalAgainst}</td>
-		        		<td class="text-center">${teamInfo.goalDifference}</td>
-		        		<td class="text-center">${teamInfo.points}</td>
+		        		<td>${teamInfo.played}</td>
+		        		<td>${teamInfo.win}</td>
+		        		<td>${teamInfo.draw}</td>
+		        		<td>${teamInfo.lose}</td>
+		        		<td>${teamInfo.goalFor}</td>
+		        		<td>${teamInfo.goalAgainst}</td>
+		        		<td>${teamInfo.goalDifference}</td>
+		        		<td>${teamInfo.points}</td>
 			      	</tr>
 		      	</tbody>	    
 	  		</table>
@@ -121,33 +124,33 @@ $(document).ready(function(){
 			<table class="table table-striped table-hover">
 		      	<thead>
 			      	<tr>
-			      		<th class="text-center">순위</th>
-			      		<th class="text-center">이름</th>
-			      		<th class="text-center">출전수</th>
-			      		<th class="text-center">출전시간</th>
-			      		<th class="text-center">득점</th>
-			      		<th class="text-center">어시스트</th>
-			      		<th class="text-center">옐로카드</th>
-			      		<th class="text-center">레드카드</th>
-			      		<th class="text-center">패스성공률(%)</th>
-			      		<th class="text-center">평점</th>
-			      		<th class="text-center">경기최우수선수</th>
+			      		<th>순위</th>
+			      		<th>이름</th>
+			      		<th>출전수</th>
+			      		<th>출전시간</th>
+			      		<th>득점</th>
+			      		<th>어시스트</th>
+			      		<th>옐로카드</th>
+			      		<th>레드카드</th>
+			      		<th>패스성공률(%)</th>
+			      		<th>평점</th>
+			      		<th>경기최우수선수</th>
 			      	</tr>
 		      	</thead>
 		      	<tbody>
 			      	<c:forEach var="tm" items="${playerInfo}">
 				      	<tr>
-				        	<td class="text-center">${tm.num}</td>
-			        		<td class="text-center"><a href="<%=request.getContextPath()%>/players?player=${tm.player}">${tm.player}</a></td>
-			        		<td class="text-center">${tm.appearances}</td>
-			        		<td class="text-center">${tm.minutes}</td>
-			        		<td class="text-center">${tm.goals}</td>
-			        		<td class="text-center">${tm.assists}</td>
-			        		<td class="text-center">${tm.yellowCard}</td>
-			        		<td class="text-center">${tm.redCard}</td>
-			        		<td class="text-center">${tm.psr}</td>
-			        		<td class="text-center">${tm.rating}</td>
-			        		<td class="text-center">${tm.motm}</td>
+				        	<td>${tm.num}</td>
+			        		<td><a href="<%=request.getContextPath()%>/players?player=${tm.player}">${tm.player}</a></td>
+			        		<td>${tm.appearances}</td>
+			        		<td>${tm.minutes}</td>
+			        		<td>${tm.goals}</td>
+			        		<td>${tm.assists}</td>
+			        		<td>${tm.yellowCard}</td>
+			        		<td>${tm.redCard}</td>
+			        		<td>${tm.psr}</td>
+			        		<td>${tm.rating}</td>
+			        		<td>${tm.motm}</td>
 				      	</tr>
 			      	</c:forEach>
 		      	</tbody>	    

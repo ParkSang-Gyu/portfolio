@@ -13,7 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import kr.green.portfolio.service.LeagueService;
 import kr.green.portfolio.vo.PlayerVO;
-import kr.green.portfolio.vo.PremierLeagueVO;
+import kr.green.portfolio.vo.LeagueVO;
 import kr.green.portfolio.vo.TeamVO;
 
 /**
@@ -33,30 +33,29 @@ public class HomeController {
 	@RequestMapping(value= {"/"})
 	public ModelAndView openTilesView(ModelAndView mv) throws Exception{
 	    mv.setViewName("/main/home");
-	    
 	    return mv;
 	}
 	@RequestMapping(value = "/premierleague",method = RequestMethod.GET)
-	public String premierleagueGet(Model model,PremierLeagueVO plVo,Integer roundNum,TeamVO tVo) {
-		ArrayList<PremierLeagueVO> firstSchedule = leagueService.getFirstSchedule(plVo,roundNum);
-		ArrayList<PremierLeagueVO> schedule = leagueService.getSchedule(plVo,roundNum);
+	public String leagueGet(Model model,LeagueVO plVo,Integer roundNum,TeamVO tVo) {
+		ArrayList<LeagueVO> firstSchedule = leagueService.getFirstSchedule(plVo,roundNum);
+		ArrayList<LeagueVO> schedule = leagueService.getSchedule(plVo,roundNum);
 		ArrayList<TeamVO> teamTable = leagueService.getTeamTable(tVo);
 		model.addAttribute("firstSchedule",firstSchedule);
 		model.addAttribute("schedule",schedule);
 		model.addAttribute("roundNum", roundNum);
 		model.addAttribute("teamTable",teamTable);
-		return "/leagues/premierleague";
+		return "/leagues/league";
 	}
-	@RequestMapping(value = "/championsleague",method = RequestMethod.GET)
-	public String championsleagueGet() {
-		return "/tournaments/championsleague";
+	@RequestMapping(value = "/championsLeague",method = RequestMethod.GET)
+	public String championsLeagueGet() {
+		return "/tournaments/tournament";
 	}
-	@RequestMapping(value = "/europaleague",method = RequestMethod.GET)
-	public String europaleagueGet() {
-		return "/tournaments/europaleague";
+	@RequestMapping(value = "/europaLeague",method = RequestMethod.GET)
+	public String europaLeagueGet() {
+		return "/tournaments/tournament";
 	}
 	@RequestMapping(value = "/statistics",method = RequestMethod.GET)
-	public String statisticssGet() {
+	public String statisticsGet() {
 		return "/statistics/statistics";
 	}
 	@RequestMapping(value = "/comparison",method = RequestMethod.GET)
