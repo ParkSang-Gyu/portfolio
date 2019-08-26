@@ -6,18 +6,15 @@
 <head>
 <jsp:include page="/WEB-INF/views/include/head.jsp"></jsp:include>
 <style type="text/css">
-.btn{
-	border-radius: 0;
-	margin-right: 0;
-}
-tr{
+table{
+	font-size: 11px;
+	text-align: center;
 	height: 8px;
 	line-height: 5px;
 }
-.schedules{
-	width: 1140px;
-	height: 100%;
-	position: relative;
+.btn{
+	border-radius: 0;
+	margin-right: 0;
 }
 #roundNum{
 	float: right;
@@ -26,21 +23,19 @@ tr{
 	display: inline-block;
 	float: right;
 }
-.tables{
+.schedules,.tables,.standings{
 	width: 1140px;
-	height: 100%;
 	position: relative;
 }
-th,td{
-	text-align: center;
+.standings div{
+	width: 375px;
+	display: inline-block;
 }
-.standings{
-	width: 1140px;
-	height: 100%;
-	position: relative;
+.assistStandings{
+	margin-left: 6px;
 }
-.goalStandings{
-	width: 300px;
+.ratingStandings{
+	float: right;
 }
 </style>
 <script type="text/javascript">
@@ -116,26 +111,26 @@ $(document).ready(function () {
 			</div>
 			<div class="tables">
 				<h2>Premier League Table</h2>
-				<table class="table table-striped table-hover">			 
+				<table class="table table-striped table-hover tablesort">			 
 			      	<thead>
 			      		<tr>
-			      			<th>순위</th>
-			      			<th>팀</th>
-				      		<th>경기수</th>
-				      		<th>승</th>
-				      		<th>무</th>
-				      		<th>패</th>
-				      		<th>득점</th>
-				      		<th>실점</th>
-				      		<th>득실차</th>
-				      		<th>승점</th>
+			      			<th><a href="#">순위</a></th>
+			      			<th><a href="#">팀</a></th>
+			      			<th><a href="#">경기수</a></th>
+			      			<th><a href="#">승</a></th>
+			      			<th><a href="#">무</a></th>
+			      			<th><a href="#">패</a></th>
+			      			<th><a href="#">득점</a></th>
+			      			<th><a href="#">실점</a></th>
+			      			<th><a href="#">득실차</a></th>
+			      			<th><a href="#">승점</a></th>
 			      		</tr>
 		      		</thead>
 		      		<tbody>
 		      			<c:forEach var="tmp" items="${teamTable}">
 		      				<tr>
 		      					<td>${tmp.rank}</td>
-			      				<td>${tmp.name}</td>
+			      				<td><a href="<%=request.getContextPath()%>/teams?team=${tmp.name}">${tmp.name}</a></td>
 			      				<td>${tmp.played}</td>
 			      				<td>${tmp.win}</td>
 			      				<td>${tmp.draw}</td>
@@ -152,21 +147,75 @@ $(document).ready(function () {
 			<div class="standings">
 				<h2>Premier League Standings</h2>
 				<div class="goalStandings">
-					<table class="table table-striped table-hover">
-						<tr>
-							<th>순위</th>
-							<th>선수</th>
-							<th>팀</th>
-							<th>득점</th>
-							<th>출전수</th>
-						</tr>
-						<tr>
-							<th>순위</th>
-							<th>선수</th>
-							<th>팀</th>
-							<th>득점</th>
-							<th>출전수</th>
-						</tr>
+					<table class="table table-striped table-hover tablesort">
+						<thead>
+							<tr>
+								<th>순위</th>
+								<th>선수</th>
+								<th>팀</th>
+								<th>득점</th>
+								<th>출전수</th>
+							</tr>
+						</thead>
+						<tbody>
+							<c:forEach var="tmp" items="${goals}">
+								<tr>
+									<td>${tmp.rank}</td>
+									<td><a href="<%=request.getContextPath()%>/players?player=${tmp.player}">${tmp.player}</a></td>
+									<td><a href="<%=request.getContextPath()%>/teams?team=${tmp.team}">${tmp.team}</a></td>
+									<td>${tmp.goals}</td>
+									<td>${tmp.appearances}</td>
+								</tr>
+							</c:forEach>
+						</tbody>
+					</table>
+				</div>
+				<div class="assistStandings">
+					<table class="table table-striped table-hover tablesort">
+						<thead>
+							<tr>
+								<th>순위</th>
+								<th>선수</th>
+								<th>팀</th>
+								<th>어시스트</th>
+								<th>출전수</th>
+							</tr>
+						</thead>
+						<tbody>
+							<c:forEach var="tmp" items="${assists}">
+								<tr>
+									<td>${tmp.rank}</td>
+									<td><a href="<%=request.getContextPath()%>/players?player=${tmp.player}">${tmp.player}</a></td>
+									<td><a href="<%=request.getContextPath()%>/teams?team=${tmp.team}">${tmp.team}</a></td>
+									<td>${tmp.assists}</td>
+									<td>${tmp.appearances}</td>
+								</tr>
+							</c:forEach>
+						</tbody>
+					</table>
+				</div>
+				<div class="ratingStandings">
+					<table class="table table-striped table-hover tablesort">
+						<thead>
+							<tr>
+								<th>순위</th>
+								<th>선수</th>
+								<th>팀</th>
+								<th>평점</th>
+								<th>출전수</th>
+							</tr>
+						</thead>
+						<tbody>
+							<c:forEach var="tmp" items="${rating}">
+								<tr>
+									<td>${tmp.rank}</td>
+									<td><a href="<%=request.getContextPath()%>/players?player=${tmp.player}">${tmp.player}</a></td>
+									<td><a href="<%=request.getContextPath()%>/teams?team=${tmp.team}">${tmp.team}</a></td>
+									<td>${tmp.rating}</td>
+									<td>${tmp.appearances}</td>
+								</tr>
+							</c:forEach>
+						</tbody>
 					</table>
 				</div>
 			</div>

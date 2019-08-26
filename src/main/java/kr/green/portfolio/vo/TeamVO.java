@@ -15,7 +15,7 @@ public class TeamVO {
 	private int lose;
 	private int goalFor;
 	private int goalAgainst;
-	private int goalDifference;
+	private String goalDifference;
 	private int points;
 	
 	public String getName() {
@@ -96,10 +96,10 @@ public class TeamVO {
 	public void setGoalAgainst(int goalAgainst) {
 		this.goalAgainst = goalAgainst;
 	}
-	public int getGoalDifference() {
+	public String getGoalDifference() {
 		return goalDifference;
 	}
-	public void setGoalDifference(int goalDifference) {
+	public void setGoalDifference(String goalDifference) {
 		this.goalDifference = goalDifference;
 	}
 	public int getPoints() {

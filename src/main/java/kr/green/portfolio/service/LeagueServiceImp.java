@@ -7,8 +7,11 @@ import org.springframework.stereotype.Service;
 
 import kr.green.portfolio.dao.LeagueDAO;
 import kr.green.portfolio.dao.TeamDAO;
+import kr.green.portfolio.vo.AssistStandingsVO;
+import kr.green.portfolio.vo.GoalStandingsVO;
 import kr.green.portfolio.vo.PlayerVO;
-import kr.green.portfolio.vo.LeagueVO;
+import kr.green.portfolio.vo.RatingStandingsVO;
+import kr.green.portfolio.vo.ScheduleVO;
 import kr.green.portfolio.vo.TeamVO;
 
 @Service
@@ -20,15 +23,15 @@ public class LeagueServiceImp implements LeagueService{
 	TeamDAO teamDao;
 	
 	@Override
-	public ArrayList<LeagueVO> getFirstSchedule(LeagueVO plVo, Integer roundNum) {
+	public ArrayList<ScheduleVO> getFirstSchedule(ScheduleVO sVo, Integer roundNum) {
 		
-		return leagueDao.getFirstSchedule(plVo,roundNum);
+		return leagueDao.getFirstSchedule(sVo,roundNum);
 	}
 	
 	@Override
-	public ArrayList<LeagueVO> getSchedule(LeagueVO plVo,Integer roundNum) {
+	public ArrayList<ScheduleVO> getSchedule(ScheduleVO sVo,Integer roundNum) {
 		
-		return leagueDao.getSchedule(plVo,roundNum);
+		return leagueDao.getSchedule(sVo,roundNum);
 	}
 
 	@Override
@@ -54,5 +57,25 @@ public class LeagueServiceImp implements LeagueService{
 		
 		return leagueDao.getTeamTable(tVo);
 	}
+
+	@Override
+	public ArrayList<GoalStandingsVO> getGoals(GoalStandingsVO gVo) {
+		
+		return leagueDao.getGoals(gVo);
+	}
+
+	@Override
+	public ArrayList<AssistStandingsVO> getAssists(AssistStandingsVO aVo) {
+		
+		return leagueDao.getAssists(aVo);
+	}
+
+	@Override
+	public ArrayList<RatingStandingsVO> getRating(RatingStandingsVO rVo) {
+		
+		return leagueDao.getRating(rVo);
+	}
+	
+	
 
 }

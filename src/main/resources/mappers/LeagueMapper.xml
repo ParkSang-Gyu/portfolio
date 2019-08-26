@@ -3,13 +3,22 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.green.portfolio.dao.LeagueDAO">
-  <select id="getFirstSchedule" resultType="kr.green.portfolio.vo.LeagueVO">
-    select * from league where roundNum = 1
+  <select id="getFirstSchedule" resultType="kr.green.portfolio.vo.ScheduleVO">
+    select * from schedule where roundNum = 1
   </select>
-  <select id="getSchedule" resultType="kr.green.portfolio.vo.LeagueVO">
-    select * from league where roundNum = #{roundNum}
+  <select id="getSchedule" resultType="kr.green.portfolio.vo.ScheduleVO">
+    select * from schedule where roundNum = #{roundNum}
   </select>
   <select id="getTeamTable" resultType="kr.green.portfolio.vo.TeamVO">
     select * from teams
+  </select>
+  <select id="getGoals" resultType="kr.green.portfolio.vo.GoalStandingsVO">
+    select * from goalstandings order by goals desc limit 5
+  </select>
+  <select id="getAssists" resultType="kr.green.portfolio.vo.AssistStandingsVO">
+    select * from assiststandings order by assists desc limit 5
+  </select>
+  <select id="getRating" resultType="kr.green.portfolio.vo.RatingStandingsVO">
+    select * from ratingstandings order by rating desc limit 5
   </select>
 </mapper>

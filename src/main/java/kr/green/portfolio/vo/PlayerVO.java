@@ -20,6 +20,7 @@ public class PlayerVO {
 	private double psr;
 	private double rating;
 	private int motm;
+	private int leagueNum;
 	
 	public int getNum() {
 		return num;
@@ -129,20 +130,20 @@ public class PlayerVO {
 	public void setMotm(int motm) {
 		this.motm = motm;
 	}
+	public int getLeagueNum() {
+		return leagueNum;
+	}
+	public void setLeagueNum(int leagueNum) {
+		this.leagueNum = leagueNum;
+	}
+	
 	@Override
 	public String toString() {
 		return "PlayerVO [num=" + num + ", player=" + player + ", nationality=" + nationality + ", age=" + age
 				+ ", backNum=" + backNum + ", position=" + position + ", team=" + team + ", height=" + height
 				+ ", weight=" + weight + ", appearances=" + appearances + ", minutes=" + minutes + ", goals=" + goals
 				+ ", assists=" + assists + ", yellowCard=" + yellowCard + ", redCard=" + redCard + ", psr=" + psr
-				+ ", rating=" + rating + ", motm=" + motm + ", getNum()=" + getNum() + ", getPlayer()=" + getPlayer()
-				+ ", getNationality()=" + getNationality() + ", getAge()=" + getAge() + ", getBackNum()=" + getBackNum()
-				+ ", getPosition()=" + getPosition() + ", getTeam()=" + getTeam() + ", getHeight()=" + getHeight()
-				+ ", getWeight()=" + getWeight() + ", getAppearances()=" + getAppearances() + ", getMinutes()="
-				+ getMinutes() + ", getGoals()=" + getGoals() + ", getAssists()=" + getAssists() + ", getYellowCard()="
-				+ getYellowCard() + ", getRedCard()=" + getRedCard() + ", getPsr()=" + getPsr() + ", getRating()="
-				+ getRating() + ", getMotm()=" + getMotm() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode()
-				+ ", toString()=" + super.toString() + "]";
+				+ ", rating=" + rating + ", motm=" + motm + ", leagueNum=" + leagueNum + "]";
 	}
 	
 	

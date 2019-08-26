@@ -35,51 +35,6 @@ public class HomeController {
 	    mv.setViewName("/main/home");
 	    return mv;
 	}
-	@RequestMapping(value = "/premierleague",method = RequestMethod.GET)
-	public String leagueGet(Model model,LeagueVO plVo,Integer roundNum,TeamVO tVo) {
-		ArrayList<LeagueVO> firstSchedule = leagueService.getFirstSchedule(plVo,roundNum);
-		ArrayList<LeagueVO> schedule = leagueService.getSchedule(plVo,roundNum);
-		ArrayList<TeamVO> teamTable = leagueService.getTeamTable(tVo);
-		model.addAttribute("firstSchedule",firstSchedule);
-		model.addAttribute("schedule",schedule);
-		model.addAttribute("roundNum", roundNum);
-		model.addAttribute("teamTable",teamTable);
-		return "/leagues/league";
-	}
-	@RequestMapping(value = "/championsLeague",method = RequestMethod.GET)
-	public String championsLeagueGet() {
-		return "/tournaments/tournament";
-	}
-	@RequestMapping(value = "/europaLeague",method = RequestMethod.GET)
-	public String europaLeagueGet() {
-		return "/tournaments/tournament";
-	}
-	@RequestMapping(value = "/statistics",method = RequestMethod.GET)
-	public String statisticsGet() {
-		return "/statistics/statistics";
-	}
-	@RequestMapping(value = "/comparison",method = RequestMethod.GET)
-	public ModelAndView comparisonGet(ModelAndView mv) {
-		mv.setViewName("/comparison/comparison");
-		return mv;
-	}
-	@RequestMapping(value = "/teams",method = RequestMethod.GET)
-	public ModelAndView teamsGet(ModelAndView mv,String team) {
-		TeamVO teamInfo = leagueService.getTeamInfo(team);
-		ArrayList<PlayerVO> playerInfo = leagueService.getPlayerInfo(team);
-		mv.addObject("teamInfo",teamInfo);
-		mv.addObject("playerInfo",playerInfo);
-		mv.addObject("name",team);
-		mv.setViewName("/teams/team");
-		return mv;
-	}
-	@RequestMapping(value = "/players",method = RequestMethod.GET)
-	public ModelAndView playersGet(ModelAndView mv,String player) {
-		PlayerVO playerInfo = leagueService.getPlayer(player);
-		mv.addObject("playerInfo",playerInfo);
-		mv.addObject("player",player);
-		mv.setViewName("/players/player");
-		return mv;
-	}
+	
 	
 }
