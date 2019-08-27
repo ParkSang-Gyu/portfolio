@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 import kr.green.portfolio.service.LeagueService;
 import kr.green.portfolio.vo.AssistStandingsVO;
 import kr.green.portfolio.vo.GoalStandingsVO;
+import kr.green.portfolio.vo.LeagueVO;
 import kr.green.portfolio.vo.PlayerVO;
 import kr.green.portfolio.vo.RatingStandingsVO;
 import kr.green.portfolio.vo.ScheduleVO;
@@ -38,14 +39,12 @@ public class StatController {
 	public String leagueGet(Model model,ScheduleVO sVo,Integer roundNum,TeamVO tVo,GoalStandingsVO gVo,
 			AssistStandingsVO aVo,RatingStandingsVO rVo,Integer leagueNum) {
 		
-		ArrayList<ScheduleVO> firstSchedule = leagueService.getFirstSchedule(sVo,roundNum);
 		ArrayList<ScheduleVO> schedule = leagueService.getSchedule(sVo,roundNum);
 		ArrayList<TeamVO> teamTable = leagueService.getTeamTable(tVo);
 		ArrayList<GoalStandingsVO> goals = leagueService.getGoals(gVo);
 		ArrayList<AssistStandingsVO> assists = leagueService.getAssists(aVo);
 		ArrayList<RatingStandingsVO> rating = leagueService.getRating(rVo);
 		
-		model.addAttribute("firstSchedule",firstSchedule);
 		model.addAttribute("schedule",schedule);
 		model.addAttribute("roundNum", roundNum);
 		model.addAttribute("teamTable",teamTable);
@@ -70,6 +69,7 @@ public class StatController {
 	}
 	@RequestMapping(value = "/comparison",method = RequestMethod.GET)
 	public ModelAndView comparisonGet(ModelAndView mv) {
+		
 		mv.setViewName("/comparison/comparison");
 		return mv;
 	}

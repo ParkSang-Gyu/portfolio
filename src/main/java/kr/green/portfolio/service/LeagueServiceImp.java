@@ -9,6 +9,7 @@ import kr.green.portfolio.dao.LeagueDAO;
 import kr.green.portfolio.dao.TeamDAO;
 import kr.green.portfolio.vo.AssistStandingsVO;
 import kr.green.portfolio.vo.GoalStandingsVO;
+import kr.green.portfolio.vo.LeagueVO;
 import kr.green.portfolio.vo.PlayerVO;
 import kr.green.portfolio.vo.RatingStandingsVO;
 import kr.green.portfolio.vo.ScheduleVO;
@@ -21,12 +22,6 @@ public class LeagueServiceImp implements LeagueService{
 	LeagueDAO leagueDao;
 	@Autowired
 	TeamDAO teamDao;
-	
-	@Override
-	public ArrayList<ScheduleVO> getFirstSchedule(ScheduleVO sVo, Integer roundNum) {
-		
-		return leagueDao.getFirstSchedule(sVo,roundNum);
-	}
 	
 	@Override
 	public ArrayList<ScheduleVO> getSchedule(ScheduleVO sVo,Integer roundNum) {
@@ -75,6 +70,7 @@ public class LeagueServiceImp implements LeagueService{
 		
 		return leagueDao.getRating(rVo);
 	}
+
 	
 	
 

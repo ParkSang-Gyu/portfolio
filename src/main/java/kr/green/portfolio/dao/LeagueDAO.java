@@ -6,13 +6,13 @@ import org.apache.ibatis.annotations.Param;
 
 import kr.green.portfolio.vo.AssistStandingsVO;
 import kr.green.portfolio.vo.GoalStandingsVO;
+import kr.green.portfolio.vo.LeagueVO;
+import kr.green.portfolio.vo.PlayerVO;
 import kr.green.portfolio.vo.RatingStandingsVO;
 import kr.green.portfolio.vo.ScheduleVO;
 import kr.green.portfolio.vo.TeamVO;
 
 public interface LeagueDAO {
-
-	ArrayList<ScheduleVO> getFirstSchedule(@Param("plVo")ScheduleVO sVo, @Param("roundNum")Integer roundNum);
 	
 	ArrayList<ScheduleVO> getSchedule(@Param("plVo")ScheduleVO sVo, @Param("roundNum")Integer roundNum);
 
@@ -23,5 +23,6 @@ public interface LeagueDAO {
 	ArrayList<AssistStandingsVO> getAssists(@Param("aVo")AssistStandingsVO aVo);
 
 	ArrayList<RatingStandingsVO> getRating(@Param("rVo")RatingStandingsVO rVo);
+
 	
 }

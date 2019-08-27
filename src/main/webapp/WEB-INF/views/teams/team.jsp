@@ -5,9 +5,6 @@
 <html>
 <head>
 <style type="text/css">
-th,td{
-	text-align: center;
-}
 .btn{
 	border-radius: 0;
 	margin-right: 0;
@@ -49,7 +46,8 @@ th,td{
 </style>
 <script>
 $(document).ready(function(){
-   	$('.list1').click(function(){
+	$('a').addClass('color-black')
+	$('.list1').click(function(){
    		$('#leaguelist').collapse('show')
    		$('#tournamentlist').collapse('hide')
    	})

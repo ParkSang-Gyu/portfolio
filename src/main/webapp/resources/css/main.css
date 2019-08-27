@@ -9,12 +9,21 @@
 	padding: 0;
 	position: relative;
 }
-th{
+table{
 	text-align: center;
+	font-size: 11px;
+	height: 8px;
+	line-height: 5px;
 }
 .display-none{
 	display: none;
 }
 .display-block{
 	display: block;
+}
+.absolute{
+	position: absolute;
+}
+.color-black{
+	color: black;
 }

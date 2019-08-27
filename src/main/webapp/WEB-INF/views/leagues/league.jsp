@@ -4,14 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<jsp:include page="/WEB-INF/views/include/head.jsp"></jsp:include>
 <style type="text/css">
-table{
-	font-size: 11px;
-	text-align: center;
-	height: 8px;
-	line-height: 5px;
-}
 .btn{
 	border-radius: 0;
 	margin-right: 0;
@@ -40,6 +33,7 @@ table{
 </style>
 <script type="text/javascript">
 $(document).ready(function () {
+	$('a').addClass('color-black')
 	$('#roundNum').change(function () {
 		location.href = '<%=request.getContextPath()%>/premierleague?roundNum='+$(this).val();
 	})
@@ -77,7 +71,7 @@ $(document).ready(function () {
 				<h2>Premier League Fixtures</h2>
 				<div class="schedule">
 					<select id="roundNum">
-			        	<option <c:if test="${roundNum == 1}">selected</c:if> id="selected">1</option>
+			        	<option <c:if test="${roundNum == 1}">selected</c:if>>1</option>
 			        	<option <c:if test="${roundNum == 2}">selected</c:if>>2</option>		   
 			        </select>
 			        <div id="round">라운드</div>
@@ -111,7 +105,7 @@ $(document).ready(function () {
 			</div>
 			<div class="tables">
 				<h2>Premier League Table</h2>
-				<table class="table table-striped table-hover tablesort">			 
+				<table class="table table-striped table-hover">			 
 			      	<thead>
 			      		<tr>
 			      			<th><a href="#">순위</a></th>
@@ -147,7 +141,7 @@ $(document).ready(function () {
 			<div class="standings">
 				<h2>Premier League Standings</h2>
 				<div class="goalStandings">
-					<table class="table table-striped table-hover tablesort">
+					<table class="table table-striped table-hover">
 						<thead>
 							<tr>
 								<th>순위</th>
@@ -171,7 +165,7 @@ $(document).ready(function () {
 					</table>
 				</div>
 				<div class="assistStandings">
-					<table class="table table-striped table-hover tablesort">
+					<table class="table table-striped table-hover">
 						<thead>
 							<tr>
 								<th>순위</th>
@@ -195,7 +189,7 @@ $(document).ready(function () {
 					</table>
 				</div>
 				<div class="ratingStandings">
-					<table class="table table-striped table-hover tablesort">
+					<table class="table table-striped table-hover">
 						<thead>
 							<tr>
 								<th>순위</th>
