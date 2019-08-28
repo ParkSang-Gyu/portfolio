@@ -2,10 +2,20 @@ package kr.green.portfolio.vo;
 
 public class LeagueVO {
 
+	private int num;
 	private int leagueNum;
 	private String league;
 	private String leagueName;
+	private int seasonStart;
+	private int seasonEnd;
+	private String season;
 	
+	public int getNum() {
+		return num;
+	}
+	public void setNum(int num) {
+		this.num = num;
+	}
 	public int getLeagueNum() {
 		return leagueNum;
 	}
@@ -24,10 +34,30 @@ public class LeagueVO {
 	public void setLeagueName(String leagueName) {
 		this.leagueName = leagueName;
 	}
+	public int getSeasonStart() {
+		return seasonStart;
+	}
+	public void setSeasonStart(int seasonStart) {
+		this.seasonStart = seasonStart;
+	}
+	public int getSeasonEnd() {
+		return seasonEnd;
+	}
+	public void setSeasonEnd(int seasonEnd) {
+		this.seasonEnd = seasonEnd;
+	}
+	public String getSeason() {
+		return season;
+	}
+	public void setSeason(String season) {
+		this.season = season;
+	}
 	@Override
 	public String toString() {
-		return "LeagueVO [leagueNum=" + leagueNum + ", league=" + league + ", leagueName=" + leagueName + "]";
+		return "LeagueVO [num=" + num + ", leagueNum=" + leagueNum + ", league=" + league + ", leagueName=" + leagueName
+				+ ", seasonStart=" + seasonStart + ", seasonEnd=" + seasonEnd + ", season=" + season + "]";
 	}
+	
 	
 	
 }

@@ -9,8 +9,35 @@
 .selectComparison{
 	width: 1140px;
 	height: 200px;
-	background-color: #d6d6d6;
+	background-color: #F1F0EE;
 	position: relative;
+	margin: 0;
+	padding: 0;
+}
+.empty{
+	margin: 0;
+	padding: 0;
+	width: 8%;
+	height: 100%;
+	float: left;
+}
+.selectContainer{
+	height: 170px;
+	margin: 0;
+	padding: 0;
+}
+.comparison1,.comparison2,.comparison3,.comparison4{
+	width: 23%;
+	padding-bottom: 15px;
+	position: relative;
+	float: left;
+	margin: 0;
+	padding: 0;
+	
+}
+.comparisonSelect1,.comparisonSelect2,.comparisonSelect3,.comparisonSelect4{
+	    margin: 24px 7px 15px 7px;
+	    padding: 0;
 }
 .close{
 	padding: 0;
@@ -19,14 +46,10 @@
 .btn{
 	padding: 0;
 }
-.comparison1,.comparison2,.comparison3,.comparison4{
-	width: 200px;
-	display: inline-block;
-	margin: 25px 0 0 30px;
-	position: relative;
-}
 select{
-	width: 200px;
+	width: 100%;
+	font-weight: bold;
+    border: 2px solid #F1F0EE;
 }
 .plus{
 	width: 150px;
@@ -40,8 +63,33 @@ select{
 </style>
 <script type="text/javascript">
 $(document).ready(function () {
+	/* var close = '<span class="close"><button class="btn"><span class="fas fa-window-close" style="font-size: 20px;margin-right: 9px;"></span></button></span>'
+	$('.plus').click(function () {
+		
+		$('.comparisonSelect3').before(close)
+		$('.comparisonSelect4').before(close)
+	})
 	$('.close').click(function () {
-		$(this).addClass('display-none')
+		$(this).siblings().remove()
+		$('.comparison3').remove()
+	}) */
+	$('#league').change(function(){
+		var league = $(this).val();
+		$.ajax({
+	        async:true,
+	        type:'POST',
+	        data:id,
+	        url:"comparison",
+	        dataType:"json",
+	        contentType:"application/json; charset=UTF-8",
+	        success : function(data){
+	           var str = '<option>시즌</option>'
+	           for(var i=0; i<data.xxx.length; i++){
+	        	   str += '<option>'+data.xxx[i]+'</option>'
+	           }
+	           $('#season').html(str);
+	        }
+	    });
 	})
 })
 </script>
@@ -50,265 +98,136 @@ $(document).ready(function () {
 	<div class="container">
 		<h2>Player Comparison</h2>
 		<div class="selectComparison">
-			<div class="comparison1">
-				<div class="comparisonSelect">
-					<select id="league">
-						<option>프리미어리그</option>
-						<option>라리가</option>
-						<option>분데스리가</option>
-						<option>세리에A</option>
-					</select>
-					<select id="season">
-						<option>19-20시즌</option>
-						<option>18-19시즌</option>
-						<option>17-18시즌</option>
-						<option>16-17시즌</option>
-						<option>15-16시즌</option>
-						<option>14-15시즌</option>
-						<option>13-14시즌</option>
-						<option>12-13시즌</option>
-					</select>
-					<select id="team">
-						<option>노리치</option>
-						<option>뉴캐슬</option>
-						<option>레스터시티</option>
-						<option>리버풀</option>
-						<option>맨체스터시티</option>
-						<option>맨체스터유나이티드</option>
-						<option>번리</option>
-						<option>본머스</option>
-						<option>브라이튼</option>
-						<option>사우스햄튼</option>
-						<option>셰필드유나이티드</option>
-						<option>아스날</option>
-						<option>아스톤빌라</option>
-						<option>에버튼</option>
-						<option>왓포드</option>
-						<option>울버햄튼</option>
-						<option>웨스트햄</option>
-						<option>첼시</option>
-						<option>크리스탈팰리스</option>
-						<option>토트넘</option>
-					</select>
-					<select id="player">
-						<option>모하메드 살라</option>
-						<option>뉴캐슬</option>
-						<option>레스터시티</option>
-						<option>리버풀</option>
-						<option>맨체스터시티</option>
-						<option>맨체스터유나이티드</option>
-						<option>번리</option>
-						<option>본머스</option>
-						<option>브라이튼</option>
-						<option>사우스햄튼</option>
-						<option>셰필드유나이티드</option>
-						<option>아스날</option>
-						<option>아스톤빌라</option>
-						<option>에버튼</option>
-						<option>왓포드</option>
-						<option>울버햄튼</option>
-						<option>웨스트햄</option>
-						<option>첼시</option>
-						<option>크리스탈팰리스</option>
-						<option>토트넘</option>
-					</select>
+			<div class="empty"></div>
+			<div class="selectContainer">
+				<div class="comparison1">
+					<div class="comparisonSelect1">
+						<select id="league">
+							<option>프리미어리그</option>
+							<option>라리가</option>
+							<option>분데스리가</option>
+							<option>세리에A</option>
+						</select>
+						<select id="season">
+							<!-- <option>시즌</option>
+							<option>19-20시즌</option>
+							<option>18-19시즌</option>
+							<option>17-18시즌</option>
+							<option>16-17시즌</option>
+							<option>15-16시즌</option>
+							<option>14-15시즌</option>
+							<option>13-14시즌</option>
+							<option>12-13시즌</option> -->
+						</select>
+						<select id="team">
+							<option>노리치</option>
+							<option>뉴캐슬</option>
+							<option>레스터시티</option>
+							<option>리버풀</option>
+							<option>맨체스터시티</option>
+							<option>맨체스터유나이티드</option>
+							<option>번리</option>
+							<option>본머스</option>
+							<option>브라이튼</option>
+							<option>사우스햄튼</option>
+							<option>셰필드유나이티드</option>
+							<option>아스날</option>
+							<option>아스톤빌라</option>
+							<option>에버튼</option>
+							<option>왓포드</option>
+							<option>울버햄튼</option>
+							<option>웨스트햄</option>
+							<option>첼시</option>
+							<option>크리스탈팰리스</option>
+							<option>토트넘</option>
+						</select>
+						<select id="player">
+							<option>모하메드 살라</option>
+							<option>뉴캐슬</option>
+							<option>레스터시티</option>
+							<option>리버풀</option>
+							<option>맨체스터시티</option>
+							<option>맨체스터유나이티드</option>
+							<option>번리</option>
+							<option>본머스</option>
+							<option>브라이튼</option>
+							<option>사우스햄튼</option>
+							<option>셰필드유나이티드</option>
+							<option>아스날</option>
+							<option>아스톤빌라</option>
+							<option>에버튼</option>
+							<option>왓포드</option>
+							<option>울버햄튼</option>
+							<option>웨스트햄</option>
+							<option>첼시</option>
+							<option>크리스탈팰리스</option>
+							<option>토트넘</option>
+						</select>
+					</div>
 				</div>
-			</div>
-			<div class="comparison2">
-				<div class="comparisonSelect">
-					<select>
-						<option>프리미어리그</option>
-						<option>라리가</option>
-						<option>분데스리가</option>
-						<option>세리에A</option>
-					</select>
-					<select>
-						<option>19-20시즌</option>
-						<option>18-19시즌</option>
-						<option>17-18시즌</option>
-						<option>16-17시즌</option>
-						<option>15-16시즌</option>
-						<option>14-15시즌</option>
-						<option>13-14시즌</option>
-						<option>12-13시즌</option>
-					</select>
-					<select>
-						<option>노리치</option>
-						<option>뉴캐슬</option>
-						<option>레스터시티</option>
-						<option>리버풀</option>
-						<option>맨체스터시티</option>
-						<option>맨체스터유나이티드</option>
-						<option>번리</option>
-						<option>본머스</option>
-						<option>브라이튼</option>
-						<option>사우스햄튼</option>
-						<option>셰필드유나이티드</option>
-						<option>아스날</option>
-						<option>아스톤빌라</option>
-						<option>에버튼</option>
-						<option>왓포드</option>
-						<option>울버햄튼</option>
-						<option>웨스트햄</option>
-						<option>첼시</option>
-						<option>크리스탈팰리스</option>
-						<option>토트넘</option>
-					</select>
-					<select>
-						<option>모하메드 살라</option>
-						<option>뉴캐슬</option>
-						<option>레스터시티</option>
-						<option>리버풀</option>
-						<option>맨체스터시티</option>
-						<option>맨체스터유나이티드</option>
-						<option>번리</option>
-						<option>본머스</option>
-						<option>브라이튼</option>
-						<option>사우스햄튼</option>
-						<option>셰필드유나이티드</option>
-						<option>아스날</option>
-						<option>아스톤빌라</option>
-						<option>에버튼</option>
-						<option>왓포드</option>
-						<option>울버햄튼</option>
-						<option>웨스트햄</option>
-						<option>첼시</option>
-						<option>크리스탈팰리스</option>
-						<option>토트넘</option>
-					</select>
-				</div>
-			</div>
-			<div class="comparison3">
-				<div class="comparisonSelect">
-					<span class="close">
-						<button class="btn">
-							<span class="fas fa-window-close" style="font-size: 20px;float: right;"></span>
-						</button>
-					</span>
-					<select>
-						<option>프리미어리그</option>
-						<option>라리가</option>
-						<option>분데스리가</option>
-						<option>세리에A</option>
-					</select>
-					<select>
-						<option>19-20시즌</option>
-						<option>18-19시즌</option>
-						<option>17-18시즌</option>
-						<option>16-17시즌</option>
-						<option>15-16시즌</option>
-						<option>14-15시즌</option>
-						<option>13-14시즌</option>
-						<option>12-13시즌</option>
-					</select>
-					<select>
-						<option>노리치</option>
-						<option>뉴캐슬</option>
-						<option>레스터시티</option>
-						<option>리버풀</option>
-						<option>맨체스터시티</option>
-						<option>맨체스터유나이티드</option>
-						<option>번리</option>
-						<option>본머스</option>
-						<option>브라이튼</option>
-						<option>사우스햄튼</option>
-						<option>셰필드유나이티드</option>
-						<option>아스날</option>
-						<option>아스톤빌라</option>
-						<option>에버튼</option>
-						<option>왓포드</option>
-						<option>울버햄튼</option>
-						<option>웨스트햄</option>
-						<option>첼시</option>
-						<option>크리스탈팰리스</option>
-						<option>토트넘</option>
-					</select>
-					<select>
-						<option>모하메드 살라</option>
-						<option>뉴캐슬</option>
-						<option>레스터시티</option>
-						<option>리버풀</option>
-						<option>맨체스터시티</option>
-						<option>맨체스터유나이티드</option>
-						<option>번리</option>
-						<option>본머스</option>
-						<option>브라이튼</option>
-						<option>사우스햄튼</option>
-						<option>셰필드유나이티드</option>
-						<option>아스날</option>
-						<option>아스톤빌라</option>
-						<option>에버튼</option>
-						<option>왓포드</option>
-						<option>울버햄튼</option>
-						<option>웨스트햄</option>
-						<option>첼시</option>
-						<option>크리스탈팰리스</option>
-						<option>토트넘</option>
-					</select>
-				</div>
-			</div>
-			<div class="comparison4">
-				<div class="comparisonSelect">
-					<select>
-						<option>프리미어리그</option>
-						<option>라리가</option>
-						<option>분데스리가</option>
-						<option>세리에A</option>
-					</select>
-					<select>
-						<option>19-20시즌</option>
-						<option>18-19시즌</option>
-						<option>17-18시즌</option>
-						<option>16-17시즌</option>
-						<option>15-16시즌</option>
-						<option>14-15시즌</option>
-						<option>13-14시즌</option>
-						<option>12-13시즌</option>
-					</select>
-					<select>
-						<option>노리치</option>
-						<option>뉴캐슬</option>
-						<option>레스터시티</option>
-						<option>리버풀</option>
-						<option>맨체스터시티</option>
-						<option>맨체스터유나이티드</option>
-						<option>번리</option>
-						<option>본머스</option>
-						<option>브라이튼</option>
-						<option>사우스햄튼</option>
-						<option>셰필드유나이티드</option>
-						<option>아스날</option>
-						<option>아스톤빌라</option>
-						<option>에버튼</option>
-						<option>왓포드</option>
-						<option>울버햄튼</option>
-						<option>웨스트햄</option>
-						<option>첼시</option>
-						<option>크리스탈팰리스</option>
-						<option>토트넘</option>
-					</select>
-					<select>
-						<option>모하메드 살라</option>
-						<option>뉴캐슬</option>
-						<option>레스터시티</option>
-						<option>리버풀</option>
-						<option>맨체스터시티</option>
-						<option>맨체스터유나이티드</option>
-						<option>번리</option>
-						<option>본머스</option>
-						<option>브라이튼</option>
-						<option>사우스햄튼</option>
-						<option>셰필드유나이티드</option>
-						<option>아스날</option>
-						<option>아스톤빌라</option>
-						<option>에버튼</option>
-						<option>왓포드</option>
-						<option>울버햄튼</option>
-						<option>웨스트햄</option>
-						<option>첼시</option>
-						<option>크리스탈팰리스</option>
-						<option>토트넘</option>
-					</select>
+				<div class="comparison2">
+					<div class="comparisonSelect2">
+						<select>
+							<option>프리미어리그</option>
+							<option>라리가</option>
+							<option>분데스리가</option>
+							<option>세리에A</option>
+						</select>
+						<select>
+							<option>19-20시즌</option>
+							<option>18-19시즌</option>
+							<option>17-18시즌</option>
+							<option>16-17시즌</option>
+							<option>15-16시즌</option>
+							<option>14-15시즌</option>
+							<option>13-14시즌</option>
+							<option>12-13시즌</option>
+						</select>
+						<select>
+							<option>노리치</option>
+							<option>뉴캐슬</option>
+							<option>레스터시티</option>
+							<option>리버풀</option>
+							<option>맨체스터시티</option>
+							<option>맨체스터유나이티드</option>
+							<option>번리</option>
+							<option>본머스</option>
+							<option>브라이튼</option>
+							<option>사우스햄튼</option>
+							<option>셰필드유나이티드</option>
+							<option>아스날</option>
+							<option>아스톤빌라</option>
+							<option>에버튼</option>
+							<option>왓포드</option>
+							<option>울버햄튼</option>
+							<option>웨스트햄</option>
+							<option>첼시</option>
+							<option>크리스탈팰리스</option>
+							<option>토트넘</option>
+						</select>
+						<select>
+							<option>모하메드 살라</option>
+							<option>뉴캐슬</option>
+							<option>레스터시티</option>
+							<option>리버풀</option>
+							<option>맨체스터시티</option>
+							<option>맨체스터유나이티드</option>
+							<option>번리</option>
+							<option>본머스</option>
+							<option>브라이튼</option>
+							<option>사우스햄튼</option>
+							<option>셰필드유나이티드</option>
+							<option>아스날</option>
+							<option>아스톤빌라</option>
+							<option>에버튼</option>
+							<option>왓포드</option>
+							<option>울버햄튼</option>
+							<option>웨스트햄</option>
+							<option>첼시</option>
+							<option>크리스탈팰리스</option>
+							<option>토트넘</option>
+						</select>
+					</div>
 				</div>
 			</div>
 			<span class="plus">

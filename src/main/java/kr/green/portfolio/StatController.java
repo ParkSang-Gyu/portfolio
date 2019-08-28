@@ -68,8 +68,8 @@ public class StatController {
 		return "/statistics/statistics";
 	}
 	@RequestMapping(value = "/comparison",method = RequestMethod.GET)
-	public ModelAndView comparisonGet(ModelAndView mv) {
-		
+	public ModelAndView comparisonGet(ModelAndView mv,String season) {
+		ArrayList<LeagueVO> seasonList = leagueService.getSeasonList(season);
 		mv.setViewName("/comparison/comparison");
 		return mv;
 	}

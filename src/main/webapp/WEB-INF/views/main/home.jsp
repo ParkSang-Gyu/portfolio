@@ -29,6 +29,9 @@ $(document).ready(function(){
    		$('#tournamentlist').collapse('show')
    		$('#leaguelist').collapse('hide')
    	})
+   	$('#tournamentlist').click(function () {
+		alert('클릭했으니 천만원')
+	})
 })
 </script>
 </head>
@@ -41,9 +44,9 @@ $(document).ready(function(){
 			<a href="<%=request.getContextPath()%>/comparison"><button type="button" class="btn btn-dark">comparison</button></a><br>	
 			<div class="collapse" id="leaguelist">
 			   	<a class="dropdown-item" href="<%=request.getContextPath()%>/premierleague?roundNum=1">Premier League</a>
-			   	<a class="dropdown-item" href="<%=request.getContextPath()%>/laliga">La Liga</a>
-			   	<a class="dropdown-item" href="<%=request.getContextPath()%>/bundesliga">Bundesriga</a>
-			   	<a class="dropdown-item" href="<%=request.getContextPath()%>/seriea">Seria A</a>
+			   	<a class="dropdown-item" href="#">La Liga</a>
+			   	<a class="dropdown-item" href="#">Bundesriga</a>
+			   	<a class="dropdown-item" href="#">Seria A</a>
 		  	</div>
 		  	<div class="collapse" id="tournamentlist">
 		   		<a class="dropdown-item" href="#">Champions League</a>
