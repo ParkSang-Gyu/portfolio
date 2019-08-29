@@ -24,5 +24,7 @@ public interface LeagueDAO {
 
 	ArrayList<RatingStandingsVO> getRating(@Param("rVo")RatingStandingsVO rVo);
 
+	ArrayList<LeagueVO> getSeasonList(@Param("season")String season);
+
 	
 }

@@ -18,4 +18,7 @@
   <select id="getRating" resultType="kr.green.portfolio.vo.RatingStandingsVO">
     select * from ratingstandings order by rating desc limit 5
   </select>
+  <select id="getSeasonList" resultType="kr.green.portfolio.vo.LeagueVO">
+    select season from league where league = #{league}
+  </select>
 </mapper>

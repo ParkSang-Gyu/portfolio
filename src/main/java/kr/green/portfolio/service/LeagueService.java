@@ -28,9 +28,7 @@ public interface LeagueService {
 
 	ArrayList<RatingStandingsVO> getRating(RatingStandingsVO rVo);
 
-	
-
-	
+	ArrayList<LeagueVO> getSeasonList(String season);
 
 	
 }

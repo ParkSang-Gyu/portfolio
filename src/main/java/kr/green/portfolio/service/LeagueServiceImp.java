@@ -71,7 +71,11 @@ public class LeagueServiceImp implements LeagueService{
 		return leagueDao.getRating(rVo);
 	}
 
-	
-	
+	@Override
+	public ArrayList<LeagueVO> getSeasonList(String season) {
+		
+		return leagueDao.getSeasonList(season);
+	}
+
 
 }

@@ -1,14 +1,18 @@
 package kr.green.portfolio;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.green.portfolio.service.LeagueService;
@@ -68,10 +72,19 @@ public class StatController {
 		return "/statistics/statistics";
 	}
 	@RequestMapping(value = "/comparison",method = RequestMethod.GET)
-	public ModelAndView comparisonGet(ModelAndView mv,String season) {
-		ArrayList<LeagueVO> seasonList = leagueService.getSeasonList(season);
+	public ModelAndView comparisonGet(ModelAndView mv) {
 		mv.setViewName("/comparison/comparison");
 		return mv;
+	}
+	@RequestMapping(value = "/comparison",method = RequestMethod.POST)
+	@ResponseBody
+	public Map<Object, Object> leagueList(@RequestBody String league,String season){
+		Map<Object, Object> map = new HashMap<Object, Object>();
+		map.put("league", league);
+		ArrayList<LeagueVO> seasonList = leagueService.getSeasonList(season);
+		map.put("seasonList",seasonList);
+		System.out.println(map);
+		return map;
 	}
 	@RequestMapping(value = "/teams",method = RequestMethod.GET)
 	public ModelAndView teamsGet(ModelAndView mv,String team) {

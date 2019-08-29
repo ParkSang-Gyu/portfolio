@@ -78,16 +78,16 @@ $(document).ready(function () {
 		$.ajax({
 	        async:true,
 	        type:'POST',
-	        data:id,
-	        url:"comparison",
+	        data:{"league" : league},
+	        url:"./comparison",
 	        dataType:"json",
 	        contentType:"application/json; charset=UTF-8",
 	        success : function(data){
-	           var str = '<option>시즌</option>'
-	           for(var i=0; i<data.xxx.length; i++){
-	        	   str += '<option>'+data.xxx[i]+'</option>'
-	           }
-	           $('#season').html(str);
+	        	var str = '<option>시즌</option>'
+	        	for(var i=0; i<data.seasonList.length; i++){
+	        	   	str += '<option>'+data.seasonList[i]+'</option>'
+	           	}
+	           	$('#season').html(str);
 	        }
 	    });
 	})
@@ -103,10 +103,11 @@ $(document).ready(function () {
 				<div class="comparison1">
 					<div class="comparisonSelect1">
 						<select id="league">
-							<option>프리미어리그</option>
-							<option>라리가</option>
-							<option>분데스리가</option>
-							<option>세리에A</option>
+							<option>리그</option>
+							<option value="Premier League">프리미어리그</option>
+							<option value="La Liga">라리가</option>
+							<option value="Bundes Liga">분데스리가</option>
+							<option value="Serie A">세리에A</option>
 						</select>
 						<select id="season">
 							<!-- <option>시즌</option>
