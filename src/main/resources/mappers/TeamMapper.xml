@@ -12,4 +12,7 @@
   <select id="getPlayer" resultType="kr.green.portfolio.vo.PlayerVO">
     select * from players where player = #{player}
   </select>
+  <select id="getTeamList" resultType="String">
+    select name from teams where seasonStart = #{season}
+  </select>
 </mapper>

@@ -58,8 +58,8 @@ $(document).ready(function () {
 			<div class="collapse" id="leaguelist">
 			   	<a class="dropdown-item" href="<%=request.getContextPath()%>/premierleague?roundNum=1">Premier League</a>
 			   	<a class="dropdown-item" href="<%=request.getContextPath()%>/laliga?roundNum=1">La Liga</a>
-			   	<a class="dropdown-item" href="<%=request.getContextPath()%>/bundesliga?roundNum=1">Bundesriga</a>
-			   	<a class="dropdown-item" href="<%=request.getContextPath()%>/seriea?roundNum=1">Seria A</a>
+			   	<a class="dropdown-item" href="<%=request.getContextPath()%>/bundesliga?roundNum=1">Bundes Liga</a>
+			   	<a class="dropdown-item" href="<%=request.getContextPath()%>/seriea?roundNum=1">Serie A</a>
 		  	</div>
 		  	<div class="collapse" id="tournamentlist">
 		   		<a class="dropdown-item" href="<%=request.getContextPath()%>/championsLeague">Champions League</a>

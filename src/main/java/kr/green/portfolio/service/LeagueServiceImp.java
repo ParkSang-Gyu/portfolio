@@ -6,10 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.green.portfolio.dao.LeagueDAO;
+import kr.green.portfolio.dao.PlayerDAO;
 import kr.green.portfolio.dao.TeamDAO;
 import kr.green.portfolio.vo.AssistStandingsVO;
 import kr.green.portfolio.vo.GoalStandingsVO;
-import kr.green.portfolio.vo.LeagueVO;
 import kr.green.portfolio.vo.PlayerVO;
 import kr.green.portfolio.vo.RatingStandingsVO;
 import kr.green.portfolio.vo.ScheduleVO;
@@ -22,6 +22,8 @@ public class LeagueServiceImp implements LeagueService{
 	LeagueDAO leagueDao;
 	@Autowired
 	TeamDAO teamDao;
+	@Autowired
+	PlayerDAO playerDao;
 	
 	@Override
 	public ArrayList<ScheduleVO> getSchedule(ScheduleVO sVo,Integer roundNum) {
@@ -72,9 +74,21 @@ public class LeagueServiceImp implements LeagueService{
 	}
 
 	@Override
-	public ArrayList<LeagueVO> getSeasonList(String season) {
+	public ArrayList<String> getSeasonList(String league) {
 		
-		return leagueDao.getSeasonList(season);
+		return leagueDao.getSeasonList(league);
+	}
+
+	@Override
+	public ArrayList<String> getTeamList(String season) {
+		
+		return teamDao.getTeamList(season);
+	}
+
+	@Override
+	public ArrayList<String> getPlayerList(String team) {
+		
+		return playerDao.getPlayerList(team);
 	}
 
 

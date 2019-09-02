@@ -1,5 +1,7 @@
 package kr.green.portfolio;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -78,12 +80,28 @@ public class StatController {
 	}
 	@RequestMapping(value = "/comparison",method = RequestMethod.POST)
 	@ResponseBody
-	public Map<Object, Object> leagueList(@RequestBody String league,String season){
+	public Map<Object, Object> comparisonList(@RequestBody String league,@RequestBody String season,@RequestBody String team){
 		Map<Object, Object> map = new HashMap<Object, Object>();
+		league = league.substring(0, league.length()-1);
+		season = season.substring(0, season.length()-5);
+		try {
+			team = URLDecoder.decode(team, "UTF-8");
+			team = team.substring(0, team.length()-1);
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		map.put("league", league);
-		ArrayList<LeagueVO> seasonList = leagueService.getSeasonList(season);
+		map.put("season", season);
+		map.put("team", team);
+		ArrayList<String> seasonList = leagueService.getSeasonList(league);
+		ArrayList<String> teamList = leagueService.getTeamList(season);
+		ArrayList<String> playerList = leagueService.getPlayerList(team);
 		map.put("seasonList",seasonList);
-		System.out.println(map);
+		map.put("teamList",teamList);
+		map.put("playerList",playerList);
+		System.out.println(league);
+		System.out.println(season);
 		return map;
 	}
 	@RequestMapping(value = "/teams",method = RequestMethod.GET)
