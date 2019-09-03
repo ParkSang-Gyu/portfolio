@@ -136,7 +136,6 @@ public class PlayerVO {
 	public void setLeagueNum(int leagueNum) {
 		this.leagueNum = leagueNum;
 	}
-	
 	@Override
 	public String toString() {
 		return "PlayerVO [num=" + num + ", player=" + player + ", nationality=" + nationality + ", age=" + age

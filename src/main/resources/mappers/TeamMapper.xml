@@ -15,4 +15,7 @@
   <select id="getTeamList" resultType="String">
     select name from teams where seasonStart = #{season}
   </select>
+  <select id="getTeamStat" resultType="kr.green.portfolio.vo.TeamVO">
+    select * from teams where league like '%Premier' order by desc
+  </select>
 </mapper>

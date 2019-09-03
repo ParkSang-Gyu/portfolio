@@ -80,7 +80,8 @@ public class StatController {
 	}
 	@RequestMapping(value = "/comparison",method = RequestMethod.POST)
 	@ResponseBody
-	public Map<Object, Object> comparisonList(@RequestBody String league,@RequestBody String season,@RequestBody String team){
+	public Map<Object, Object> comparisonList(@RequestBody String league,@RequestBody String season
+			, @RequestBody String team/* , @RequestBody String player */){
 		Map<Object, Object> map = new HashMap<Object, Object>();
 		league = league.substring(0, league.length()-1);
 		season = season.substring(0, season.length()-5);
@@ -91,17 +92,27 @@ public class StatController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		/*
+		 * try { player = URLDecoder.decode(team, "UTF-8"); player =
+		 * player.substring(0,player.length()-1); } catch (UnsupportedEncodingException
+		 * e) { e.printStackTrace(); }
+		 */
+		 
 		map.put("league", league);
 		map.put("season", season);
 		map.put("team", team);
+		//map.put("player", player);
+		
 		ArrayList<String> seasonList = leagueService.getSeasonList(league);
 		ArrayList<String> teamList = leagueService.getTeamList(season);
 		ArrayList<String> playerList = leagueService.getPlayerList(team);
+		//PlayerVO playerStat = leagueService.getPlayerStat(player);
+		
 		map.put("seasonList",seasonList);
 		map.put("teamList",teamList);
 		map.put("playerList",playerList);
-		System.out.println(league);
-		System.out.println(season);
+		//map.put("playerStat",playerStat);
+		
 		return map;
 	}
 	@RequestMapping(value = "/teams",method = RequestMethod.GET)
@@ -113,6 +124,20 @@ public class StatController {
 		mv.addObject("name",team);
 		mv.setViewName("/teams/team");
 		return mv;
+	}
+	@RequestMapping(value = "/teams",method = RequestMethod.POST)
+	@ResponseBody
+	public Map<Object, Object> teamsList(@RequestBody String league){
+		Map<Object, Object> map = new HashMap<Object, Object>();
+		league = league.substring(0, league.length()-1);
+		
+		map.put("league", league);
+		
+		ArrayList<TeamVO> teamStat = leagueService.getTeamStat(league);
+		
+		map.put("teamStat",teamStat);
+		
+		return map;
 	}
 	@RequestMapping(value = "/players",method = RequestMethod.GET)
 	public ModelAndView playersGet(ModelAndView mv,String player) {

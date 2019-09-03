@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -6,6 +7,7 @@
 <meta charset="UTF-8">
 <title>Comparison</title>
 <style type="text/css">
+@charset "EUC-KR";
 .btn{
 	border-radius: 0;
 	margin-right: 0;
@@ -59,14 +61,13 @@ select{
 }
 .container-bottom{
 	width: 1140px;
-	height: 600px;
 	margin: 0;
 	padding: 0;
 }
 .resultPlayer{
 	display: inline-block;
     width: 80px;
-    vertical-align: bottom;
+    margin-right: 2px; 
 }
 #comparisonTable{
 	font-weight: bold;
@@ -82,59 +83,70 @@ select{
 #comparisonTable span{
 	text-align: right;
 }
+.player-box{
+	display: inline-block;
+    width: 260px;
+    padding-right: 1px;
+    border: 1px solid gray;
+}
+.player-info{
+	text-align: center;
+    width: 100%;
+}
+.player-info-top{
+	text-align: center;
+    background-color: #DAD8DA;
+    border-radius: 10px 10px 0 0;
+    padding-top: 10px;
+    padding-bottom: 5px;
+}
+.player-info-bottom{
+	background-color: #F1F1F1;
+}
+.player-stat{
+	display: inline-block;
+    text-align: center;
+    padding-top: 10px;
+    background-color: #F1F1F1;
+    width: 100%;
+    visibility: visible;
+}
+.player-info-top{
+	text-align: center;
+    background-color: #DAD8DA;
+    border-radius: 10px 10px 0 0;
+    padding-top: 10px;
+    padding-bottom: 5px;
+}
+.player-info-bottom{
+	background-color: #F1F1F1;
+}
+.player-info-left{
+	width: 100px;
+    height: 150px;
+    display: inline-block;
+    vertical-align: top;
+}
+.player-info-right{
+	width: 124px;
+    display: inline-block;
+    vertical-align: top;
+}
+.stat-explanation{
+	width: 1140px;
+	margin-top: 10px;
+	border: 1px solid gray;
+}
+.stat-explanation th{
+	width: 380px;
+	font-style: italic;
+	text-align: left;
+	line-height: normal;
+	color: #808080;
+	font-weight: normal;
+}
 </style>
-<script type="text/javascript">
-$(document).ready(function () {
-	$('select[name=league]').change(function(){
-		var league = $(this).val();
-		var obj = $(this);
-		$.ajax({
-	        type:'POST',
-	        data:league,
-	        url:"<%=request.getContextPath()%>/comparison",
-	        success : function(data){
-	        	var str = '<option>시즌</option>'
-	        	for(var i=0; i<data.seasonList.length; i++){
-	        	   	str += '<option>'+data.seasonList[i]+'</option>'
-	           	}
-	           	obj.siblings('select[name=season]').html(str);
-	        }
-	    });
-		$('select[name=season]').change(function(){
-			var season = $(this).val();
-			var obj = $(this);
-			$.ajax({
-		        type:'POST',
-		        data:season,
-		        url:"<%=request.getContextPath()%>/comparison",
-		        success : function(data){
-		        	var str = '<option>팀</option>'
-		        	for(var i=0; i<data.teamList.length; i++){
-		        	   	str += '<option>'+data.teamList[i]+'</option>'
-		           	}
-		           	obj.siblings('select[name=team]').html(str);
-		        }
-		    });
-			$('select[name=team]').change(function(){
-				var team = $(this).val();
-				var obj = $(this);
-				$.ajax({
-			        type:'POST',
-			        data:team,
-			        url:"<%=request.getContextPath()%>/comparison",
-			        success : function(data){
-			        	var str = '<option>선수</option>'
-			        	for(var i=0; i<data.playerList.length; i++){
-			        	   	str += '<option>'+data.playerList[i]+'</option>'
-			           	}
-			           	obj.siblings('select[name=player]').html(str);
-			        }
-			    });
-			})
-		})
-	})
-})
-</script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/resources/js/comparison.js"></script>
 </head>
 <body>
 	<div class="container">
@@ -158,7 +170,7 @@ $(document).ready(function () {
 		<div class="container-middle">
 			<div class="selectContainer">
 				<div class="comparison">
-					<div class="comparisonSelect1">
+					<div class="comparisonSelect1" id="sel-1">
 						<select name="league">
 							<option>리그</option>
 							<option value="PremierLeague">프리미어리그</option>
@@ -172,7 +184,7 @@ $(document).ready(function () {
 					</div>
 				</div>
 				<div class="comparison">
-					<div class="comparisonSelect2">
+					<div class="comparisonSelect2" id="sel-2">
 						<select name="league">
 							<option>리그</option>
 							<option value="PremierLeague">프리미어리그</option>
@@ -186,7 +198,7 @@ $(document).ready(function () {
 					</div>
 				</div>
 				<div class="comparison">
-					<div class="comparisonSelect3">
+					<div class="comparisonSelect3" id="sel-3">
 						<select name="league">
 							<option>리그</option>
 							<option value="PremierLeague">프리미어리그</option>
@@ -200,7 +212,7 @@ $(document).ready(function () {
 					</div>
 				</div>
 				<div class="comparison">
-					<div class="comparisonSelect4">
+					<div class="comparisonSelect4" id="sel-4">
 						<select name="league">
 							<option>리그</option>
 							<option value="PremierLeague">프리미어리그</option>
@@ -222,27 +234,181 @@ $(document).ready(function () {
 			<div class="resultPlayer">
 				<div id="comparisonTable">
 					<div><span>Apps</span></div>
-					<div><span>minutes</span></div>
-					<div><span>goals</span></div>
-					<div><span>assists</span></div>
-					<div><span>yellow</span></div>
-					<div><span>red</span></div>
-					<div><span>psr</span></div>
-					<div><span>rating</span></div>
-					<div><span>motm</span></div>
+					<div><span>Minutes</span></div>
+					<div><span>Goals</span></div>
+					<div><span>Assists</span></div>
+					<div><span>Yellow</span></div>
+					<div><span>Red</span></div>
+					<div><span>Psr</span></div>
+					<div><span>Rating</span></div>
+					<div><span>Motm</span></div>
 				</div>
-				<div class="player1">
-					
+			</div>
+			<div class="player-box">
+				<div class="player-info">
+					<div class="player-info-top">
+						<div class="player1-name"></div>
+						<div class="team-name"></div>
+						<div class="tournament-name"></div>
+					</div>
+					<div class="player-info-bottom">
+						<div class="player-info-left"></div>
+						<div class="player-info-right">
+							<div class="player-info-teamimage"></div>
+							<div class="player-info-nationality"></div>
+							<div class="player-info-age"></div>
+							<div class="player-info-position"></div>
+						</div>
+					</div>
 				</div>
-				<div class="player2">
-				
+				<div class="player-stat">
+						<div class="player-stat-box">
+							<div class="player-data"></div>
+							<div class="player-data"></div>
+							<div class="player-data"></div>
+							<div class="player-data"></div>
+							<div class="player-data"></div>
+							<div class="player-data"></div>
+							<div class="player-data"></div>
+							<div class="player-data"></div>
+						</div>
+					</div>
+			</div>
+			<div class="player-box">
+				<div class="player-info">
+					<div class="player-info-top">
+						<div class="player2-name"><strong></strong></div>
+						<div class="team-name"></div>
+						<div class="tournament-name"></div>
+					</div>
+					<div class="player-info-bottom">
+						<div class="player-info-left"></div>
+						<div class="player-info-right">
+							<div class="player-info-teamimage"></div>
+							<div class="player-info-nationality"></div>
+							<div class="player-info-age"></div>
+							<div class="player-info-position"></div>
+						</div>
+					</div>
 				</div>
-				<div class="player3">
-				
+				<div class="player-stat">
+					<div class="player-stat-box">
+						<div class="player-data"></div>
+						<div class="player-data"></div>
+						<div class="player-data"></div>
+						<div class="player-data"></div>
+						<div class="player-data"></div>
+						<div class="player-data"></div>
+						<div class="player-data"></div>
+						<div class="player-data"></div>
+					</div>
 				</div>
-				<div class="player4">
-				
+			</div>
+			<div class="player-box">
+				<div class="player-info">
+					<div class="player-info-top">
+						<div class="player3-name"><strong></strong></div>
+						<div class="team-name"></div>
+						<div class="tournament-name"></div>
+					</div>
+					<div class="player-info-bottom">
+						<div class="player-info-left"></div>
+						<div class="player-info-right">
+							<div class="player-info-teamimage"></div>
+							<div class="player-info-nationality"></div>
+							<div class="player-info-age"></div>
+							<div class="player-info-position"></div>
+						</div>
+					</div>
 				</div>
+				<div class="player-stat">
+					<div class="player-stat-box">
+						<div class="player-data"></div>
+						<div class="player-data"></div>
+						<div class="player-data"></div>
+						<div class="player-data"></div>
+						<div class="player-data"></div>
+						<div class="player-data"></div>
+						<div class="player-data"></div>
+						<div class="player-data"></div>
+					</div>
+				</div>
+			</div>
+			<div class="player-box">
+				<div class="player-info">
+					<div class="player-info-top">
+						<div class="player4-name"><strong></strong></div>
+						<div class="team-name"></div>
+						<div class="tournament-name"></div>
+					</div>
+					<div class="player-info-bottom">
+						<div class="player-info-left"></div>
+						<div class="player-info-right">
+							<div class="player-info-teamimage"></div>
+							<div class="player-info-nationality"></div>
+							<div class="player-info-age"></div>
+							<div class="player-info-position"></div>
+						</div>
+					</div>
+				</div>
+				<div class="player-stat">
+					<div class="player-stat-box">
+						<div class="player-data"></div>
+						<div class="player-data"></div>
+						<div class="player-data"></div>
+						<div class="player-data"></div>
+						<div class="player-data"></div>
+						<div class="player-data"></div>
+						<div class="player-data"></div>
+						<div class="player-data"></div>
+					</div>
+				</div>
+			</div>
+			<div class="stat-explanation">
+				<table>
+					<tr>
+						<th>
+							<strong>Apps</strong>
+							: 출전경기수
+						</th>
+						<th>
+							<strong>Minutes</strong>
+							: 출전시간
+						</th>
+						<th>
+							<strong>Goals</strong>
+							: 득점
+						</th>
+					</tr>
+					<tr>
+						<th>
+							<strong>Assists</strong>
+							: 어시스트
+						</th>
+						<th>
+							<strong>Yellow</strong>
+							: 옐로우 카드
+						</th>
+						<th>
+							<strong>Red</strong>
+							: 레드 카드
+						</th>
+					</tr>
+					<tr>
+						<th>
+							<strong>Psr</strong>
+							: 패스성공률
+						</th>
+						<th>
+							<strong>Rating</strong>
+							: 평점
+						</th>
+						<th>
+							<strong>Motm</strong>
+							: 경기 최우수선수 선정
+						</th>
+					</tr>
+				</table>
 			</div>
 		</div>
 	</div>

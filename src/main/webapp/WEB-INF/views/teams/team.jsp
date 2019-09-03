@@ -42,21 +42,9 @@
 .squad{
 	width: 1140px;
 	height: 100%;
-}	
+}
 </style>
-<script>
-$(document).ready(function(){
-	$('a').addClass('color-black')
-	$('.list1').click(function(){
-   		$('#leaguelist').collapse('show')
-   		$('#tournamentlist').collapse('hide')
-   	})
-   	$('.list2').click(function(){
-   		$('#tournamentlist').collapse('show')
-   		$('#leaguelist').collapse('hide')
-   	})
-})
-</script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/resources/js/team.js"></script>
 </head>
 <body>
 	<div class="container">
@@ -93,26 +81,26 @@ $(document).ready(function(){
 			<table class="table table-striped table-hover">
 		      	<thead>
 			      	<tr>
-			      		<th>경기수</th>
-			      		<th>승</th>
-			      		<th>무</th>
-			      		<th>패</th>
-			      		<th>득점</th>
-			      		<th>실점</th>
-			      		<th>득실차</th>
-			      		<th>승점</th>
+			      		<th id="Apps">경기수</th>
+			      		<th id="win">승</th>
+			      		<th id="draw">무</th>
+			      		<th id="lose">패</th>
+			      		<th id="goalFor">득점</th>
+			      		<th id="goalAgainst">실점</th>
+			      		<th id="goalDifference">득실차</th>
+			      		<th id="points">승점</th>
 			      	</tr>
 		      	</thead>
 		      	<tbody>
 			      	<tr>
-		        		<td>${teamInfo.played}</td>
-		        		<td>${teamInfo.win}</td>
-		        		<td>${teamInfo.draw}</td>
-		        		<td>${teamInfo.lose}</td>
-		        		<td>${teamInfo.goalFor}</td>
-		        		<td>${teamInfo.goalAgainst}</td>
-		        		<td>${teamInfo.goalDifference}</td>
-		        		<td>${teamInfo.points}</td>
+		        		<td id="played">${teamInfo.played}</td>
+		        		<td id="win">${teamInfo.win}</td>
+		        		<td id="draw">${teamInfo.draw}</td>
+		        		<td id="lose">${teamInfo.lose}</td>
+		        		<td id="goalFor">${teamInfo.goalFor}</td>
+		        		<td id="goalAgainst">${teamInfo.goalAgainst}</td>
+		        		<td id="goalDifference">${teamInfo.goalDifference}</td>
+		        		<td id="points">${teamInfo.points}</td>
 			      	</tr>
 		      	</tbody>	    
 	  		</table>

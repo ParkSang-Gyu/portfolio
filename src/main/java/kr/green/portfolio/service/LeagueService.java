@@ -34,5 +34,9 @@ public interface LeagueService {
 
 	ArrayList<String> getPlayerList(String team);
 
+	PlayerVO getPlayerStat(String player);
+
+	ArrayList<TeamVO> getTeamStat(String league);
+
 	
 }

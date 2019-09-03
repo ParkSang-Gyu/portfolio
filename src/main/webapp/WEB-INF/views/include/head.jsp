@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!-- jquery -->
@@ -5,7 +6,6 @@
 
 <!-- css -->
 <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/main.css">
-<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/stat.css">
 
 <!-- 부트스트랩 -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">

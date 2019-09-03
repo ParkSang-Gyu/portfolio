@@ -91,5 +91,17 @@ public class LeagueServiceImp implements LeagueService{
 		return playerDao.getPlayerList(team);
 	}
 
+	@Override
+	public PlayerVO getPlayerStat(String player) {
+		
+		return playerDao.getPlayerStat(player);
+	}
+
+	@Override
+	public ArrayList<TeamVO> getTeamStat(String league) {
+		
+		return teamDao.getTeamStat(league);
+	}
+
 
 }
