@@ -8,18 +8,4 @@ $(document).ready(function(){
    		$('#tournamentlist').collapse('show')
    		$('#leaguelist').collapse('hide')
    	})
-   	$('.stat thead th').click(function () {
-   		var league = Premier;
-   		var drop = $(this).attr('id')
-   		var obj = $(this)
-   		$.ajax({
-	        type:'POST',
-	        data:league,drop,
-	        url:"/portfolio/teams",
-	        success : function(data){
-	        	var 
-	        	$('.stat tbody td').html()
-	        },
-	    })
-	})
 })

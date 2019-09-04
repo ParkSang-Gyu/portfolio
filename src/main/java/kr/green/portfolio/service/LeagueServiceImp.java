@@ -2,6 +2,7 @@ package kr.green.portfolio.service;
 
 import java.util.ArrayList;
 
+import org.apache.ibatis.scripting.xmltags.VarDeclSqlNode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -92,15 +93,9 @@ public class LeagueServiceImp implements LeagueService{
 	}
 
 	@Override
-	public PlayerVO getPlayerStat(String player) {
+	public PlayerVO getPlayerStat(String playerName) {
 		
-		return playerDao.getPlayerStat(player);
-	}
-
-	@Override
-	public ArrayList<TeamVO> getTeamStat(String league) {
-		
-		return teamDao.getTeamStat(league);
+		return playerDao.getPlayerStat(playerName);
 	}
 
 

@@ -7,6 +7,6 @@
     select player from players where team = #{team}
   </select>
   <select id="getPlayerStat" resultType="kr.green.portfolio.vo.PlayerVO">
-    select * from players
+    select * from players where player = #{playerName}
   </select>
 </mapper>

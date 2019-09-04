@@ -1,20 +1,4 @@
 @charset "EUC-KR";
-*{
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-}
-.container{
-	min-width: 1140px;
-	padding: 0;
-	position: relative;
-}
-table{
-	text-align: center;
-	font-size: 11px;
-	height: 8px;
-	line-height: 5px;
-}
 .display-none{
 	display: none;
 }

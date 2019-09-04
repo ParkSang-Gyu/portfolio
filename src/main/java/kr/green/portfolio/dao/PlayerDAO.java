@@ -11,7 +11,7 @@ public interface PlayerDAO {
 
 	ArrayList<String> getPlayerList(@Param("team")String team);
 
-	PlayerVO getPlayerStat(@Param("player")String player);
+	PlayerVO getPlayerStat(@Param("playerName")String playerName);
 
 	
 

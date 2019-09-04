@@ -7,7 +7,7 @@
     select * from schedule where roundNum = #{roundNum}
   </select>
   <select id="getTeamTable" resultType="kr.green.portfolio.vo.TeamVO">
-    select * from teams
+    select * from teams order by points desc
   </select>
   <select id="getGoals" resultType="kr.green.portfolio.vo.GoalStandingsVO">
     select * from goalstandings order by goals desc limit 5

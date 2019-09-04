@@ -19,6 +19,4 @@ public interface TeamDAO {
 
 	ArrayList<String> getTeamList(@Param("season")String season);
 
-	ArrayList<TeamVO> getTeamStat(@Param("league")String league);
-
 }

@@ -7,7 +7,6 @@
 <meta charset="UTF-8">
 <title>Comparison</title>
 <style type="text/css">
-@charset "EUC-KR";
 .btn{
 	border-radius: 0;
 	margin-right: 0;
@@ -39,7 +38,6 @@
 	float: left;
 	margin: 0;
 	padding: 0;
-	
 }
 .comparisonSelect1,.comparisonSelect2,.comparisonSelect3,.comparisonSelect4{
 	    margin: 24px 7px 15px 7px;
@@ -170,7 +168,7 @@ select{
 		<div class="container-middle">
 			<div class="selectContainer">
 				<div class="comparison">
-					<div class="comparisonSelect1" id="sel-1">
+					<div class="comparisonSelect1" id="1">
 						<select name="league">
 							<option>리그</option>
 							<option value="PremierLeague">프리미어리그</option>
@@ -184,7 +182,7 @@ select{
 					</div>
 				</div>
 				<div class="comparison">
-					<div class="comparisonSelect2" id="sel-2">
+					<div class="comparisonSelect2" id="2">
 						<select name="league">
 							<option>리그</option>
 							<option value="PremierLeague">프리미어리그</option>
@@ -198,7 +196,7 @@ select{
 					</div>
 				</div>
 				<div class="comparison">
-					<div class="comparisonSelect3" id="sel-3">
+					<div class="comparisonSelect3" id="3">
 						<select name="league">
 							<option>리그</option>
 							<option value="PremierLeague">프리미어리그</option>
@@ -212,7 +210,7 @@ select{
 					</div>
 				</div>
 				<div class="comparison">
-					<div class="comparisonSelect4" id="sel-4">
+					<div class="comparisonSelect4" id="4">
 						<select name="league">
 							<option>리그</option>
 							<option value="PremierLeague">프리미어리그</option>
@@ -245,9 +243,9 @@ select{
 				</div>
 			</div>
 			<div class="player-box">
-				<div class="player-info">
+				<div class="player-info1">
 					<div class="player-info-top">
-						<div class="player1-name"></div>
+						<div class="player-name"></div>
 						<div class="team-name"></div>
 						<div class="tournament-name"></div>
 					</div>
@@ -263,21 +261,22 @@ select{
 				</div>
 				<div class="player-stat">
 						<div class="player-stat-box">
-							<div class="player-data"></div>
-							<div class="player-data"></div>
-							<div class="player-data"></div>
-							<div class="player-data"></div>
-							<div class="player-data"></div>
-							<div class="player-data"></div>
-							<div class="player-data"></div>
-							<div class="player-data"></div>
+							<div class="player-data-apps"></div>
+							<div class="player-data-minutes"></div>
+							<div class="player-data-goals"></div>
+							<div class="player-data-assists"></div>
+							<div class="player-data-yellow"></div>
+							<div class="player-data-red"></div>
+							<div class="player-data-psr"></div>
+							<div class="player-data-rating"></div>
+							<div class="player-data-motm"></div>
 						</div>
 					</div>
 			</div>
 			<div class="player-box">
-				<div class="player-info">
+				<div class="player-info2">
 					<div class="player-info-top">
-						<div class="player2-name"><strong></strong></div>
+						<div class="player-name"><strong></strong></div>
 						<div class="team-name"></div>
 						<div class="tournament-name"></div>
 					</div>
@@ -305,9 +304,9 @@ select{
 				</div>
 			</div>
 			<div class="player-box">
-				<div class="player-info">
+				<div class="player-info3">
 					<div class="player-info-top">
-						<div class="player3-name"><strong></strong></div>
+						<div class="player-name"><strong></strong></div>
 						<div class="team-name"></div>
 						<div class="tournament-name"></div>
 					</div>
@@ -335,9 +334,9 @@ select{
 				</div>
 			</div>
 			<div class="player-box">
-				<div class="player-info">
+				<div class="player-info4">
 					<div class="player-info-top">
-						<div class="player4-name"><strong></strong></div>
+						<div class="player-name"><strong></strong></div>
 						<div class="team-name"></div>
 						<div class="tournament-name"></div>
 					</div>

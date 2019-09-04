@@ -5,6 +5,16 @@
 <html>
 <head>
 <style type="text/css">
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+.container{
+	min-width: 1140px;
+	padding: 0;
+	position: relative;
+}
 .btn{
 	border-radius: 0;
 	margin-right: 0;
@@ -19,6 +29,13 @@
 .schedules,.tables,.standings{
 	width: 1140px;
 	position: relative;
+}
+table th{
+	font-size: 12px;
+}
+button{
+	background-color: white;
+	border: white;
 }
 .standings div{
 	width: 375px;
@@ -108,31 +125,31 @@ $(document).ready(function () {
 				<table class="table table-striped table-hover">			 
 			      	<thead>
 			      		<tr>
-			      			<th><a href="#">순위</a></th>
-			      			<th><a href="#">팀</a></th>
-			      			<th><a href="#">경기수</a></th>
-			      			<th><a href="#">승</a></th>
-			      			<th><a href="#">무</a></th>
-			      			<th><a href="#">패</a></th>
-			      			<th><a href="#">득점</a></th>
-			      			<th><a href="#">실점</a></th>
-			      			<th><a href="#">득실차</a></th>
-			      			<th><a href="#">승점</a></th>
+			      			<th><button class="rank" value="rank">순위</button></th>
+			      			<th><button class="team" value="team">팀</button></th>
+			      			<th><button class="played" value="played">경기수</button></th>
+			      			<th><button class="win" value="win">승</button></th>
+			      			<th><button class="draw" value="draw">무</button></th>
+			      			<th><button class="lose" value="lose">패</button></th>
+			      			<th><button class="goalFor" value="goalFor">득점</button></th>
+			      			<th><button class="goalAgainst" value="goalAgainst">실점</button></th>
+			      			<th><button class="goalDifference" value="goalDifference">득실차</button></th>
+			      			<th><button class="points" value="points">승점</button></th>
 			      		</tr>
 		      		</thead>
 		      		<tbody>
 		      			<c:forEach var="tmp" items="${teamTable}">
 		      				<tr>
-		      					<td>${tmp.rank}</td>
-			      				<td><a href="<%=request.getContextPath()%>/teams?team=${tmp.name}">${tmp.name}</a></td>
-			      				<td>${tmp.played}</td>
-			      				<td>${tmp.win}</td>
-			      				<td>${tmp.draw}</td>
-			      				<td>${tmp.lose}</td>
-			      				<td>${tmp.goalFor}</td>
-			      				<td>${tmp.goalAgainst}</td>
-			      				<td>${tmp.goalDifference}</td>
-			      				<td>${tmp.points}</td>
+		      					<td class="rank">${tmp.rank}</td>
+			      				<td class="team"><a href="<%=request.getContextPath()%>/teams?team=${tmp.name}">${tmp.name}</a></td>
+			      				<td class="played">${tmp.played}</td>
+			      				<td class="win">${tmp.win}</td>
+			      				<td class="draw">${tmp.draw}</td>
+			      				<td class="lose">${tmp.lose}</td>
+			      				<td class="goalFor">${tmp.goalFor}</td>
+			      				<td class="goalAgainst">${tmp.goalAgainst}</td>
+			      				<td class="goalDifference">${tmp.goalDifference}</td>
+			      				<td class="points">${tmp.points}</td>
 		      				</tr>
 	      				</c:forEach>
 		      		</tbody>		    
