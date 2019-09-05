@@ -72,6 +72,20 @@ select{
 	margin: 0;
 	padding: 0;
 }
+.close-btn{
+	height: 24px;
+}
+.close{
+	display: inline-block;
+	width: 265px;
+	float: left;
+}
+.close:nth-child(1){
+	width: 345px;
+}
+i{
+	float: right;
+}
 .resultPlayer{
 	display: inline-block;
     width: 80px;
@@ -91,7 +105,7 @@ select{
 #comparisonTable span{
 	text-align: right;
 }
-.player-box{
+.player-box1,.player-box2,.player-box3,.player-box4{
 	display: inline-block;
     width: 260px;
     padding-right: 1px;
@@ -242,6 +256,12 @@ select{
 			</div>
 		</div>
 		<div class="container-bottom">
+			<div class="close-btn">
+				<div class="close display-none" id="x1"><i class="fas fa-window-close"></i></div>
+				<div class="close display-none" id="x2"><i class="fas fa-window-close"></i></div>
+				<div class="close display-none" id="x3"><i class="fas fa-window-close"></i></div>
+				<div class="close display-none" id="x4"><i class="fas fa-window-close"></i></div>
+			</div>
 			<div class="resultPlayer display-none">
 				<div id="comparisonTable">
 					<div><span>Apps</span></div>
@@ -255,7 +275,7 @@ select{
 					<div><span>Motm</span></div>
 				</div>
 			</div>
-			<div class="player-box 1 display-none" >
+			<div class="player-box1 display-none" >
 				<div class="player-info1">
 					<div class="player-info-top">
 						<div class="player-name"></div>
@@ -290,7 +310,7 @@ select{
 						</div>
 					</div>
 			</div>
-			<div class="player-box 2 display-none">
+			<div class="player-box2 display-none">
 				<div class="player-info2">
 					<div class="player-info-top">
 						<div class="player-name"><strong></strong></div>
@@ -325,7 +345,7 @@ select{
 					</div>
 				</div>
 			</div>
-			<div class="player-box 3 display-none">
+			<div class="player-box3 display-none">
 				<div class="player-info3">
 					<div class="player-info-top">
 						<div class="player-name"><strong></strong></div>
@@ -360,7 +380,7 @@ select{
 					</div>
 				</div>
 			</div>
-			<div class="player-box 4 display-none">
+			<div class="player-box4 display-none">
 				<div class="player-info4">
 					<div class="player-info-top">
 						<div class="player-name"><strong></strong></div>
