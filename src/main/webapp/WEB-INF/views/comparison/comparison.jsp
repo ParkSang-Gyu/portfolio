@@ -7,6 +7,15 @@
 <meta charset="UTF-8">
 <title>Comparison</title>
 <style type="text/css">
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+.container{
+	width: 1140px;
+}
+
 .btn{
 	border-radius: 0;
 	margin-right: 0;
@@ -59,6 +68,7 @@ select{
 }
 .container-bottom{
 	width: 1140px;
+	height: 600px;
 	margin: 0;
 	padding: 0;
 }
@@ -120,8 +130,8 @@ select{
 	background-color: #F1F1F1;
 }
 .player-info-left{
-	width: 100px;
-    height: 150px;
+	width: 120px;
+	height: 150px;
     display: inline-block;
     vertical-align: top;
 }
@@ -142,6 +152,9 @@ select{
 	line-height: normal;
 	color: #808080;
 	font-weight: normal;
+}
+.display-none{
+	display: none;
 }
 </style>
 <script type="text/javascript" src="<%=request.getContextPath()%>/resources/js/comparison.js"></script>
@@ -229,7 +242,7 @@ select{
 			</div>
 		</div>
 		<div class="container-bottom">
-			<div class="resultPlayer">
+			<div class="resultPlayer display-none">
 				<div id="comparisonTable">
 					<div><span>Apps</span></div>
 					<div><span>Minutes</span></div>
@@ -242,7 +255,7 @@ select{
 					<div><span>Motm</span></div>
 				</div>
 			</div>
-			<div class="player-box">
+			<div class="player-box 1 display-none" >
 				<div class="player-info1">
 					<div class="player-info-top">
 						<div class="player-name"></div>
@@ -250,16 +263,20 @@ select{
 						<div class="tournament-name"></div>
 					</div>
 					<div class="player-info-bottom">
-						<div class="player-info-left"></div>
+						<div class="player-info-left">
+							<img alt="사진을 불러올 수 없습니다." src="${pageContext.request.contextPath}/resources/img/players/${playerName}.jpg">
+						</div>
 						<div class="player-info-right">
-							<div class="player-info-teamimage"></div>
+							<div class="player-info-teamimage">
+								<img alt="사진을 불러올 수 없습니다." src="${pageContext.request.contextPath}/resources/img/teams/${team}.png">
+							</div>
 							<div class="player-info-nationality"></div>
 							<div class="player-info-age"></div>
 							<div class="player-info-position"></div>
 						</div>
 					</div>
 				</div>
-				<div class="player-stat">
+				<div class="player-stat1">
 						<div class="player-stat-box">
 							<div class="player-data-apps"></div>
 							<div class="player-data-minutes"></div>
@@ -273,7 +290,7 @@ select{
 						</div>
 					</div>
 			</div>
-			<div class="player-box">
+			<div class="player-box 2 display-none">
 				<div class="player-info2">
 					<div class="player-info-top">
 						<div class="player-name"><strong></strong></div>
@@ -281,29 +298,34 @@ select{
 						<div class="tournament-name"></div>
 					</div>
 					<div class="player-info-bottom">
-						<div class="player-info-left"></div>
+						<div class="player-info-left">
+							<img alt="사진을 불러올 수 없습니다." src="${pageContext.request.contextPath}/resources/img/players/${playerName}.jpg">
+						</div>
 						<div class="player-info-right">
-							<div class="player-info-teamimage"></div>
+							<div class="player-info-teamimage">
+								<img alt="사진을 불러올 수 없습니다." src="${pageContext.request.contextPath}/resources/img/teams/${team}.png">
+							</div>
 							<div class="player-info-nationality"></div>
 							<div class="player-info-age"></div>
 							<div class="player-info-position"></div>
 						</div>
 					</div>
 				</div>
-				<div class="player-stat">
+				<div class="player-stat2">
 					<div class="player-stat-box">
-						<div class="player-data"></div>
-						<div class="player-data"></div>
-						<div class="player-data"></div>
-						<div class="player-data"></div>
-						<div class="player-data"></div>
-						<div class="player-data"></div>
-						<div class="player-data"></div>
-						<div class="player-data"></div>
+						<div class="player-data-apps"></div>
+						<div class="player-data-minutes"></div>
+						<div class="player-data-goals"></div>
+						<div class="player-data-assists"></div>
+						<div class="player-data-yellow"></div>
+						<div class="player-data-red"></div>
+						<div class="player-data-psr"></div>
+						<div class="player-data-rating"></div>
+						<div class="player-data-motm"></div>
 					</div>
 				</div>
 			</div>
-			<div class="player-box">
+			<div class="player-box 3 display-none">
 				<div class="player-info3">
 					<div class="player-info-top">
 						<div class="player-name"><strong></strong></div>
@@ -311,29 +333,34 @@ select{
 						<div class="tournament-name"></div>
 					</div>
 					<div class="player-info-bottom">
-						<div class="player-info-left"></div>
+						<div class="player-info-left">
+							<img alt="사진을 불러올 수 없습니다." src="${pageContext.request.contextPath}/resources/img/players/${playerName}.jpg">
+						</div>
 						<div class="player-info-right">
-							<div class="player-info-teamimage"></div>
+							<div class="player-info-teamimage">
+								<img alt="사진을 불러올 수 없습니다." src="${pageContext.request.contextPath}/resources/img/teams/${team}.png">
+							</div>
 							<div class="player-info-nationality"></div>
 							<div class="player-info-age"></div>
 							<div class="player-info-position"></div>
 						</div>
 					</div>
 				</div>
-				<div class="player-stat">
+				<div class="player-stat3">
 					<div class="player-stat-box">
-						<div class="player-data"></div>
-						<div class="player-data"></div>
-						<div class="player-data"></div>
-						<div class="player-data"></div>
-						<div class="player-data"></div>
-						<div class="player-data"></div>
-						<div class="player-data"></div>
-						<div class="player-data"></div>
+						<div class="player-data-apps"></div>
+						<div class="player-data-minutes"></div>
+						<div class="player-data-goals"></div>
+						<div class="player-data-assists"></div>
+						<div class="player-data-yellow"></div>
+						<div class="player-data-red"></div>
+						<div class="player-data-psr"></div>
+						<div class="player-data-rating"></div>
+						<div class="player-data-motm"></div>
 					</div>
 				</div>
 			</div>
-			<div class="player-box">
+			<div class="player-box 4 display-none">
 				<div class="player-info4">
 					<div class="player-info-top">
 						<div class="player-name"><strong></strong></div>
@@ -341,29 +368,34 @@ select{
 						<div class="tournament-name"></div>
 					</div>
 					<div class="player-info-bottom">
-						<div class="player-info-left"></div>
+						<div class="player-info-left">
+							<img alt="사진을 불러올 수 없습니다." src="${pageContext.request.contextPath}/resources/img/players/${playerName}.jpg">
+						</div>
 						<div class="player-info-right">
-							<div class="player-info-teamimage"></div>
+							<div class="player-info-teamimage">
+								<img alt="사진을 불러올 수 없습니다." src="${pageContext.request.contextPath}/resources/img/teams/${team}.png">
+							</div>
 							<div class="player-info-nationality"></div>
 							<div class="player-info-age"></div>
 							<div class="player-info-position"></div>
 						</div>
 					</div>
 				</div>
-				<div class="player-stat">
+				<div class="player-stat4">
 					<div class="player-stat-box">
-						<div class="player-data"></div>
-						<div class="player-data"></div>
-						<div class="player-data"></div>
-						<div class="player-data"></div>
-						<div class="player-data"></div>
-						<div class="player-data"></div>
-						<div class="player-data"></div>
-						<div class="player-data"></div>
+						<div class="player-data-apps"></div>
+						<div class="player-data-minutes"></div>
+						<div class="player-data-goals"></div>
+						<div class="player-data-assists"></div>
+						<div class="player-data-yellow"></div>
+						<div class="player-data-red"></div>
+						<div class="player-data-psr"></div>
+						<div class="player-data-rating"></div>
+						<div class="player-data-motm"></div>
 					</div>
 				</div>
 			</div>
-			<div class="stat-explanation">
+			<div class="stat-explanation display-none">
 				<table>
 					<tr>
 						<th>

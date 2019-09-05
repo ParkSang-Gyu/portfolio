@@ -108,7 +108,7 @@ public class StatController {
 		map.put("season", season);
 		map.put("team", team);
 		map.put("playerName", playerName);
-
+		
 		ArrayList<String> seasonList = leagueService.getSeasonList(league);
 		ArrayList<String> teamList = leagueService.getTeamList(season);
 		ArrayList<String> playerList = leagueService.getPlayerList(team);

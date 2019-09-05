@@ -2,7 +2,6 @@ package kr.green.portfolio.service;
 
 import java.util.ArrayList;
 
-import org.apache.ibatis.scripting.xmltags.VarDeclSqlNode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
