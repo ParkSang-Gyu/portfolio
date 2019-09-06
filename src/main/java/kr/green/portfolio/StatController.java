@@ -118,7 +118,7 @@ public class StatController {
 		map.put("teamList", teamList);
 		map.put("playerList", playerList);
 		map.put("playerStat", playerStat);
-		System.out.println(playerStat);
+		
 		return map;
 	}
 

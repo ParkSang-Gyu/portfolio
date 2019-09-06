@@ -14,8 +14,11 @@
 }
 .container{
 	width: 1140px;
+	
 }
-
+.container-box{
+	width: 100%;	
+}
 .btn{
 	border-radius: 0;
 	margin-right: 0;
@@ -77,11 +80,8 @@ select{
 }
 .close{
 	display: inline-block;
-	width: 265px;
+	width: 259px;
 	float: left;
-}
-.close:nth-child(1){
-	width: 345px;
 }
 i{
 	float: right;
@@ -174,7 +174,7 @@ i{
 <script type="text/javascript" src="<%=request.getContextPath()%>/resources/js/comparison.js"></script>
 </head>
 <body>
-	<div class="container">
+	<div class="container-box">
 		<div class="container-top">
 			<button type="button" class="btn btn-dark dropdown-toggle list1" data-toggle="collapse" data-target="#leaguelist">leaguelist</button>	
 		 	<button type="button" class="btn btn-dark dropdown-toggle list2" data-toggle="collapse" data-target="#tournamentlist">tournamentlist</button>	
@@ -256,12 +256,6 @@ i{
 			</div>
 		</div>
 		<div class="container-bottom">
-			<div class="close-btn">
-				<div class="close display-none" id="x1"><i class="fas fa-window-close"></i></div>
-				<div class="close display-none" id="x2"><i class="fas fa-window-close"></i></div>
-				<div class="close display-none" id="x3"><i class="fas fa-window-close"></i></div>
-				<div class="close display-none" id="x4"><i class="fas fa-window-close"></i></div>
-			</div>
 			<div class="resultPlayer display-none">
 				<div id="comparisonTable">
 					<div><span>Apps</span></div>
@@ -275,7 +269,10 @@ i{
 					<div><span>Motm</span></div>
 				</div>
 			</div>
-			<div class="player-box1 display-none" >
+			<div class="player-box1 display-none" id="5">
+				<div class="close-btn">
+					<div class="close display-none" id="x1"><i class="fas fa-window-close"></i></div>
+				</div>
 				<div class="player-info1">
 					<div class="player-info-top">
 						<div class="player-name"></div>
@@ -310,7 +307,10 @@ i{
 						</div>
 					</div>
 			</div>
-			<div class="player-box2 display-none">
+			<div class="player-box2 display-none" id="6">
+				<div class="close-btn">
+					<div class="close display-none" id="x2"><i class="fas fa-window-close"></i></div>
+				</div>
 				<div class="player-info2">
 					<div class="player-info-top">
 						<div class="player-name"><strong></strong></div>
@@ -345,7 +345,10 @@ i{
 					</div>
 				</div>
 			</div>
-			<div class="player-box3 display-none">
+			<div class="player-box3 display-none" id="7">
+				<div class="close-btn">
+					<div class="close display-none" id="x3"><i class="fas fa-window-close"></i></div>
+				</div>
 				<div class="player-info3">
 					<div class="player-info-top">
 						<div class="player-name"><strong></strong></div>
@@ -380,7 +383,10 @@ i{
 					</div>
 				</div>
 			</div>
-			<div class="player-box4 display-none">
+			<div class="player-box4 display-none" id="8">
+				<div class="close-btn">
+					<div class="close display-none" id="x4"><i class="fas fa-window-close"></i></div>
+				</div>
 				<div class="player-info4">
 					<div class="player-info-top">
 						<div class="player-name"><strong></strong></div>
