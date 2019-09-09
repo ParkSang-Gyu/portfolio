@@ -1,6 +1,7 @@
 $(document).ready(function () {
 	var box = [$('.player-box1'),$('.player-box2'),$('.player-box3'),$('.player-box4')];
 	var closeBtn = [$('#x1'),$('#x2'),$('#x3'),$('#x4')];
+	var cnt = [];
 	$('select[name=league]').change(function(){
 		var league = $(this).val();
 		var obj = $(this);
@@ -49,15 +50,9 @@ $(document).ready(function () {
 	        }
 	    })
 	});
-	var cnt = 0;
     $('select[name=player]').change(function () {
     	var playerName = $(this).val();
 		var objNum = $(this).parent().attr('id');
-		var isCheck = $(this);
-		cnt++;
-		if(isCheck){
-			cnt--;
-		}
 		$.ajax({
 	        type:'POST',
 	        data:playerName,
@@ -94,6 +89,7 @@ $(document).ready(function () {
     						  $('.player-stat1').find('.player-data-psr').html(psr);
     						  $('.player-stat1').find('.player-data-rating').html(rating);
     						  $('.player-stat1').find('.player-data-motm').html(motm);
+    						  cnt[0] = objNum;
     						  break;
 	        		case '2': $('.player-info2').find('.player-name').html(player);
 				  			  $('.player-info2').find('.team-name').html(team);
@@ -110,6 +106,7 @@ $(document).ready(function () {
 				  			  $('.player-stat2').find('.player-data-psr').html(psr);
 				  			  $('.player-stat2').find('.player-data-rating').html(rating);
 				  			  $('.player-stat2').find('.player-data-motm').html(motm);
+				  			  cnt[1] = objNum;
 				  			  break;
 	        		case '3': $('.player-info3').find('.player-name').html(player);
 				  			  $('.player-info3').find('.team-name').html(team);
@@ -126,6 +123,7 @@ $(document).ready(function () {
     						  $('.player-stat3').find('.player-data-psr').html(psr);
     						  $('.player-stat3').find('.player-data-rating').html(rating);
     						  $('.player-stat3').find('.player-data-motm').html(motm);
+    						  cnt[2] = objNum;
     						  break;
 	        		case '4': $('.player-info4').find('.player-name').html(player);
 				  			  $('.player-info4').find('.team-name').html(team);
@@ -142,31 +140,30 @@ $(document).ready(function () {
     						  $('.player-stat4').find('.player-data-psr').html(psr);
     						  $('.player-stat4').find('.player-data-rating').html(rating);
     						  $('.player-stat4').find('.player-data-motm').html(motm);
+    						  cnt[3] = objNum;
     						  break;
         		}
-	        	$('.summary').click(function () { 
-	            	for(var i=0;i<4;i++){
-	            		if(objNum == i+1){
-	            			$('.resultPlayer').removeClass('display-none');
-	            			$('.stat-explanation').removeClass('display-none');
-	            			box[i].removeClass('display-none');
-	            			closeBtn[i].removeClass('display-none');
-	            		}
-	            	}
-	            	var arr = [1,2,3,4]
-	            	$('.close').click(function () {
-						$(this).parent().parent().addClass('display-none');
-						cnt--;
-						if(cnt == 0){
-							$('.resultPlayer').addClass('display-none');
-	            			$('.stat-explanation').addClass('display-none');
-						}
-					})
-	        	})
-	        	
 	        }
         })
     })
+	$('.summary').click(function () { 
+    	for(var i=0;i<4;i++){
+    		if(cnt[i] == i+1){
+    			$('.resultPlayer').removeClass('display-none');
+    			$('.stat-explanation').removeClass('display-none');
+    			box[i].removeClass('display-none');
+    			closeBtn[i].removeClass('display-none');
+    		}
+    	}
+    	console.log(cnt);
+	})
+	$('.close').click(function () {
+		$(this).parent().parent().addClass('display-none');
+		if(sizeof(cnt) == 0){
+			$('.resultPlayer').addClass('display-none');
+			$('.stat-explanation').addClass('display-none');
+		}
+	})
 })
 
 
