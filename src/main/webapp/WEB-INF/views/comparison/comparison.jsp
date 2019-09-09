@@ -51,6 +51,12 @@
 	margin: 0;
 	padding: 0;
 }
+.closeComparison{
+	width: 100%;
+}
+.closeComparison .close{
+	padding-right: 5px;
+}
 .comparisonSelect1,.comparisonSelect2,.comparisonSelect3,.comparisonSelect4{
 	    margin: 24px 7px 15px 7px;
 	    padding: 0;
@@ -60,23 +66,31 @@ select{
 	font-weight: bold;
     border: 2px solid #F1F0EE;
 }
-.summary{
+.plus-btn{
 	width: 60px;
 	height: 30px;
 	display: inline-block;
-	margin-top: 60px;
+	margin-top: 40px;
 	margin-left: 12px;
 	padding: 0;
 	float: left;
+	position: absolute;
+}
+.compare{
+	width: 60px;
+	height: 30px;
+	display: inline-block;
+	margin-top: 80px;
+	margin-left: 12px;
+	padding: 0;
+	float: left;
+	position: absolute;
 }
 .container-bottom{
 	width: 1140px;
 	height: 600px;
 	margin: 0;
 	padding: 0;
-}
-.close-btn{
-	height: 24px;
 }
 .close{
 	display: inline-block;
@@ -223,7 +237,10 @@ i{
 					</div>
 				</div>
 				<div class="comparison">
-					<div class="comparisonSelect3" id="3">
+					<div class="closeComparison display-none">
+						<div class="close"><i class="fas fa-window-close"></i></div>
+					</div>
+					<div class="comparisonSelect3 display-none" id="3">
 						<select name="league">
 							<option>리그</option>
 							<option value="PremierLeague">프리미어리그</option>
@@ -237,7 +254,10 @@ i{
 					</div>
 				</div>
 				<div class="comparison">
-					<div class="comparisonSelect4" id="4">
+					<div class="closeComparison display-none">
+						<div class="close"><i class="fas fa-window-close"></i></div>
+					</div>
+					<div class="comparisonSelect4 display-none" id="4">
 						<select name="league">
 							<option>리그</option>
 							<option value="PremierLeague">프리미어리그</option>
@@ -250,7 +270,10 @@ i{
 						<select name="player"></select>
 					</div>
 				</div>
-				<div class="summary">
+				<div class="plus-btn">
+					<button class="btn btn-dark">추가</button>
+				</div>
+				<div class="compare">
 					<button class="btn btn-dark">비교</button>
 				</div>
 			</div>
@@ -269,10 +292,7 @@ i{
 					<div><span>Motm</span></div>
 				</div>
 			</div>
-			<div class="player-box1 display-none" id="5">
-				<div class="close-btn">
-					<div class="close display-none" id="x1"><i class="fas fa-window-close"></i></div>
-				</div>
+			<div class="player-box1 display-none">
 				<div class="player-info1">
 					<div class="player-info-top">
 						<div class="player-name"></div>
@@ -307,10 +327,7 @@ i{
 						</div>
 					</div>
 			</div>
-			<div class="player-box2 display-none" id="6">
-				<div class="close-btn">
-					<div class="close display-none" id="x2"><i class="fas fa-window-close"></i></div>
-				</div>
+			<div class="player-box2 display-none">
 				<div class="player-info2">
 					<div class="player-info-top">
 						<div class="player-name"><strong></strong></div>
@@ -345,10 +362,7 @@ i{
 					</div>
 				</div>
 			</div>
-			<div class="player-box3 display-none" id="7">
-				<div class="close-btn">
-					<div class="close display-none" id="x3"><i class="fas fa-window-close"></i></div>
-				</div>
+			<div class="player-box3 display-none">
 				<div class="player-info3">
 					<div class="player-info-top">
 						<div class="player-name"><strong></strong></div>
@@ -383,10 +397,7 @@ i{
 					</div>
 				</div>
 			</div>
-			<div class="player-box4 display-none" id="8">
-				<div class="close-btn">
-					<div class="close display-none" id="x4"><i class="fas fa-window-close"></i></div>
-				</div>
+			<div class="player-box4 display-none">
 				<div class="player-info4">
 					<div class="player-info-top">
 						<div class="player-name"><strong></strong></div>
