@@ -2,8 +2,7 @@ $(document).ready(function () {
 	var box = [$('.player-box1'),$('.player-box2'),$('.player-box3'),$('.player-box4')];
 	var cnt = [];
 	var click = 1;
-	var players = [];
-	var objNumber = "";
+	//var players = "";
 	$('select[name=league]').change(function(){
 		var league = $(this).val();
 		var obj = $(this);
@@ -162,8 +161,8 @@ $(document).ready(function () {
         })
     })*/
 	$('select[name=player]').change(function () {
-		players = $(this).val();
-		objNumber = $(this).parent().attr('id');
+		//var players = $(this).val();
+		var objNumber = $(this).parent().attr('id');
 		var search = cnt.indexOf(objNumber);
 		if(search == -1){
 			cnt.push(objNumber);
@@ -181,31 +180,32 @@ $(document).ready(function () {
 		}
 	})
 	$('.compare').click(function () {
-		var playerName = players;
-		$.ajax({
-	        type:'POST',
-	        data:playerName,
-	        url:"/portfolio/comparison",
-	        success : function(data){
-	        	var player = data.playerStat.player;
-	        	var team = data.playerStat.team;
-        		var league = data.playerStat.league;
-    			var nationality = data.playerStat.nationality;
-				var age = data.playerStat.age;
-				var position = data.playerStat.position;
-				var apps = data.playerStat.appearances;
-				var minutes = data.playerStat.minutes;
-				var goals = data.playerStat.goals;
-				var assists = data.playerStat.assists;
-				var yellow = data.playerStat.yellowCard;
-				var red = data.playerStat.redCard;
-				var psr = data.playerStat.psr;
-				var rating = data.playerStat.rating;
-				var motm = data.playerStat.motm;
-				for(var i=0;i<cnt.length;i++){
-					var objNum = cnt[i]
-					switch(objNum){
-	        		case '1': $('.player-info1').find('.player-name').html(player);
+		var index = 0;
+		$('select[name=player]').each(function(){
+			var playerName = $('select[name=player]').eq(index).val();
+			console.log(playerName)
+			$.ajax({
+		        type:'POST',
+		        data:playerName,
+		        url:"/portfolio/comparison",
+		        success : function(data){
+		        	var player = data.playerStat.player;
+		        	var team = data.playerStat.team;
+	        		var league = data.playerStat.league;
+	    			var nationality = data.playerStat.nationality;
+					var age = data.playerStat.age;
+					var position = data.playerStat.position;
+					var apps = data.playerStat.appearances;
+					var minutes = data.playerStat.minutes;
+					var goals = data.playerStat.goals;
+					var assists = data.playerStat.assists;
+					var yellow = data.playerStat.yellowCard;
+					var red = data.playerStat.redCard;
+					var psr = data.playerStat.psr;
+					var rating = data.playerStat.rating;
+					var motm = data.playerStat.motm;
+					if(index = 0){
+						$('.player-info1').find('.player-name').html(player);
 							  $('.player-info1').find('.team-name').html(team);
 							  $('.player-info1').find('.tournament-name').html(league);
 							  $('.player-info1').find('.player-info-nationality').html(nationality);
@@ -220,8 +220,10 @@ $(document).ready(function () {
 							  $('.player-stat1').find('.player-data-psr').html(psr);
 							  $('.player-stat1').find('.player-data-rating').html(rating);
 							  $('.player-stat1').find('.player-data-motm').html(motm);
-							  break;
-	        		case '2': $('.player-info2').find('.player-name').html(player);
+							  box[0].removeClass('display-none');
+					}
+					else if(index = 1){
+						$('.player-info2').find('.player-name').html(player);
 				  			  $('.player-info2').find('.team-name').html(team);
 				  			  $('.player-info2').find('.tournament-name').html(league);
 				  			  $('.player-info2').find('.player-info-nationality').html(nationality);
@@ -236,8 +238,10 @@ $(document).ready(function () {
 				  			  $('.player-stat2').find('.player-data-psr').html(psr);
 				  			  $('.player-stat2').find('.player-data-rating').html(rating);
 				  			  $('.player-stat2').find('.player-data-motm').html(motm);
-				  			  break;
-	        		case '3': $('.player-info3').find('.player-name').html(player);
+				  			  box[1].removeClass('display-none');
+					}
+					else if(index = 2){
+						$('.player-info3').find('.player-name').html(player);
 				  			  $('.player-info3').find('.team-name').html(team);
 				  			  $('.player-info3').find('.tournament-name').html(league);
 				  			  $('.player-info3').find('.player-info-nationality').html(nationality);
@@ -252,8 +256,10 @@ $(document).ready(function () {
 							  $('.player-stat3').find('.player-data-psr').html(psr);
 							  $('.player-stat3').find('.player-data-rating').html(rating);
 							  $('.player-stat3').find('.player-data-motm').html(motm);
-							  break;
-	        		case '4': $('.player-info4').find('.player-name').html(player);
+							  box[2].removeClass('display-none');
+					}
+					else if(index = 3){
+						$('.player-info4').find('.player-name').html(player);
 				  			  $('.player-info4').find('.team-name').html(team);
 				  			  $('.player-info4').find('.tournament-name').html(league);
 				  			  $('.player-info4').find('.player-info-nationality').html(nationality);
@@ -268,33 +274,31 @@ $(document).ready(function () {
 							  $('.player-stat4').find('.player-data-psr').html(psr);
 							  $('.player-stat4').find('.player-data-rating').html(rating);
 							  $('.player-stat4').find('.player-data-motm').html(motm);
-							  break;
+							  box[3].removeClass('display-none');
 					}
-				}
-				console.log(cnt);
-	        }
-        })
+		        }
+	        })
+	        index++
+	        console.log(index)
+		})
     	if(cnt.length != 0){
 			$('.resultPlayer').removeClass('display-none');
 			$('.stat-explanation').removeClass('display-none');
 		}
 	})
 	$('.closeComparison').click(function () {
-		//$(this).addClass('display-none');
-		//$(this).siblings().addClass('display-none');
+		$(this).addClass('display-none');
+		$(this).siblings().addClass('display-none');
 		click--;
 		var id = $(this).siblings().attr('id');
-		console.log(id);
-		/*if(id == 3){
+		if(id == 3){
 			cnt.splice(2,1)
 			box[2].addClass('display-none');
 		}
-		console.log(cnt);
 		if(id == 4){
 			cnt.splice(3)
 			box[3].addClass('display-none');
 		}
-		console.log(cnt);*/
 	})
 })
 
