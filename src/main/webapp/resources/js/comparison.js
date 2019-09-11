@@ -166,6 +166,7 @@ $(document).ready(function () {
 		var search = cnt.indexOf(objNumber);
 		if(search == -1){
 			cnt.push(objNumber);
+			cnt.sort()
 		}
 	})
     $('.plus-btn').click(function () {
@@ -182,104 +183,103 @@ $(document).ready(function () {
 	$('.compare').click(function () {
 		var index = 0;
 		$('select[name=player]').each(function(){
-			console.log(playerName)
 			var playerName = $('select[name=player]').eq(index).val();
-			$.ajax({
-		        type:'POST',
-		        data:playerName,
-		        url:"/portfolio/comparison",
-		        success : function(data){
-		        	var player = data.playerStat.player;
-		        	var team = data.playerStat.team;
-	        		var league = data.playerStat.league;
-	    			var nationality = data.playerStat.nationality;
-					var age = data.playerStat.age;
-					var position = data.playerStat.position;
-					var apps = data.playerStat.appearances;
-					var minutes = data.playerStat.minutes;
-					var goals = data.playerStat.goals;
-					var assists = data.playerStat.assists;
-					var yellow = data.playerStat.yellowCard;
-					var red = data.playerStat.redCard;
-					var psr = data.playerStat.psr;
-					var rating = data.playerStat.rating;
-					var motm = data.playerStat.motm;
-					if(index = 1){
-						/*$('.player-info1').find('.player-name').html(player);
-						$('.player-info1').find('.team-name').html(team);
-						$('.player-info1').find('.tournament-name').html(league);
-						$('.player-info1').find('.player-info-nationality').html(nationality);
-						$('.player-info1').find('.player-info-age').html(age);
-						$('.player-info1').find('.player-info-position').html(position);
-						$('.player-stat1').find('.player-data-apps').html(apps);
-						$('.player-stat1').find('.player-data-minutes').html(minutes);
-						$('.player-stat1').find('.player-data-goals').html(goals);
-						$('.player-stat1').find('.player-data-assists').html(assists);
-						$('.player-stat1').find('.player-data-yellow').html(yellow);
-						$('.player-stat1').find('.player-data-red').html(red);
-						$('.player-stat1').find('.player-data-psr').html(psr);
-						$('.player-stat1').find('.player-data-rating').html(rating);
-						$('.player-stat1').find('.player-data-motm').html(motm);*/
-						//$('.player-stat1').find('span').html(data.playerStat)
-						box[0].removeClass('display-none');
-					}
-					else if(index = 2){
-						/*$('.player-info2').find('.player-name').html(player);
-		  			    $('.player-info2').find('.team-name').html(team);
-		  			    $('.player-info2').find('.tournament-name').html(league);
-		  			    $('.player-info2').find('.player-info-nationality').html(nationality);
-		  			    $('.player-info2').find('.player-info-age').html(age);
-		  			    $('.player-info2').find('.player-info-position').html(position);
-		  			    $('.player-stat2').find('.player-data-apps').html(apps);
-		  			    $('.player-stat2').find('.player-data-minutes').html(minutes);
-		  			    $('.player-stat2').find('.player-data-goals').html(goals);
-		  			    $('.player-stat2').find('.player-data-assists').html(assists);
-		  			    $('.player-stat2').find('.player-data-yellow').html(yellow);
-		  			    $('.player-stat2').find('.player-data-red').html(red);
-		  			    $('.player-stat2').find('.player-data-psr').html(psr);
-		  			    $('.player-stat2').find('.player-data-rating').html(rating);
-		  			    $('.player-stat2').find('.player-data-motm').html(motm);*/
-		  			    box[1].removeClass('display-none');
-					}
-					else if(index = 3){
-						/*$('.player-info3').find('.player-name').html(player);
-		  			    $('.player-info3').find('.team-name').html(team);
-		  			    $('.player-info3').find('.tournament-name').html(league);
-		  			    $('.player-info3').find('.player-info-nationality').html(nationality);
-		  			    $('.player-info3').find('.player-info-age').html(age);
-		  			    $('.player-info3').find('.player-info-position').html(position);
-		  			    $('.player-stat3').find('.player-data-apps').html(apps);
-					    $('.player-stat3').find('.player-data-minutes').html(minutes);
-					    $('.player-stat3').find('.player-data-goals').html(goals);
-					    $('.player-stat3').find('.player-data-assists').html(assists);
-					    $('.player-stat3').find('.player-data-yellow').html(yellow);
-					    $('.player-stat3').find('.player-data-red').html(red);
-					    $('.player-stat3').find('.player-data-psr').html(psr);
-					    $('.player-stat3').find('.player-data-rating').html(rating);
-					    $('.player-stat3').find('.player-data-motm').html(motm);*/
-					    box[2].removeClass('display-none');
-					}
-					else if(index = 4){
-						/*$('.player-info4').find('.player-name').html(player);
-		  			    $('.player-info4').find('.team-name').html(team);
-		  			    $('.player-info4').find('.tournament-name').html(league);
-		  			    $('.player-info4').find('.player-info-nationality').html(nationality);
-					    $('.player-info4').find('.player-info-age').html(age);
-					    $('.player-info4').find('.player-info-position').html(position);
-					    $('.player-stat4').find('.player-data-apps').html(apps);
-					    $('.player-stat4').find('.player-data-minutes').html(minutes);
-					    $('.player-stat4').find('.player-data-goals').html(goals);
-					    $('.player-stat4').find('.player-data-assists').html(assists);
-					    $('.player-stat4').find('.player-data-yellow').html(yellow);
-					    $('.player-stat4').find('.player-data-red').html(red);
-					    $('.player-stat4').find('.player-data-psr').html(psr);
-					    $('.player-stat4').find('.player-data-rating').html(rating);
-					    $('.player-stat4').find('.player-data-motm').html(motm);*/
-					    box[3].removeClass('display-none');
-					}
-		        }
-	        })
-	        index++
+			console.log(playerName)
+			if(/*playerName != null && */playerName !=''){
+				$.ajax({
+			        async:false,
+					type:'POST',
+			        data:playerName,
+			        url:"/portfolio/comparison",
+			        success : function(data){
+			        	var player = data.playerStat.player;
+			        	var team = data.playerStat.team;
+		        		var league = data.playerStat.league;
+		    			var nationality = data.playerStat.nationality;
+						var age = data.playerStat.age;
+						var position = data.playerStat.position;
+						var apps = data.playerStat.appearances;
+						var minutes = data.playerStat.minutes;
+						var goals = data.playerStat.goals;
+						var assists = data.playerStat.assists;
+						var yellow = data.playerStat.yellowCard;
+						var red = data.playerStat.redCard;
+						var psr = data.playerStat.psr;
+						var rating = data.playerStat.rating;
+						var motm = data.playerStat.motm;
+						if(index == 0){
+							$('.player-info1').find('.player-name').html(player);
+							$('.player-info1').find('.team-name').html(team);
+							$('.player-info1').find('.tournament-name').html(league);
+							$('.player-info1').find('.player-info-nationality').html(nationality);
+							$('.player-info1').find('.player-info-age').html(age);
+							$('.player-info1').find('.player-info-position').html(position);
+							$('.player-stat1').find('.player-data-apps').html(apps);
+							$('.player-stat1').find('.player-data-minutes').html(minutes);
+							$('.player-stat1').find('.player-data-goals').html(goals);
+							$('.player-stat1').find('.player-data-assists').html(assists);
+							$('.player-stat1').find('.player-data-yellow').html(yellow);
+							$('.player-stat1').find('.player-data-red').html(red);
+							$('.player-stat1').find('.player-data-psr').html(psr);
+							$('.player-stat1').find('.player-data-rating').html(rating);
+							$('.player-stat1').find('.player-data-motm').html(motm);
+							box[0].removeClass('display-none');
+						}else if(index == 1){
+							$('.player-info2').find('.player-name').html(player);
+			  			    $('.player-info2').find('.team-name').html(team);
+			  			    $('.player-info2').find('.tournament-name').html(league);
+			  			    $('.player-info2').find('.player-info-nationality').html(nationality);
+			  			    $('.player-info2').find('.player-info-age').html(age);
+			  			    $('.player-info2').find('.player-info-position').html(position);
+			  			    $('.player-stat2').find('.player-data-apps').html(apps);
+			  			    $('.player-stat2').find('.player-data-minutes').html(minutes);
+			  			    $('.player-stat2').find('.player-data-goals').html(goals);
+			  			    $('.player-stat2').find('.player-data-assists').html(assists);
+			  			    $('.player-stat2').find('.player-data-yellow').html(yellow);
+			  			    $('.player-stat2').find('.player-data-red').html(red);
+			  			    $('.player-stat2').find('.player-data-psr').html(psr);
+			  			    $('.player-stat2').find('.player-data-rating').html(rating);
+			  			    $('.player-stat2').find('.player-data-motm').html(motm);
+			  			    box[1].removeClass('display-none');
+						}else if(index == 2){
+							$('.player-info3').find('.player-name').html(player);
+			  			    $('.player-info3').find('.team-name').html(team);
+			  			    $('.player-info3').find('.tournament-name').html(league);
+			  			    $('.player-info3').find('.player-info-nationality').html(nationality);
+			  			    $('.player-info3').find('.player-info-age').html(age);
+			  			    $('.player-info3').find('.player-info-position').html(position);
+			  			    $('.player-stat3').find('.player-data-apps').html(apps);
+						    $('.player-stat3').find('.player-data-minutes').html(minutes);
+						    $('.player-stat3').find('.player-data-goals').html(goals);
+						    $('.player-stat3').find('.player-data-assists').html(assists);
+						    $('.player-stat3').find('.player-data-yellow').html(yellow);
+						    $('.player-stat3').find('.player-data-red').html(red);
+						    $('.player-stat3').find('.player-data-psr').html(psr);
+						    $('.player-stat3').find('.player-data-rating').html(rating);
+						    $('.player-stat3').find('.player-data-motm').html(motm);
+						    box[2].removeClass('display-none');
+						}else if(index == 3){
+							$('.player-info4').find('.player-name').html(player);
+			  			    $('.player-info4').find('.team-name').html(team);
+			  			    $('.player-info4').find('.tournament-name').html(league);
+			  			    $('.player-info4').find('.player-info-nationality').html(nationality);
+						    $('.player-info4').find('.player-info-age').html(age);
+						    $('.player-info4').find('.player-info-position').html(position);
+						    $('.player-stat4').find('.player-data-apps').html(apps);
+						    $('.player-stat4').find('.player-data-minutes').html(minutes);
+						    $('.player-stat4').find('.player-data-goals').html(goals);
+						    $('.player-stat4').find('.player-data-assists').html(assists);
+						    $('.player-stat4').find('.player-data-yellow').html(yellow);
+						    $('.player-stat4').find('.player-data-red').html(red);
+						    $('.player-stat4').find('.player-data-psr').html(psr);
+						    $('.player-stat4').find('.player-data-rating').html(rating);
+						    $('.player-stat4').find('.player-data-motm').html(motm);
+						    box[3].removeClass('display-none');
+						}	
+			        }
+		        })
+		        index++;
+			}
 		})
     	if(cnt.length != 0){
 			$('.resultPlayer').removeClass('display-none');
@@ -291,14 +291,20 @@ $(document).ready(function () {
 		$(this).siblings().addClass('display-none');
 		click--;
 		var id = $(this).siblings().attr('id');
+		console.log(cnt.indexOf("id"))
 		if(id == 3){
-			cnt.splice(2,1)
+			for(var i=0;i<cnt.length;i++){
+				cnt.splice(i+1);
+			}
 			box[2].addClass('display-none');
-		}
-		if(id == 4){
-			cnt.splice(3)
+		}else if(id == 4){
+			if(cnt.length == 3){
+				cnt.splice(3,1);
+			}
+			cnt.splice(4);
 			box[3].addClass('display-none');
 		}
+		console.log(cnt);
 	})
 })
 

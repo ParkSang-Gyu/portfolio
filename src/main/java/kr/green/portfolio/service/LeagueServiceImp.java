@@ -26,9 +26,9 @@ public class LeagueServiceImp implements LeagueService{
 	PlayerDAO playerDao;
 	
 	@Override
-	public ArrayList<ScheduleVO> getSchedule(ScheduleVO sVo,Integer roundNum) {
+	public ArrayList<ScheduleVO> getSchedule(ScheduleVO sVo,Integer roundNum,Integer leagueNum) {
 		
-		return leagueDao.getSchedule(sVo,roundNum);
+		return leagueDao.getSchedule(sVo,roundNum,leagueNum);
 	}
 
 	@Override

@@ -14,7 +14,7 @@ import kr.green.portfolio.vo.TeamVO;
 
 public interface LeagueDAO {
 	
-	ArrayList<ScheduleVO> getSchedule(@Param("plVo")ScheduleVO sVo, @Param("roundNum")Integer roundNum);
+	ArrayList<ScheduleVO> getSchedule(@Param("sVo")ScheduleVO sVo,@Param("roundNum")Integer roundNum,@Param("leagueNum")Integer leagueNum);
 
 	ArrayList<TeamVO> getTeamTable(@Param("tVo")TeamVO tVo);
 

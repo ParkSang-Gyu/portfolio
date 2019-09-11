@@ -12,7 +12,7 @@ import kr.green.portfolio.vo.TeamVO;
 
 public interface LeagueService {
 	
-	ArrayList<ScheduleVO> getSchedule(ScheduleVO sVo, Integer roundNum);
+	ArrayList<ScheduleVO> getSchedule(ScheduleVO sVo, Integer roundNum, Integer leagueNum);
 
 	TeamVO getTeamInfo(String team);
 

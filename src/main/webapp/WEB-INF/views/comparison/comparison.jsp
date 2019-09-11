@@ -32,10 +32,10 @@
 }
 .container-middle{
 	width: 1140px;
-	height: 200px;
+	height: 180px;
 	background-color: #F1F0EE;
 	position: relative;
-	margin: 0;
+	margin: 0 0 20px;
 	padding: 0;
 }
 .selectContainer{
@@ -315,15 +315,15 @@ i{
 				</div>
 				<div class="player-stat1">
 						<div class="player-stat-box">
-							<div class="player-data-apps"><span></span></div>
-							<div class="player-data-minutes"><span></span></div>
-							<div class="player-data-goals"><span></span></div>
-							<div class="player-data-assists"><span></span></div>
-							<div class="player-data-yellow"><span></span></div>
-							<div class="player-data-red"><span></span></div>
-							<div class="player-data-psr"><span></span></div>
-							<div class="player-data-rating"><span></span></div>
-							<div class="player-data-motm"><span></span></div>
+							<div class="player-data-apps"></div>
+							<div class="player-data-minutes"></div>
+							<div class="player-data-goals"></div>
+							<div class="player-data-assists"></div>
+							<div class="player-data-yellow"></div>
+							<div class="player-data-red"></div>
+							<div class="player-data-psr"></div>
+							<div class="player-data-rating"></div>
+							<div class="player-data-motm"></div>
 						</div>
 					</div>
 			</div>

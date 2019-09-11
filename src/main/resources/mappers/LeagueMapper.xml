@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.green.portfolio.dao.LeagueDAO">
   <select id="getSchedule" resultType="kr.green.portfolio.vo.ScheduleVO">
-    select * from schedule where roundNum = #{roundNum}
+    select * from schedule where roundNum = #{roundNum} and leagueNum = #{leagueNum}
   </select>
   <select id="getTeamTable" resultType="kr.green.portfolio.vo.TeamVO">
     select * from teams order by points desc

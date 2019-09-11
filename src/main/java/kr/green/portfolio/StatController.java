@@ -41,11 +41,11 @@ public class StatController {
 	 * Simply selects the home view to render by returning its name.
 	 */
 
-	@RequestMapping(value = "/premierleague", method = RequestMethod.GET)
-	public String leagueGet(Model model, ScheduleVO sVo, Integer roundNum, TeamVO tVo, GoalStandingsVO gVo,
+	@RequestMapping(value = "/PremierLeague", method = RequestMethod.GET)
+	public String premierleagueGet(Model model, ScheduleVO sVo, Integer roundNum, TeamVO tVo, GoalStandingsVO gVo,
 			AssistStandingsVO aVo, RatingStandingsVO rVo, Integer leagueNum) {
-
-		ArrayList<ScheduleVO> schedule = leagueService.getSchedule(sVo, roundNum);
+		leagueNum = 1;
+		ArrayList<ScheduleVO> schedule = leagueService.getSchedule(sVo, roundNum, leagueNum);
 		ArrayList<TeamVO> teamTable = leagueService.getTeamTable(tVo);
 		ArrayList<GoalStandingsVO> goals = leagueService.getGoals(gVo);
 		ArrayList<AssistStandingsVO> assists = leagueService.getAssists(aVo);
@@ -59,9 +59,72 @@ public class StatController {
 		model.addAttribute("rating", rating);
 		model.addAttribute("leagueNum", leagueNum);
 
-		return "/leagues/league";
+		return "/leagues/PremierLeague";
 	}
 
+	@RequestMapping(value = "/LaLiga", method = RequestMethod.GET)
+	public String laligaGet(Model model, ScheduleVO sVo, Integer roundNum, TeamVO tVo, GoalStandingsVO gVo,
+			AssistStandingsVO aVo, RatingStandingsVO rVo, Integer leagueNum) {
+		leagueNum = 2;
+		ArrayList<ScheduleVO> schedule = leagueService.getSchedule(sVo, roundNum, leagueNum);
+		ArrayList<TeamVO> teamTable = leagueService.getTeamTable(tVo);
+		ArrayList<GoalStandingsVO> goals = leagueService.getGoals(gVo);
+		ArrayList<AssistStandingsVO> assists = leagueService.getAssists(aVo);
+		ArrayList<RatingStandingsVO> rating = leagueService.getRating(rVo);
+
+		model.addAttribute("schedule", schedule);
+		model.addAttribute("roundNum", roundNum);
+		model.addAttribute("teamTable", teamTable);
+		model.addAttribute("goals", goals);
+		model.addAttribute("assists", assists);
+		model.addAttribute("rating", rating);
+		model.addAttribute("leagueNum", leagueNum);
+
+		return "/leagues/LaLiga";
+	}
+	
+	@RequestMapping(value = "/BundesLiga", method = RequestMethod.GET)
+	public String bundesligaGet(Model model, ScheduleVO sVo, Integer roundNum, TeamVO tVo, GoalStandingsVO gVo,
+			AssistStandingsVO aVo, RatingStandingsVO rVo, Integer leagueNum) {
+		leagueNum = 3;
+		ArrayList<ScheduleVO> schedule = leagueService.getSchedule(sVo, roundNum, leagueNum);
+		ArrayList<TeamVO> teamTable = leagueService.getTeamTable(tVo);
+		ArrayList<GoalStandingsVO> goals = leagueService.getGoals(gVo);
+		ArrayList<AssistStandingsVO> assists = leagueService.getAssists(aVo);
+		ArrayList<RatingStandingsVO> rating = leagueService.getRating(rVo);
+
+		model.addAttribute("schedule", schedule);
+		model.addAttribute("roundNum", roundNum);
+		model.addAttribute("teamTable", teamTable);
+		model.addAttribute("goals", goals);
+		model.addAttribute("assists", assists);
+		model.addAttribute("rating", rating);
+		model.addAttribute("leagueNum", leagueNum);
+
+		return "/leagues/BundesLiga";
+	}
+	
+	@RequestMapping(value = "/SerieA", method = RequestMethod.GET)
+	public String serieaGet(Model model, ScheduleVO sVo, Integer roundNum, TeamVO tVo, GoalStandingsVO gVo,
+			AssistStandingsVO aVo, RatingStandingsVO rVo, Integer leagueNum) {
+		leagueNum = 4;
+		ArrayList<ScheduleVO> schedule = leagueService.getSchedule(sVo, roundNum, leagueNum);
+		ArrayList<TeamVO> teamTable = leagueService.getTeamTable(tVo);
+		ArrayList<GoalStandingsVO> goals = leagueService.getGoals(gVo);
+		ArrayList<AssistStandingsVO> assists = leagueService.getAssists(aVo);
+		ArrayList<RatingStandingsVO> rating = leagueService.getRating(rVo);
+
+		model.addAttribute("schedule", schedule);
+		model.addAttribute("roundNum", roundNum);
+		model.addAttribute("teamTable", teamTable);
+		model.addAttribute("goals", goals);
+		model.addAttribute("assists", assists);
+		model.addAttribute("rating", rating);
+		model.addAttribute("leagueNum", leagueNum);
+
+		return "/leagues/SerieA";
+	}
+	
 	@RequestMapping(value = "/championsLeague", method = RequestMethod.GET)
 	public String championsLeagueGet() {
 		return "/tournaments/tournament";
@@ -85,8 +148,9 @@ public class StatController {
 
 	@RequestMapping(value = "/comparison", method = RequestMethod.POST)
 	@ResponseBody
-	public Map<Object, Object> comparisonList(@RequestBody String league, @RequestBody String season,
+	public Map<Object, Object> comparisonPost(@RequestBody String league, @RequestBody String season,
 			@RequestBody String team, @RequestBody String playerName) {
+		
 		Map<Object, Object> map = new HashMap<Object, Object>();
 		league = league.substring(0, league.length() - 1);
 		season = season.substring(0, season.length() - 5);

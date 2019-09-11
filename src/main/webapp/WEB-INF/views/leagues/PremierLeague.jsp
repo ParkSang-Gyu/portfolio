@@ -30,29 +30,35 @@
 	width: 1140px;
 	position: relative;
 }
-table th{
+th,td{
 	font-size: 12px;
+	text-align: center;
 }
 button{
 	background-color: white;
 	border: white;
 }
-.standings div{
-	width: 375px;
+.goalStandings{
+	width: 340px;
 	display: inline-block;
 }
 .assistStandings{
-	margin-left: 6px;
+	width: 410px;
+	display: inline-block;
 }
 .ratingStandings{
-	float: right;
+	width: 370px;
+	display: inline-block;
+}
+.assistStandings,.ratingStandings{
+	margin-left: 5px;
 }
 </style>
 <script type="text/javascript">
 $(document).ready(function () {
 	$('a').addClass('color-black')
 	$('#roundNum').change(function () {
-		location.href = '<%=request.getContextPath()%>/premierleague?roundNum='+$(this).val();
+		location.href = '<%=request.getContextPath()%>/PremierLeague?roundNum='+$(this).val();
 	})
 	$('.list1').click(function(){
    		$('#leaguelist').collapse('show')
@@ -73,10 +79,10 @@ $(document).ready(function () {
 			<a href="<%=request.getContextPath()%>/statistics"><button type="button" class="btn btn-dark">statistics</button></a>
 			<a href="<%=request.getContextPath()%>/comparison"><button type="button" class="btn btn-dark">comparison</button></a><br>	
 			<div class="collapse" id="leaguelist">
-			   	<a class="dropdown-item" href="<%=request.getContextPath()%>/premierleague?roundNum=1">Premier League</a>
-			   	<a class="dropdown-item" href="<%=request.getContextPath()%>/laliga?roundNum=1">La Liga</a>
-			   	<a class="dropdown-item" href="<%=request.getContextPath()%>/bundesliga?roundNum=1">Bundes Liga</a>
-			   	<a class="dropdown-item" href="<%=request.getContextPath()%>/seriea?roundNum=1">Serie A</a>
+			   	<a class="dropdown-item" href="<%=request.getContextPath()%>/PremierLeague?roundNum=1">Premier League</a>
+			   	<a class="dropdown-item" href="<%=request.getContextPath()%>/LaLiga?roundNum=1">La Liga</a>
+			   	<a class="dropdown-item" href="<%=request.getContextPath()%>/BundesLiga?roundNum=1">Bundes Liga</a>
+			   	<a class="dropdown-item" href="<%=request.getContextPath()%>/SerieA?roundNum=1">Serie A</a>
 		  	</div>
 		  	<div class="collapse" id="tournamentlist">
 		   		<a class="dropdown-item" href="<%=request.getContextPath()%>/championsLeague">Champions League</a>
