@@ -1,6 +1,7 @@
 $(document).ready(function () {
 	var box = [$('.player-box1'),$('.player-box2'),$('.player-box3'),$('.player-box4')];
 	var cnt = [];
+	var player = [];
 	var click = 1;
 	$('select[name=league]').change(function(){
 		var league = $(this).val();
@@ -53,6 +54,7 @@ $(document).ready(function () {
 	$('select[name=player]').change(function () {
 		var num = $(this).parent().attr('id');
 		var search = cnt.indexOf(num);
+		player = $(this).val();
 		if(search == -1){
 			cnt.push(num);
 			cnt.sort()
@@ -73,7 +75,6 @@ $(document).ready(function () {
 		var index = 0;
 		$('select[name=player]').each(function(){
 			var playerName = $('select[name=player]').eq(index).val();
-			console.log(playerName)
 			if(/*playerName != null && */playerName !=''){
 				$.ajax({
 			        async:false,
@@ -178,13 +179,16 @@ $(document).ready(function () {
 	$('.closeComparison').click(function () {
 		$(this).addClass('display-none');
 		$(this).siblings().addClass('display-none');
+		
 		click--;
 		var id = $(this).siblings().attr('id');
 		if(id == 3){
 			box[2].addClass('display-none');
+			player.splice(3,1)
 		}else if(id == 4){
 			box[3].addClass('display-none');
 		}
+		console.log(player)
 	})
 })
 
