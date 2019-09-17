@@ -190,8 +190,8 @@ public class StatController {
 	*/
 	@RequestMapping(value = "/comparison", method = RequestMethod.POST)
 	@ResponseBody
-	public Map<Object, Object> comparisonPost(String league, String season, String leagueName, String team, String playerName) {
-		System.out.println(league);
+	public Map<Object, Object> comparisonPost(String league, String season, String team, String playerName) {
+		
 		Map<Object, Object> map = new HashMap<Object, Object>();
 
 		try {
@@ -210,12 +210,11 @@ public class StatController {
 					 
 		map.put("league", league);
 		map.put("season", season);
-		map.put("leagueName", leagueName);
 		map.put("team", team);
 		map.put("playerName", playerName);
 		
 		ArrayList<String> seasonList = leagueService.getSeasonList(league);
-		ArrayList<String> teamList = leagueService.getTeamList(season,leagueName);
+		ArrayList<String> teamList = leagueService.getTeamList(season,league);
 		ArrayList<String> playerList = leagueService.getPlayerList(team);
 		PlayerVO playerStat = leagueService.getPlayerStat(playerName);
 
@@ -223,7 +222,6 @@ public class StatController {
 		map.put("teamList", teamList);
 		map.put("playerList", playerList);
 		map.put("playerStat", playerStat);
-		System.out.println(league);
 		
 		return map;
 	}

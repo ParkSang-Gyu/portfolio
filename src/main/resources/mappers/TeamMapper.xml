@@ -13,6 +13,6 @@
     select * from players where player = #{player}
   </select>
   <select id="getTeamList" resultType="String">
-    select name from teams where seasonStart = #{season} and league = #{leagueName}
+    select name from teams where seasonStart = #{season} and league = #{league}
   </select>
 </mapper>

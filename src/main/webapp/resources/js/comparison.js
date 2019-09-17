@@ -25,13 +25,11 @@ $(document).ready(function () {
 	});
 	$('select[name=season]').change(function(){
 		var season = $(this).val();
-		var leagueName = $(this).prev().val();
+		var league = $(this).prev().val();
 		var obj = $(this);
-		console.log(season)
-		console.log(leagueName)
 		$.ajax({
 	        type:'POST',
-	        data:{'season':season,'leagueName':leagueName},
+	        data:{'season':season,'league':league},
 	        url:"/portfolio/comparison",
 	        success : function(data){
 	        	var str = '<option>팀</option>';
@@ -43,11 +41,13 @@ $(document).ready(function () {
 	    });
 	});
 	$('select[name=team]').change(function(){
+		var season = $(this).prev().val();
+		var league = $(this).siblings('.league').val();
 		var team = $(this).val();
 		var obj = $(this);
 		$.ajax({
 	        type:'POST',
-	        data:{'season':season,'leagueName':leagueName, 'team':team},
+	        data:{'season':season,'league':league, 'team':team},
 	        url:"/portfolio/comparison",
 	        success : function(data){
 	        	var str = '<option>선수</option>';

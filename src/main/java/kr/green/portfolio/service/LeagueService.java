@@ -30,7 +30,7 @@ public interface LeagueService {
 
 	ArrayList<String> getSeasonList(String league);
 
-	ArrayList<String> getTeamList(String season, String leagueName);
+	ArrayList<String> getTeamList(String season, String league);
 
 	ArrayList<String> getPlayerList(String team);
 

@@ -80,9 +80,9 @@ public class LeagueServiceImp implements LeagueService{
 	}
 
 	@Override
-	public ArrayList<String> getTeamList(String season,String leagueName) {
+	public ArrayList<String> getTeamList(String season,String league) {
 		
-		return teamDao.getTeamList(season,leagueName);
+		return teamDao.getTeamList(season,league);
 	}
 
 	@Override
