@@ -2,6 +2,7 @@ $(document).ready(function () {
 	var box = [$('.player-box1'),$('.player-box2'),$('.player-box3'),$('.player-box4')];
 	var cnt = [];
 	var click = 1;
+	var num = 0;
 	$('select[name=league]').change(function(){
 		var league = $(this).val();
 		var obj = $(this);
@@ -51,11 +52,11 @@ $(document).ready(function () {
 	    })
 	});
 	$('select[name=player]').change(function () {
-		var num = $(this).parent().attr('id');
+		num = $(this).parent().attr('id');
 		var search = cnt.indexOf(num);
 		if(search == -1){
 			cnt.push(num);
-			cnt.sort()
+			cnt.sort();
 		}
 	})
     $('.plus-btn').click(function () {
@@ -65,6 +66,8 @@ $(document).ready(function () {
 			$('.comparisonSelect3').siblings().removeClass('display-none');
 		}
 		if(click == 3){
+			$('.comparisonSelect3').removeClass('display-none');
+			$('.comparisonSelect3').siblings().removeClass('display-none');
 			$('.comparisonSelect4').removeClass('display-none');
 			$('.comparisonSelect4').siblings().removeClass('display-none');
 		}
@@ -129,7 +132,7 @@ $(document).ready(function () {
 			  			    $('.player-stat2').find('.player-data-rating').html(rating);
 			  			    $('.player-stat2').find('.player-data-motm').html(motm);
 			  			    box[1].removeClass('display-none');
-						}else if(index == 2 && click == 2){
+						}else if(index == 2){
 							$('.player-info3').find('.player-name').html(player);
 			  			    $('.player-info3').find('.team-name').html(team);
 			  			    $('.player-info3').find('.tournament-name').html(league);
@@ -145,8 +148,14 @@ $(document).ready(function () {
 						    $('.player-stat3').find('.player-data-psr').html(psr);
 						    $('.player-stat3').find('.player-data-rating').html(rating);
 						    $('.player-stat3').find('.player-data-motm').html(motm);
-						    box[2].removeClass('display-none');
-						}else if(index == 3 && click == 3){
+						    if(click == 2){
+						    	box[2].removeClass('display-none');
+						    }
+						    /*var search = cnt.indexOf("3");
+							if(search != -1){
+								box[2].removeClass('display-none');
+							}*/
+						}else if(index == 3){
 							$('.player-info4').find('.player-name').html(player);
 			  			    $('.player-info4').find('.team-name').html(team);
 			  			    $('.player-info4').find('.tournament-name').html(league);
@@ -162,7 +171,14 @@ $(document).ready(function () {
 						    $('.player-stat4').find('.player-data-psr').html(psr);
 						    $('.player-stat4').find('.player-data-rating').html(rating);
 						    $('.player-stat4').find('.player-data-motm').html(motm);
-						    box[3].removeClass('display-none');
+						    if(click == 3){
+						    	box[2].removeClass('display-none');
+						    	box[3].removeClass('display-none');
+						    }
+						    /*var search = cnt.indexOf("4");
+							if(search != -1){
+								box[3].removeClass('display-none');
+							}*/
 						}	
 			        }
 		        })
@@ -178,13 +194,15 @@ $(document).ready(function () {
 		$(this).addClass('display-none');
 		$(this).siblings().addClass('display-none');
 		click--;
-		//console.log(click)
-		var id = $(this).siblings().attr('id');
-		if(id == 3){
+		num = $(this).siblings().attr('id');
+		if(num == 3){
+			cnt.splice(cnt.indexOf("3"),1);
 			box[2].addClass('display-none');
-		}else if(id == 4){
+		}else if(num == 4){
+			cnt.splice(cnt.indexOf("4"),1);
 			box[3].addClass('display-none');
 		}
+		console.log(click)
 	})
 })
 

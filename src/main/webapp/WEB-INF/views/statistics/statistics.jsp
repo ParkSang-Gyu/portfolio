@@ -5,9 +5,25 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Statistics</title>
+<style type="text/css">
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+.container{
+	width: 1140px;
+}
+.main{
+	width: 1140px;
+	height: auto;
+}
+</style>
 </head>
 <body>
-
+<div class="main">
+	
+</div>
 </body>
 </html>

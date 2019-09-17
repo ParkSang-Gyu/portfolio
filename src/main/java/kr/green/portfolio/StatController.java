@@ -125,20 +125,16 @@ public class StatController {
 		return "/leagues/SerieA";
 	}
 	
-	@RequestMapping(value = "/championsLeague", method = RequestMethod.GET)
-	public String championsLeagueGet() {
-		return "/tournaments/tournament";
-	}
-
-	@RequestMapping(value = "/europaLeague", method = RequestMethod.GET)
-	public String europaLeagueGet() {
-		return "/tournaments/tournament";
-	}
-
-	@RequestMapping(value = "/statistics", method = RequestMethod.GET)
-	public String statisticsGet() {
-		return "/statistics/statistics";
-	}
+	/*
+	 * @RequestMapping(value = "/championsLeague", method = RequestMethod.GET)
+	 * public String championsLeagueGet() { return "/tournaments/tournament"; }
+	 * 
+	 * @RequestMapping(value = "/europaLeague", method = RequestMethod.GET) public
+	 * String europaLeagueGet() { return "/tournaments/tournament"; }
+	 * 
+	 * @RequestMapping(value = "/statistics", method = RequestMethod.GET) public
+	 * String statisticsGet() { return "/statistics/statistics"; }
+	 */
 
 	@RequestMapping(value = "/comparison", method = RequestMethod.GET)
 	public ModelAndView comparisonGet(ModelAndView mv) {

@@ -14,7 +14,6 @@
 }
 .container{
 	width: 1140px;
-	
 }
 .container-box{
 	width: 100%;	
@@ -191,8 +190,8 @@ i{
 	<div class="container-box">
 		<div class="container-top">
 			<button type="button" class="btn btn-dark dropdown-toggle list1" data-toggle="collapse" data-target="#leaguelist">leaguelist</button>	
-		 	<button type="button" class="btn btn-dark dropdown-toggle list2" data-toggle="collapse" data-target="#tournamentlist">tournamentlist</button>	
-			<a href="<%=request.getContextPath()%>/statistics"><button type="button" class="btn btn-dark">statistics</button></a>
+		 	<%-- <button type="button" class="btn btn-dark dropdown-toggle list2" data-toggle="collapse" data-target="#tournamentlist">tournamentlist</button>	
+			<a href="<%=request.getContextPath()%>/statistics"><button type="button" class="btn btn-dark">statistics</button></a> --%>
 			<a href="<%=request.getContextPath()%>/comparison"><button type="button" class="btn btn-dark">comparison</button></a><br>	
 			<div class="collapse" id="leaguelist">
 			   	<a class="dropdown-item" href="<%=request.getContextPath()%>/premierleague?roundNum=1">Premier League</a>
@@ -200,10 +199,10 @@ i{
 			   	<a class="dropdown-item" href="<%=request.getContextPath()%>/bundesliga?roundNum=1">Bundes Liga</a>
 			   	<a class="dropdown-item" href="<%=request.getContextPath()%>/seriea?roundNum=1">Serie A</a>
 		  	</div>
-		  	<div class="collapse" id="tournamentlist">
+		  	<%-- <div class="collapse" id="tournamentlist">
 		   		<a class="dropdown-item" href="<%=request.getContextPath()%>/championsLeague">Champions League</a>
 		   		<a class="dropdown-item" href="<%=request.getContextPath()%>/europaLeague">Europa League</a>
-		 	</div>
+		 	</div> --%>
 	 	</div>
 		<h2>Player Comparison</h2>
 		<div class="container-middle">

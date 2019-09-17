@@ -39,8 +39,8 @@ $(document).ready(function(){
 	<div class="container">
 		<div>
 			<button type="button" class="btn btn-dark dropdown-toggle list1" data-toggle="collapse" data-target="#leaguelist">leaguelist</button>	
-		 	<button type="button" class="btn btn-dark dropdown-toggle list2" data-toggle="collapse" data-target="#tournamentlist">tournamentlist</button>	
-			<a href="<%=request.getContextPath()%>/statistics"><button type="button" class="btn btn-dark">statistics</button></a>
+		 	<%-- <button type="button" class="btn btn-dark dropdown-toggle list2" data-toggle="collapse" data-target="#tournamentlist">tournamentlist</button>	
+			<a href="<%=request.getContextPath()%>/statistics"><button type="button" class="btn btn-dark">statistics</button></a> --%>
 			<a href="<%=request.getContextPath()%>/comparison"><button type="button" class="btn btn-dark">comparison</button></a><br>	
 			<div class="collapse" id="leaguelist">
 			   	<a class="dropdown-item" href="<%=request.getContextPath()%>/PremierLeague?roundNum=1">Premier League</a>
@@ -48,10 +48,10 @@ $(document).ready(function(){
 			   	<a class="dropdown-item" href="<%=request.getContextPath()%>/BundesLiga?roundNum=1">Bundesriga</a>
 			   	<a class="dropdown-item" href="<%=request.getContextPath()%>/SerieA?roundNum=1">Seria A</a>
 		  	</div>
-		  	<div class="collapse" id="tournamentlist">
+		  	<!-- <div class="collapse" id="tournamentlist">
 		   		<a class="dropdown-item" href="#">Champions League</a>
 		   		<a class="dropdown-item" href="#">Europa League</a>
-		 	</div>
+		 	</div> -->
 	 	</div>
 		<div class="main">
 			<img alt="사진을 불러올 수 없습니다." src="${pageContext.request.contextPath}/resources/img/mainbackground.jpg">
