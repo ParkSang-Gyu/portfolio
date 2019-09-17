@@ -16,7 +16,7 @@ public interface LeagueDAO {
 	
 	ArrayList<ScheduleVO> getSchedule(@Param("sVo")ScheduleVO sVo,@Param("roundNum")Integer roundNum,@Param("leagueNum")Integer leagueNum);
 
-	ArrayList<TeamVO> getTeamTable(@Param("tVo")TeamVO tVo);
+	ArrayList<TeamVO> getTeamTable(@Param("tVo")TeamVO tVo,@Param("leagueNum")Integer leagueNum);
 
 	ArrayList<GoalStandingsVO> getGoals(@Param("gVo")GoalStandingsVO gVo);
 

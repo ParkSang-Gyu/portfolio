@@ -20,7 +20,7 @@ public interface LeagueService {
 
 	PlayerVO getPlayer(String player);
 
-	ArrayList<TeamVO> getTeamTable(TeamVO tVo);
+	ArrayList<TeamVO> getTeamTable(TeamVO tVo, Integer leagueNum);
 
 	ArrayList<GoalStandingsVO> getGoals(GoalStandingsVO gVo);
 
@@ -30,7 +30,7 @@ public interface LeagueService {
 
 	ArrayList<String> getSeasonList(String league);
 
-	ArrayList<String> getTeamList(String season);
+	ArrayList<String> getTeamList(String season, String leagueName);
 
 	ArrayList<String> getPlayerList(String team);
 

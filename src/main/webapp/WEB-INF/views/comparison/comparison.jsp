@@ -146,6 +146,12 @@ i{
     width: 100%;
     visibility: visible;
 }
+.player-stat-box{
+	text-align: center;
+}
+.player-stat-box div{
+	border-bottom: 1px solid #F1F1F1;
+}
 .player-info-top{
 	text-align: center;
     background-color: #DAD8DA;
@@ -161,6 +167,10 @@ i{
 	height: 150px;
     display: inline-block;
     vertical-align: top;
+}
+.player-info-left img{
+	width: 110px;
+	height: 140px;
 }
 .player-info-right{
 	width: 124px;
@@ -194,10 +204,10 @@ i{
 			<a href="<%=request.getContextPath()%>/statistics"><button type="button" class="btn btn-dark">statistics</button></a> --%>
 			<a href="<%=request.getContextPath()%>/comparison"><button type="button" class="btn btn-dark">comparison</button></a><br>	
 			<div class="collapse" id="leaguelist">
-			   	<a class="dropdown-item" href="<%=request.getContextPath()%>/premierleague?roundNum=1">Premier League</a>
-			   	<a class="dropdown-item" href="<%=request.getContextPath()%>/laliga?roundNum=1">La Liga</a>
-			   	<a class="dropdown-item" href="<%=request.getContextPath()%>/bundesliga?roundNum=1">Bundes Liga</a>
-			   	<a class="dropdown-item" href="<%=request.getContextPath()%>/seriea?roundNum=1">Serie A</a>
+			   	<a class="dropdown-item" href="<%=request.getContextPath()%>/PremierLeague?roundNum=1">Premier League</a>
+			   	<a class="dropdown-item" href="<%=request.getContextPath()%>/LaLiga?roundNum=1">La Liga</a>
+			   	<a class="dropdown-item" href="<%=request.getContextPath()%>/BundesLiga?roundNum=1">Bundes Liga</a>
+			   	<a class="dropdown-item" href="<%=request.getContextPath()%>/SerieA?roundNum=1">Serie A</a>
 		  	</div>
 		  	<%-- <div class="collapse" id="tournamentlist">
 		   		<a class="dropdown-item" href="<%=request.getContextPath()%>/championsLeague">Champions League</a>
@@ -300,7 +310,7 @@ i{
 					</div>
 					<div class="player-info-bottom">
 						<div class="player-info-left">
-							<img alt="사진을 불러올 수 없습니다." src="${pageContext.request.contextPath}/resources/img/players/${playerName}.jpg">
+							<img alt="사진을 불러올 수 없습니다." src="${pageContext.request.contextPath}/resources/img/players/${playerImg}.jpg">
 						</div>
 						<div class="player-info-right">
 							<div class="player-info-teamimage">

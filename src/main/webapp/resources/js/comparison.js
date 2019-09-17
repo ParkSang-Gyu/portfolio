@@ -8,7 +8,7 @@ $(document).ready(function () {
 		var obj = $(this);
 		$.ajax({
 	        type:'POST',
-	        data:league,
+	        data:{'league' : league},
 	        url:"/portfolio/comparison",
 	        success : function(data){
 	        	var str = '<option>시즌</option>';
@@ -17,14 +17,21 @@ $(document).ready(function () {
 	           	}
 	           	obj.siblings('select[name=season]').html(str);
 	        },
+	        error:function(request,status,error){
+	            console.log( request.responseText ); // 실패 시 처리
+	           }
+
 	    });
 	});
 	$('select[name=season]').change(function(){
 		var season = $(this).val();
+		var leagueName = $(this).prev().val();
 		var obj = $(this);
+		console.log(season)
+		console.log(leagueName)
 		$.ajax({
 	        type:'POST',
-	        data:season,
+	        data:{'season':season,'leagueName':leagueName},
 	        url:"/portfolio/comparison",
 	        success : function(data){
 	        	var str = '<option>팀</option>';
@@ -40,7 +47,7 @@ $(document).ready(function () {
 		var obj = $(this);
 		$.ajax({
 	        type:'POST',
-	        data:team,
+	        data:{'season':season,'leagueName':leagueName, 'team':team},
 	        url:"/portfolio/comparison",
 	        success : function(data){
 	        	var str = '<option>선수</option>';
@@ -98,7 +105,9 @@ $(document).ready(function () {
 						var psr = data.playerStat.psr;
 						var rating = data.playerStat.rating;
 						var motm = data.playerStat.motm;
+						//var str = '<img alt="사진을 불러올 수 없습니다." src="${pageContext.request.contextPath}/resources/img/players/${playerImg}.jpg">';
 						if(index == 0){
+							//$('.player-info1').find('.player-info-left').html(str)
 							$('.player-info1').find('.player-name').html(player);
 							$('.player-info1').find('.team-name').html(team);
 							$('.player-info1').find('.tournament-name').html(league);

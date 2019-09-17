@@ -46,7 +46,7 @@ public class StatController {
 			AssistStandingsVO aVo, RatingStandingsVO rVo, Integer leagueNum) {
 		leagueNum = 1;
 		ArrayList<ScheduleVO> schedule = leagueService.getSchedule(sVo, roundNum, leagueNum);
-		ArrayList<TeamVO> teamTable = leagueService.getTeamTable(tVo);
+		ArrayList<TeamVO> teamTable = leagueService.getTeamTable(tVo,leagueNum);
 		ArrayList<GoalStandingsVO> goals = leagueService.getGoals(gVo);
 		ArrayList<AssistStandingsVO> assists = leagueService.getAssists(aVo);
 		ArrayList<RatingStandingsVO> rating = leagueService.getRating(rVo);
@@ -67,7 +67,7 @@ public class StatController {
 			AssistStandingsVO aVo, RatingStandingsVO rVo, Integer leagueNum) {
 		leagueNum = 2;
 		ArrayList<ScheduleVO> schedule = leagueService.getSchedule(sVo, roundNum, leagueNum);
-		ArrayList<TeamVO> teamTable = leagueService.getTeamTable(tVo);
+		ArrayList<TeamVO> teamTable = leagueService.getTeamTable(tVo,leagueNum);
 		ArrayList<GoalStandingsVO> goals = leagueService.getGoals(gVo);
 		ArrayList<AssistStandingsVO> assists = leagueService.getAssists(aVo);
 		ArrayList<RatingStandingsVO> rating = leagueService.getRating(rVo);
@@ -88,7 +88,7 @@ public class StatController {
 			AssistStandingsVO aVo, RatingStandingsVO rVo, Integer leagueNum) {
 		leagueNum = 3;
 		ArrayList<ScheduleVO> schedule = leagueService.getSchedule(sVo, roundNum, leagueNum);
-		ArrayList<TeamVO> teamTable = leagueService.getTeamTable(tVo);
+		ArrayList<TeamVO> teamTable = leagueService.getTeamTable(tVo,leagueNum);
 		ArrayList<GoalStandingsVO> goals = leagueService.getGoals(gVo);
 		ArrayList<AssistStandingsVO> assists = leagueService.getAssists(aVo);
 		ArrayList<RatingStandingsVO> rating = leagueService.getRating(rVo);
@@ -109,7 +109,7 @@ public class StatController {
 			AssistStandingsVO aVo, RatingStandingsVO rVo, Integer leagueNum) {
 		leagueNum = 4;
 		ArrayList<ScheduleVO> schedule = leagueService.getSchedule(sVo, roundNum, leagueNum);
-		ArrayList<TeamVO> teamTable = leagueService.getTeamTable(tVo);
+		ArrayList<TeamVO> teamTable = leagueService.getTeamTable(tVo,leagueNum);
 		ArrayList<GoalStandingsVO> goals = leagueService.getGoals(gVo);
 		ArrayList<AssistStandingsVO> assists = leagueService.getAssists(aVo);
 		ArrayList<RatingStandingsVO> rating = leagueService.getRating(rVo);
@@ -137,19 +137,23 @@ public class StatController {
 	 */
 
 	@RequestMapping(value = "/comparison", method = RequestMethod.GET)
-	public ModelAndView comparisonGet(ModelAndView mv) {
+	public ModelAndView comparisonGet(ModelAndView mv,String playerName,String team) {
+		
+		mv.addObject("playerImg", playerName); 
+		mv.addObject("teamImg", team); 
 		mv.setViewName("/comparison/comparison");
 		return mv;
 	}
-
+/*
 	@RequestMapping(value = "/comparison", method = RequestMethod.POST)
 	@ResponseBody
-	public Map<Object, Object> comparisonPost(@RequestBody String league, @RequestBody String season,
-			@RequestBody String team, @RequestBody String playerName) {
+	public Map<Object, Object> comparisonPost(String league,  String season,  String leagueName,
+			 String team,  String playerName) {
 		
 		Map<Object, Object> map = new HashMap<Object, Object>();
 		league = league.substring(0, league.length() - 1);
 		season = season.substring(0, season.length() - 5);
+		leagueName = leagueName.substring(0, leagueName.length() - 1);
 		try {
 			team = URLDecoder.decode(team, "UTF-8");
 			team = team.substring(0, team.length() - 1);
@@ -166,11 +170,12 @@ public class StatController {
 					 
 		map.put("league", league);
 		map.put("season", season);
+		map.put("leagueName", leagueName);
 		map.put("team", team);
 		map.put("playerName", playerName);
 		
 		ArrayList<String> seasonList = leagueService.getSeasonList(league);
-		ArrayList<String> teamList = leagueService.getTeamList(season);
+		ArrayList<String> teamList = leagueService.getTeamList(season,leagueName);
 		ArrayList<String> playerList = leagueService.getPlayerList(team);
 		PlayerVO playerStat = leagueService.getPlayerStat(playerName);
 
@@ -178,6 +183,47 @@ public class StatController {
 		map.put("teamList", teamList);
 		map.put("playerList", playerList);
 		map.put("playerStat", playerStat);
+		System.out.println(league);
+		
+		return map;
+	}
+	*/
+	@RequestMapping(value = "/comparison", method = RequestMethod.POST)
+	@ResponseBody
+	public Map<Object, Object> comparisonPost(String league, String season, String leagueName, String team, String playerName) {
+		System.out.println(league);
+		Map<Object, Object> map = new HashMap<Object, Object>();
+
+		try {
+			if(team!=null)
+			team = URLDecoder.decode(team, "UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try { 
+			if(playerName!=null)
+			playerName = URLDecoder.decode(playerName, "UTF-8"); ; 
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace(); 
+		}
+					 
+		map.put("league", league);
+		map.put("season", season);
+		map.put("leagueName", leagueName);
+		map.put("team", team);
+		map.put("playerName", playerName);
+		
+		ArrayList<String> seasonList = leagueService.getSeasonList(league);
+		ArrayList<String> teamList = leagueService.getTeamList(season,leagueName);
+		ArrayList<String> playerList = leagueService.getPlayerList(team);
+		PlayerVO playerStat = leagueService.getPlayerStat(playerName);
+
+		map.put("seasonList", seasonList);
+		map.put("teamList", teamList);
+		map.put("playerList", playerList);
+		map.put("playerStat", playerStat);
+		System.out.println(league);
 		
 		return map;
 	}
