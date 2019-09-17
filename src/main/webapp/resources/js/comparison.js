@@ -1,7 +1,6 @@
 $(document).ready(function () {
 	var box = [$('.player-box1'),$('.player-box2'),$('.player-box3'),$('.player-box4')];
 	var cnt = [];
-	var player = [];
 	var click = 1;
 	$('select[name=league]').change(function(){
 		var league = $(this).val();
@@ -54,7 +53,6 @@ $(document).ready(function () {
 	$('select[name=player]').change(function () {
 		var num = $(this).parent().attr('id');
 		var search = cnt.indexOf(num);
-		player = $(this).val();
 		if(search == -1){
 			cnt.push(num);
 			cnt.sort()
@@ -131,7 +129,7 @@ $(document).ready(function () {
 			  			    $('.player-stat2').find('.player-data-rating').html(rating);
 			  			    $('.player-stat2').find('.player-data-motm').html(motm);
 			  			    box[1].removeClass('display-none');
-						}else if(index == 2){
+						}else if(index == 2 && click == 2){
 							$('.player-info3').find('.player-name').html(player);
 			  			    $('.player-info3').find('.team-name').html(team);
 			  			    $('.player-info3').find('.tournament-name').html(league);
@@ -148,7 +146,7 @@ $(document).ready(function () {
 						    $('.player-stat3').find('.player-data-rating').html(rating);
 						    $('.player-stat3').find('.player-data-motm').html(motm);
 						    box[2].removeClass('display-none');
-						}else if(index == 3){
+						}else if(index == 3 && click == 3){
 							$('.player-info4').find('.player-name').html(player);
 			  			    $('.player-info4').find('.team-name').html(team);
 			  			    $('.player-info4').find('.tournament-name').html(league);
@@ -179,16 +177,14 @@ $(document).ready(function () {
 	$('.closeComparison').click(function () {
 		$(this).addClass('display-none');
 		$(this).siblings().addClass('display-none');
-		
 		click--;
+		//console.log(click)
 		var id = $(this).siblings().attr('id');
 		if(id == 3){
 			box[2].addClass('display-none');
-			player.splice(3,1)
 		}else if(id == 4){
 			box[3].addClass('display-none');
 		}
-		console.log(player)
 	})
 })
 
