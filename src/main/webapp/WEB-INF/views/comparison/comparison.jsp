@@ -122,7 +122,6 @@ i{
 	display: inline-block;
     width: 260px;
     padding-right: 1px;
-    border: 1px solid gray;
 }
 .player-info{
 	text-align: center;
@@ -169,13 +168,21 @@ i{
     vertical-align: top;
 }
 .player-info-left img{
-	width: 110px;
-	height: 140px;
+	width: 120px;
+	height: 150px;
 }
 .player-info-right{
 	width: 124px;
     display: inline-block;
     vertical-align: top;
+}
+.player-info-teamimage img{
+	width: 124px;
+	height: auto;
+	border: 1px solid #F1F1F1;
+}
+.player-info-right div{
+	text-align: center;
 }
 .stat-explanation{
 	width: 1140px;

@@ -45,6 +45,7 @@ public class StatController {
 	public String premierleagueGet(Model model, ScheduleVO sVo, Integer roundNum, TeamVO tVo, GoalStandingsVO gVo,
 			AssistStandingsVO aVo, RatingStandingsVO rVo, Integer leagueNum) {
 		leagueNum = 1;
+		
 		ArrayList<ScheduleVO> schedule = leagueService.getSchedule(sVo, roundNum, leagueNum);
 		ArrayList<TeamVO> teamTable = leagueService.getTeamTable(tVo,leagueNum);
 		ArrayList<GoalStandingsVO> goals = leagueService.getGoals(gVo);
@@ -58,7 +59,7 @@ public class StatController {
 		model.addAttribute("assists", assists);
 		model.addAttribute("rating", rating);
 		model.addAttribute("leagueNum", leagueNum);
-
+		System.out.println(roundNum);
 		return "/leagues/PremierLeague";
 	}
 
@@ -125,69 +126,14 @@ public class StatController {
 		return "/leagues/SerieA";
 	}
 	
-	/*
-	 * @RequestMapping(value = "/championsLeague", method = RequestMethod.GET)
-	 * public String championsLeagueGet() { return "/tournaments/tournament"; }
-	 * 
-	 * @RequestMapping(value = "/europaLeague", method = RequestMethod.GET) public
-	 * String europaLeagueGet() { return "/tournaments/tournament"; }
-	 * 
-	 * @RequestMapping(value = "/statistics", method = RequestMethod.GET) public
-	 * String statisticsGet() { return "/statistics/statistics"; }
-	 */
-
 	@RequestMapping(value = "/comparison", method = RequestMethod.GET)
-	public ModelAndView comparisonGet(ModelAndView mv,String playerName,String team) {
+	public ModelAndView comparisonGet(ModelAndView mv) {
 		
-		mv.addObject("playerImg", playerName); 
-		mv.addObject("teamImg", team); 
 		mv.setViewName("/comparison/comparison");
+		
 		return mv;
 	}
-/*
-	@RequestMapping(value = "/comparison", method = RequestMethod.POST)
-	@ResponseBody
-	public Map<Object, Object> comparisonPost(String league,  String season,  String leagueName,
-			 String team,  String playerName) {
-		
-		Map<Object, Object> map = new HashMap<Object, Object>();
-		league = league.substring(0, league.length() - 1);
-		season = season.substring(0, season.length() - 5);
-		leagueName = leagueName.substring(0, leagueName.length() - 1);
-		try {
-			team = URLDecoder.decode(team, "UTF-8");
-			team = team.substring(0, team.length() - 1);
-		} catch (UnsupportedEncodingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try { 
-			playerName = URLDecoder.decode(playerName, "UTF-8"); 
-			playerName = playerName.substring(0, playerName.length()-1); 
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace(); 
-		}
-					 
-		map.put("league", league);
-		map.put("season", season);
-		map.put("leagueName", leagueName);
-		map.put("team", team);
-		map.put("playerName", playerName);
-		
-		ArrayList<String> seasonList = leagueService.getSeasonList(league);
-		ArrayList<String> teamList = leagueService.getTeamList(season,leagueName);
-		ArrayList<String> playerList = leagueService.getPlayerList(team);
-		PlayerVO playerStat = leagueService.getPlayerStat(playerName);
 
-		map.put("seasonList", seasonList);
-		map.put("teamList", teamList);
-		map.put("playerList", playerList);
-		map.put("playerStat", playerStat);
-		System.out.println(league);
-		
-		return map;
-	}
-	*/
 	@RequestMapping(value = "/comparison", method = RequestMethod.POST)
 	@ResponseBody
 	public Map<Object, Object> comparisonPost(String league, String season, String team, String playerName) {
@@ -215,13 +161,15 @@ public class StatController {
 		
 		ArrayList<String> seasonList = leagueService.getSeasonList(league);
 		ArrayList<String> teamList = leagueService.getTeamList(season,league);
-		ArrayList<String> playerList = leagueService.getPlayerList(team);
+		ArrayList<String> playerList = leagueService.getPlayerList(team,season,league);
 		PlayerVO playerStat = leagueService.getPlayerStat(playerName);
-
+		PlayerVO playerImg = leagueService.getPlayerImg(playerName);
+		
 		map.put("seasonList", seasonList);
 		map.put("teamList", teamList);
 		map.put("playerList", playerList);
 		map.put("playerStat", playerStat);
+		map.put("playerImg", playerImg);
 		
 		return map;
 	}

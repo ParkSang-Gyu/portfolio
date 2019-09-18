@@ -9,6 +9,7 @@ public class LeagueVO {
 	private int seasonStart;
 	private int seasonEnd;
 	private String season;
+	private String team;
 	
 	public int getNum() {
 		return num;
@@ -52,12 +53,17 @@ public class LeagueVO {
 	public void setSeason(String season) {
 		this.season = season;
 	}
+	public String getTeam() {
+		return team;
+	}
+	public void setTeam(String team) {
+		this.team = team;
+	}
 	@Override
 	public String toString() {
 		return "LeagueVO [num=" + num + ", leagueNum=" + leagueNum + ", league=" + league + ", leagueName=" + leagueName
-				+ ", seasonStart=" + seasonStart + ", seasonEnd=" + seasonEnd + ", season=" + season + "]";
+				+ ", seasonStart=" + seasonStart + ", seasonEnd=" + seasonEnd + ", season=" + season + ", team=" + team
+				+ "]";
 	}
-	
-	
 	
 }

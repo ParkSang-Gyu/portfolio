@@ -4,6 +4,7 @@ public class PlayerVO {
 	
 	private int num;
 	private String player;
+	private String playerEng;
 	private String nationality;
 	private int age;
 	private int backNum;
@@ -33,6 +34,12 @@ public class PlayerVO {
 	}
 	public void setPlayer(String player) {
 		this.player = player;
+	}
+	public String getPlayerEng() {
+		return playerEng;
+	}
+	public void setPlayerEng(String playerEng) {
+		this.playerEng = playerEng;
 	}
 	public String getNationality() {
 		return nationality;
@@ -138,11 +145,11 @@ public class PlayerVO {
 	}
 	@Override
 	public String toString() {
-		return "PlayerVO [num=" + num + ", player=" + player + ", nationality=" + nationality + ", age=" + age
-				+ ", backNum=" + backNum + ", position=" + position + ", team=" + team + ", height=" + height
-				+ ", weight=" + weight + ", appearances=" + appearances + ", minutes=" + minutes + ", goals=" + goals
-				+ ", assists=" + assists + ", yellowCard=" + yellowCard + ", redCard=" + redCard + ", psr=" + psr
-				+ ", rating=" + rating + ", motm=" + motm + ", leagueNum=" + leagueNum + "]";
+		return "PlayerVO [num=" + num + ", player=" + player + ", playerEng=" + playerEng + ", nationality="
+				+ nationality + ", age=" + age + ", backNum=" + backNum + ", position=" + position + ", team=" + team
+				+ ", height=" + height + ", weight=" + weight + ", appearances=" + appearances + ", minutes=" + minutes
+				+ ", goals=" + goals + ", assists=" + assists + ", yellowCard=" + yellowCard + ", redCard=" + redCard
+				+ ", psr=" + psr + ", rating=" + rating + ", motm=" + motm + ", leagueNum=" + leagueNum + "]";
 	}
 	
 	

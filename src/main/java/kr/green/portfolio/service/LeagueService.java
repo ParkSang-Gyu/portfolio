@@ -32,9 +32,11 @@ public interface LeagueService {
 
 	ArrayList<String> getTeamList(String season, String league);
 
-	ArrayList<String> getPlayerList(String team);
+	ArrayList<String> getPlayerList(String team, String season, String league);
 
 	PlayerVO getPlayerStat(String playerName);
+
+	PlayerVO getPlayerImg(String playerName);
 
 	
 }

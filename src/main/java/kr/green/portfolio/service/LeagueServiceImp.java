@@ -86,15 +86,21 @@ public class LeagueServiceImp implements LeagueService{
 	}
 
 	@Override
-	public ArrayList<String> getPlayerList(String team) {
+	public ArrayList<String> getPlayerList(String team,String season,String league) {
 		
-		return playerDao.getPlayerList(team);
+		return playerDao.getPlayerList(team,season,league);
 	}
 
 	@Override
 	public PlayerVO getPlayerStat(String playerName) {
 		
 		return playerDao.getPlayerStat(playerName);
+	}
+
+	@Override
+	public PlayerVO getPlayerImg(String playerName) {
+		
+		return playerDao.getPlayerImg(playerName);
 	}
 
 

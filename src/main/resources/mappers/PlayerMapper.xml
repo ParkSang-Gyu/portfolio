@@ -9,4 +9,7 @@
   <select id="getPlayerStat" resultType="kr.green.portfolio.vo.PlayerVO">
     select * from players where player = #{playerName}
   </select>
+  <select id="getPlayerImg" resultType="kr.green.portfolio.vo.PlayerVO">
+    select player from players where player = #{playerName}
+  </select>
 </mapper>

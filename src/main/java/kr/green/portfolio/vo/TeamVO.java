@@ -2,8 +2,11 @@ package kr.green.portfolio.vo;
 
 public class TeamVO {
 
+	private int num;
 	private String name;
+	private int leagueNum;
 	private String league;
+	private int seasonStart;
 	private String hometown;
 	private int establishment;
 	private String stadium;
@@ -18,17 +21,35 @@ public class TeamVO {
 	private String goalDifference;
 	private int points;
 	
+	public int getNum() {
+		return num;
+	}
+	public void setNum(int num) {
+		this.num = num;
+	}
 	public String getName() {
 		return name;
 	}
 	public void setName(String name) {
 		this.name = name;
 	}
+	public int getLeagueNum() {
+		return leagueNum;
+	}
+	public void setLeagueNum(int leagueNum) {
+		this.leagueNum = leagueNum;
+	}
 	public String getLeague() {
 		return league;
 	}
 	public void setLeague(String league) {
 		this.league = league;
+	}
+	public int getSeasonStart() {
+		return seasonStart;
+	}
+	public void setSeasonStart(int seasonStart) {
+		this.seasonStart = seasonStart;
 	}
 	public String getHometown() {
 		return hometown;
@@ -108,13 +129,13 @@ public class TeamVO {
 	public void setPoints(int points) {
 		this.points = points;
 	}
-	
 	@Override
 	public String toString() {
-		return "TeamVO [name=" + name + ", league=" + league + ", hometown=" + hometown + ", establishment="
-				+ establishment + ", stadium=" + stadium + ", coach=" + coach + ", rank=" + rank + ", played=" + played
-				+ ", win=" + win + ", draw=" + draw + ", lose=" + lose + ", goalFor=" + goalFor + ", goalAgainst="
-				+ goalAgainst + ", goalDifference=" + goalDifference + ", points=" + points + "]";
+		return "TeamVO [num=" + num + ", name=" + name + ", leagueNum=" + leagueNum + ", league=" + league
+				+ ", seasonStart=" + seasonStart + ", hometown=" + hometown + ", establishment=" + establishment
+				+ ", stadium=" + stadium + ", coach=" + coach + ", rank=" + rank + ", played=" + played + ", win=" + win
+				+ ", draw=" + draw + ", lose=" + lose + ", goalFor=" + goalFor + ", goalAgainst=" + goalAgainst
+				+ ", goalDifference=" + goalDifference + ", points=" + points + "]";
 	}
 	
 	

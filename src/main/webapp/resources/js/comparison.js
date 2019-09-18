@@ -20,16 +20,15 @@ $(document).ready(function () {
 	        error:function(request,status,error){
 	            console.log( request.responseText ); // 실패 시 처리
 	           }
-
 	    });
 	});
 	$('select[name=season]').change(function(){
-		var season = $(this).val();
 		var league = $(this).prev().val();
+		var season = $(this).val();
 		var obj = $(this);
 		$.ajax({
 	        type:'POST',
-	        data:{'season':season,'league':league},
+	        data:{'league':league,'season':season},
 	        url:"/portfolio/comparison",
 	        success : function(data){
 	        	var str = '<option>팀</option>';
@@ -41,13 +40,13 @@ $(document).ready(function () {
 	    });
 	});
 	$('select[name=team]').change(function(){
+		var league = $(this).siblings('select[name=league]').val();
 		var season = $(this).prev().val();
-		var league = $(this).siblings('.league').val();
 		var team = $(this).val();
 		var obj = $(this);
 		$.ajax({
 	        type:'POST',
-	        data:{'season':season,'league':league, 'team':team},
+	        data:{'league':league,'season':season,'team':team},
 	        url:"/portfolio/comparison",
 	        success : function(data){
 	        	var str = '<option>선수</option>';
@@ -83,11 +82,12 @@ $(document).ready(function () {
 		var index = 0;
 		$('select[name=player]').each(function(){
 			var playerName = $('select[name=player]').eq(index).val();
-			if(/*playerName != null && */playerName !=''){
+			//var img = '<img alt="사진을 불러올 수 없습니다." src="${pageContext.request.contextPath}/resources/img/players/${playerImg}.jpg">';
+			if(playerName != null && playerName !=''){
 				$.ajax({
 			        async:false,
 					type:'POST',
-			        data:playerName,
+			        data:{'playerName':playerName},
 			        url:"/portfolio/comparison",
 			        success : function(data){
 			        	var player = data.playerStat.player;
@@ -105,9 +105,8 @@ $(document).ready(function () {
 						var psr = data.playerStat.psr;
 						var rating = data.playerStat.rating;
 						var motm = data.playerStat.motm;
-						//var str = '<img alt="사진을 불러올 수 없습니다." src="${pageContext.request.contextPath}/resources/img/players/${playerImg}.jpg">';
 						if(index == 0){
-							//$('.player-info1').find('.player-info-left').html(str)
+							//$('.player-info1').find('.player-info-left').html(img);
 							$('.player-info1').find('.player-name').html(player);
 							$('.player-info1').find('.team-name').html(team);
 							$('.player-info1').find('.tournament-name').html(league);
@@ -125,6 +124,7 @@ $(document).ready(function () {
 							$('.player-stat1').find('.player-data-motm').html(motm);
 							box[0].removeClass('display-none');
 						}else if(index == 1){
+							$('.player-info2').find('.player-info-left').html(img);
 							$('.player-info2').find('.player-name').html(player);
 			  			    $('.player-info2').find('.team-name').html(team);
 			  			    $('.player-info2').find('.tournament-name').html(league);
@@ -142,6 +142,7 @@ $(document).ready(function () {
 			  			    $('.player-stat2').find('.player-data-motm').html(motm);
 			  			    box[1].removeClass('display-none');
 						}else if(index == 2){
+							$('.player-info3').find('.player-info-left').html(img);
 							$('.player-info3').find('.player-name').html(player);
 			  			    $('.player-info3').find('.team-name').html(team);
 			  			    $('.player-info3').find('.tournament-name').html(league);
@@ -160,11 +161,8 @@ $(document).ready(function () {
 						    if(click == 2){
 						    	box[2].removeClass('display-none');
 						    }
-						    /*var search = cnt.indexOf("3");
-							if(search != -1){
-								box[2].removeClass('display-none');
-							}*/
 						}else if(index == 3){
+							$('.player-info4').find('.player-info-left').html(img);
 							$('.player-info4').find('.player-name').html(player);
 			  			    $('.player-info4').find('.team-name').html(team);
 			  			    $('.player-info4').find('.tournament-name').html(league);
@@ -184,10 +182,6 @@ $(document).ready(function () {
 						    	box[2].removeClass('display-none');
 						    	box[3].removeClass('display-none');
 						    }
-						    /*var search = cnt.indexOf("4");
-							if(search != -1){
-								box[3].removeClass('display-none');
-							}*/
 						}	
 			        }
 		        })
@@ -211,7 +205,6 @@ $(document).ready(function () {
 			cnt.splice(cnt.indexOf("4"),1);
 			box[3].addClass('display-none');
 		}
-		console.log(click)
 	})
 })
 

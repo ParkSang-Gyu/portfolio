@@ -23,8 +23,8 @@
 	float: right;
 }
 #round{
-	display: inline-block;
 	float: right;
+	margin: 0 5px 0 0;
 }
 .schedules,.tables,.standings{
 	width: 1140px;
@@ -56,6 +56,11 @@ button{
 </style>
 <script type="text/javascript">
 $(document).ready(function () {
+	var str = '<option <c:if test="${roundNum == 1}">selected</c:if>>1</option>';
+	for(var i=2; i<39; i++){
+	   	str += '<option'+'<c:if test="${roundNum =='+i+'}">selected</c:if>>'+i+'</option>';
+   	}
+	$('#roundNum').html(str);
 	$('a').addClass('color-black')
 	$('#roundNum').change(function () {
 		location.href = '<%=request.getContextPath()%>/PremierLeague?roundNum='+$(this).val();
@@ -79,7 +84,7 @@ $(document).ready(function () {
 			<a href="<%=request.getContextPath()%>/statistics"><button type="button" class="btn btn-dark">statistics</button></a> --%>
 			<a href="<%=request.getContextPath()%>/comparison"><button type="button" class="btn btn-dark">comparison</button></a><br>	
 			<div class="collapse" id="leaguelist">
-			   	<a class="dropdown-item" href="<%=request.getContextPath()%>/PremierLeague?roundNum=1">Premier League</a>
+			   	<a class="dropdown-item" href="<%=request.getContextPath()%>/PremierLeague?">Premier League</a>
 			   	<a class="dropdown-item" href="<%=request.getContextPath()%>/LaLiga?roundNum=1">La Liga</a>
 			   	<a class="dropdown-item" href="<%=request.getContextPath()%>/BundesLiga?roundNum=1">Bundes Liga</a>
 			   	<a class="dropdown-item" href="<%=request.getContextPath()%>/SerieA?roundNum=1">Serie A</a>
@@ -93,11 +98,8 @@ $(document).ready(function () {
 			<div class="schedules">
 				<h2>Premier League Fixtures</h2>
 				<div class="schedule">
-					<select id="roundNum">
-			        	<option <c:if test="${roundNum == 1}">selected</c:if>>1</option>
-			        	<option <c:if test="${roundNum == 2}">selected</c:if>>2</option>		   
-			        </select>
-			        <div id="round">라운드</div>
+					<select id="roundNum"></select>
+					<span id="round">라운드</span>
 				</div>
 				<table class="table table-striped table-hover">			 
 			      	<tr>

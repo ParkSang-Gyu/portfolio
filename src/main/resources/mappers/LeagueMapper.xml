@@ -19,6 +19,6 @@
     select * from ratingstandings order by rating desc limit 5
   </select>
   <select id="getSeasonList" resultType="String">
-    select season from league where league = #{league}
+    select season from leaguepart where league = #{league}
   </select>
 </mapper>
