@@ -56,9 +56,17 @@ button{
 </style>
 <script type="text/javascript">
 $(document).ready(function () {
-	var str = '<option <c:if test="${roundNum == 1}">selected</c:if>>1</option>';
-	for(var i=2; i<39; i++){
-	   	str += '<option'+'<c:if test="${roundNum =='+i+'}">selected</c:if>>'+i+'</option>';
+	var str = '';
+	var roundNum = $('#roundNumOri').val();
+	var num = [];
+	for(var i=1; i<39; i++){
+		num += i;
+		if(roundNum == i){
+	   		str += '<option selected>'+i+'</option>';
+		}
+	   	else{
+	   		str += '<option>'+i+'</option>';
+	   	}
    	}
 	$('#roundNum').html(str);
 	$('a').addClass('color-black')
@@ -73,10 +81,26 @@ $(document).ready(function () {
    		$('#tournamentlist').collapse('show')
    		$('#leaguelist').collapse('hide')
    	})
+   	$('.rank').click(function () {
+		var league = 'PremierLeague';
+		$.ajax({
+	        async:false,
+			type:'POST',
+	        data:{'league' : league},
+	        url:"/portfolio/PremierLeague",
+	        success : function(data){
+	        	$('#rank').html(data.rank.rank)
+	        },
+	        error:function(request,status,error){
+	            console.log( request.responseText ); // 실패 시 처리
+	           }
+	    });
+	})
 })
 </script>
 </head>
 <body>
+	<input type="hidden" value="${roundNum}" id="roundNumOri">
 	<div class="container">
 		<div>
 			<button type="button" class="btn btn-dark dropdown-toggle list1" data-toggle="collapse" data-target="#leaguelist">leaguelist</button>	
@@ -84,7 +108,7 @@ $(document).ready(function () {
 			<a href="<%=request.getContextPath()%>/statistics"><button type="button" class="btn btn-dark">statistics</button></a> --%>
 			<a href="<%=request.getContextPath()%>/comparison"><button type="button" class="btn btn-dark">comparison</button></a><br>	
 			<div class="collapse" id="leaguelist">
-			   	<a class="dropdown-item" href="<%=request.getContextPath()%>/PremierLeague?">Premier League</a>
+			   	<a class="dropdown-item" href="<%=request.getContextPath()%>/PremierLeague?roundNum=1">Premier League</a>
 			   	<a class="dropdown-item" href="<%=request.getContextPath()%>/LaLiga?roundNum=1">La Liga</a>
 			   	<a class="dropdown-item" href="<%=request.getContextPath()%>/BundesLiga?roundNum=1">Bundes Liga</a>
 			   	<a class="dropdown-item" href="<%=request.getContextPath()%>/SerieA?roundNum=1">Serie A</a>
@@ -147,17 +171,17 @@ $(document).ready(function () {
 		      		</thead>
 		      		<tbody>
 		      			<c:forEach var="tmp" items="${teamTable}">
-		      				<tr>
-		      					<td class="rank">${tmp.rank}</td>
-			      				<td class="team"><a href="<%=request.getContextPath()%>/teams?team=${tmp.name}">${tmp.name}</a></td>
-			      				<td class="played">${tmp.played}</td>
-			      				<td class="win">${tmp.win}</td>
-			      				<td class="draw">${tmp.draw}</td>
-			      				<td class="lose">${tmp.lose}</td>
-			      				<td class="goalFor">${tmp.goalFor}</td>
-			      				<td class="goalAgainst">${tmp.goalAgainst}</td>
-			      				<td class="goalDifference">${tmp.goalDifference}</td>
-			      				<td class="points">${tmp.points}</td>
+		      				<tr id="table">
+		      					<td id="rank">${tmp.rank}</td>
+			      				<td id="name"><a href="<%=request.getContextPath()%>/teams?team=${tmp.name}">${tmp.name}</a></td>
+			      				<td id="played">${tmp.played}</td>
+			      				<td id="win">${tmp.win}</td>
+			      				<td id="draw">${tmp.draw}</td>
+			      				<td id="lose">${tmp.lose}</td>
+			      				<td id="goalFor">${tmp.goalFor}</td>
+			      				<td id="goalAgainst">${tmp.goalAgainst}</td>
+			      				<td id="goalDifference">${tmp.goalDifference}</td>
+			      				<td id="points">${tmp.points}</td>
 		      				</tr>
 	      				</c:forEach>
 		      		</tbody>		    

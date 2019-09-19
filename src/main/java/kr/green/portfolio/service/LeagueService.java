@@ -38,5 +38,9 @@ public interface LeagueService {
 
 	PlayerVO getPlayerImg(String playerName);
 
+	ArrayList<TeamVO> getRank(String league);
+
+	
+
 	
 }

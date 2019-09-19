@@ -15,4 +15,7 @@
   <select id="getTeamList" resultType="String">
     select team from league where seasonStart = #{season} and league = #{league}
   </select>
+  <select id="getRank" resultType="kr.green.portfolio.vo.TeamVO">
+    select * from teams where league = #{league} order by rank
+  </select>
 </mapper>

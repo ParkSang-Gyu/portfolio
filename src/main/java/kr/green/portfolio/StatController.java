@@ -51,7 +51,7 @@ public class StatController {
 		ArrayList<GoalStandingsVO> goals = leagueService.getGoals(gVo);
 		ArrayList<AssistStandingsVO> assists = leagueService.getAssists(aVo);
 		ArrayList<RatingStandingsVO> rating = leagueService.getRating(rVo);
-
+		
 		model.addAttribute("schedule", schedule);
 		model.addAttribute("roundNum", roundNum);
 		model.addAttribute("teamTable", teamTable);
@@ -59,8 +59,23 @@ public class StatController {
 		model.addAttribute("assists", assists);
 		model.addAttribute("rating", rating);
 		model.addAttribute("leagueNum", leagueNum);
-		System.out.println(roundNum);
+		
 		return "/leagues/PremierLeague";
+	}
+	
+	@RequestMapping(value = "/PremierLeague", method = RequestMethod.POST)
+	@ResponseBody
+	public Map<Object, Object> premierleaguePost(String league) {
+		
+		Map<Object, Object> map = new HashMap<Object, Object>();
+		 
+		map.put("league", league);
+		System.out.println(league);
+		ArrayList<TeamVO> rank = leagueService.getRank(league);
+		
+		map.put("rank", rank);
+		
+		return map;
 	}
 
 	@RequestMapping(value = "/LaLiga", method = RequestMethod.GET)

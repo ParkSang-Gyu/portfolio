@@ -43,7 +43,7 @@ $(document).ready(function(){
 			<a href="<%=request.getContextPath()%>/statistics"><button type="button" class="btn btn-dark">statistics</button></a> --%>
 			<a href="<%=request.getContextPath()%>/comparison"><button type="button" class="btn btn-dark">comparison</button></a><br>	
 			<div class="collapse" id="leaguelist">
-			   	<a class="dropdown-item" href="<%=request.getContextPath()%>/PremierLeague?">Premier League</a>
+			   	<a class="dropdown-item" href="<%=request.getContextPath()%>/PremierLeague?roundNum=1">Premier League</a>
 			   	<a class="dropdown-item" href="<%=request.getContextPath()%>/LaLiga?roundNum=1">La Liga</a>
 			   	<a class="dropdown-item" href="<%=request.getContextPath()%>/BundesLiga?roundNum=1">Bundesriga</a>
 			   	<a class="dropdown-item" href="<%=request.getContextPath()%>/SerieA?roundNum=1">Seria A</a>

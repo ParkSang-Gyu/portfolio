@@ -103,5 +103,12 @@ public class LeagueServiceImp implements LeagueService{
 		return playerDao.getPlayerImg(playerName);
 	}
 
+	@Override
+	public ArrayList<TeamVO> getRank(String league) {
+		
+		return teamDao.getRank(league);
+	}
+
+	
 
 }
