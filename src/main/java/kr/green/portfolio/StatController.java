@@ -70,7 +70,7 @@ public class StatController {
 		Map<Object, Object> map = new HashMap<Object, Object>();
 		 
 		map.put("league", league);
-		System.out.println(league);
+		
 		ArrayList<TeamVO> rank = leagueService.getRank(league);
 		
 		map.put("rank", rank);

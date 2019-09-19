@@ -16,6 +16,9 @@
     select team from league where seasonStart = #{season} and league = #{league}
   </select>
   <select id="getRank" resultType="kr.green.portfolio.vo.TeamVO">
-    select * from teams where league = #{league} order by rank
+    select 
+    	teams.rank, name, played, win, draw, lose, goalFor, goalAgainst, goalDifference, points 
+   	from teams 
+   	where league = #{league} order by teams.rank
   </select>
 </mapper>

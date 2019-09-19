@@ -80,22 +80,98 @@ $(document).ready(function () {
    	$('.list2').click(function(){
    		$('#tournamentlist').collapse('show')
    		$('#leaguelist').collapse('hide')
-   	})
-   	$('.rank').click(function () {
-		var league = 'PremierLeague';
+   	}) 
+	// 테이블 헤더 클릭시 정렬 
+	function sortContent(index) {
+	    var table = document.getElementsByClassName('.tbl');
+	
+	    sortType = (sortType =='asc')?'desc' : 'asc';
+	
+	    var checkSort = true;
+	    var rows = table[0].rows;
+	
+	    while (checkSort) { // 현재와 다음만 비교하기때문에 위치변경되면 다시 정렬해준다.
+	        checkSort = false;
+	
+	        for (var i = 1; i < (rows.length - 1); i++) {
+	            var fCell = rows[i].cells[index].innerHTML.toUpperCase();
+	            var sCell = rows[i + 1].cells[index].innerHTML.toUpperCase();
+	
+	            var row = rows[i];
+	
+	            // 오름차순<->내림차순 ( 이부분이 이해 잘안됬는데 오름차순이면 >, 내림차순이면 <
+	            //                        이고 if문의 내용은 동일하다 )
+	            if ( (sortType == 'asc' && fCell > sCell) || 
+	                    (sortType == 'desc' && fCell < sCell) ) {
+	
+	                row.parentNode.insertBefore(row.nextSibling, row);
+	                checkSort = true;
+	            }
+	        }
+	    }
+	}
+	$('.tbl th').click(function () {
+		$('#standing').sortContent()
+	})
+   	/*$('.tbl th').click(function () {
+   		$('table.tbl').each(function() {
+   	        var $table = $(this);
+   	        //참고용 소스이다.
+   	        //테이블 헤더 정렬 : start table sort
+   	        $('.tbl th', $table).each(function(column) {
+   	            //해더의 CSS클래스가 sort-alpha로 설정되어있다면, ABC순으로 정렬
+   	            if ($(this).is('.sort-alpha')) {
+   	                var direction = -1;
+   	                //클릭시 정렬 실행 : 토글링으로 변경
+   	                $(this).click(function() {
+   	                direction = -direction;
+   	                var rows = $table.find('#standing>tr').get(); //현재 선택된 헤더관련 행 가져오기
+   	                    //자바스크립트의 sort 함수를 사용해서 오름차순 정렬
+   	                    rows.sort(function(a, b) {
+   	                        var keyA = $(a).children('td').eq(column).text().toUpperCase();
+   	                        var keyB = $(b).children('td').eq(column).text().toUpperCase();
+   	                        if (keyA < keyB) return -direction;
+   	                        if (keyA > keyB) return direction;
+   	                        return 0;
+   	                    });
+   	                    //정렬된 행을 테이블에 추가
+   	                    $.each(rows, function(index, row) {
+   	                            $table.children('#standing').append(row) });
+   	                    $table.alternateRowColors(); //재정렬
+   	                });
+   	            }
+   	        }); //end table sort
+   	    });
+	})*/
+    
+   		/* var league = 'PremierLeague';
 		$.ajax({
 	        async:false,
 			type:'POST',
 	        data:{'league' : league},
 	        url:"/portfolio/PremierLeague",
 	        success : function(data){
-	        	$('#rank').html(data.rank.rank)
+	        	var tableNum = 0;
+	        	for(var i=0;i<data.rank.length;i++){
+	        		if(tableNum == i){
+	        			$('#rank').html(data.rank[i].rank);
+			        	$('#name').html(data.rank[i].name);
+			        	$('#played').html(data.rank[i].played);
+			        	$('#win').html(data.rank[i].win);
+			        	$('#draw').html(data.rank[i].draw);
+			        	$('#lose').html(data.rank[i].lose);
+			        	$('#goalFor').html(data.rank[i].goalFor);
+			        	$('#goalAgainst').html(data.rank[i].goalAgainst);
+			        	$('#goalDifference').html(data.rank[i].goalDifference);
+			        	$('#points').html(data.rank[i].points);
+	        		}
+	        		tableNum++;
+	        	}
 	        },
 	        error:function(request,status,error){
 	            console.log( request.responseText ); // 실패 시 처리
 	           }
-	    });
-	})
+	    }); */
 })
 </script>
 </head>
@@ -154,24 +230,24 @@ $(document).ready(function () {
 			</div>
 			<div class="tables">
 				<h2>Premier League Table</h2>
-				<table class="table table-striped table-hover">			 
+				<table class="tbl table table-striped table-hover">			 
 			      	<thead>
 			      		<tr>
-			      			<th><button class="rank" value="rank">순위</button></th>
-			      			<th><button class="team" value="team">팀</button></th>
-			      			<th><button class="played" value="played">경기수</button></th>
-			      			<th><button class="win" value="win">승</button></th>
-			      			<th><button class="draw" value="draw">무</button></th>
-			      			<th><button class="lose" value="lose">패</button></th>
-			      			<th><button class="goalFor" value="goalFor">득점</button></th>
-			      			<th><button class="goalAgainst" value="goalAgainst">실점</button></th>
-			      			<th><button class="goalDifference" value="goalDifference">득실차</button></th>
-			      			<th><button class="points" value="points">승점</button></th>
+			      			<th class="sort-alpha"><button class="rank" value="rank">순위</button></th>
+			      			<th class="sort-alpha"><button class="team" value="team">팀</button></th>
+			      			<th class="sort-alpha"><button class="played" value="played">경기수</button></th>
+			      			<th class="sort-alpha"><button class="win" value="win">승</button></th>
+			      			<th class="sort-alpha"><button class="draw" value="draw">무</button></th>
+			      			<th class="sort-alpha"><button class="lose" value="lose">패</button></th>
+			      			<th class="sort-alpha"><button class="goalFor" value="goalFor">득점</button></th>
+			      			<th class="sort-alpha"><button class="goalAgainst" value="goalAgainst">실점</button></th>
+			      			<th class="sort-alpha"><button class="goalDifference" value="goalDifference">득실차</button></th>
+			      			<th class="sort-alpha"><button class="points" value="points">승점</button></th>
 			      		</tr>
 		      		</thead>
-		      		<tbody>
+		      		<tbody  id="standing">
 		      			<c:forEach var="tmp" items="${teamTable}">
-		      				<tr id="table">
+		      				<tr id="standingTable">
 		      					<td id="rank">${tmp.rank}</td>
 			      				<td id="name"><a href="<%=request.getContextPath()%>/teams?team=${tmp.name}">${tmp.name}</a></td>
 			      				<td id="played">${tmp.played}</td>
