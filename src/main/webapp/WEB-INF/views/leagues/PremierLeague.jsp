@@ -118,7 +118,7 @@ $(document).ready(function () {
 						<th>시간(한국시각)</th>
 						<th>상태</th>
 						<th>홈팀</th>
-						<th class="score">스코어</th>
+						<th>스코어</th>
 						<th>원정팀</th>
 						<th>경기장</th>
 					</tr>
@@ -128,7 +128,7 @@ $(document).ready(function () {
 					        <td>${tmp.time}</td>
 					        <td>${tmp.status}</td>
 					        <td><a href="<%=request.getContextPath()%>/teams?team=${tmp.homeTeam}">${tmp.homeTeam}</a></td>
-					        <td class="score">${tmp.score}</td>
+					        <td>${tmp.score}</td>
 					        <td><a href="<%=request.getContextPath()%>/teams?team=${tmp.awayTeam}">${tmp.awayTeam}</a></td>
 					        <td>${tmp.stadium}</td>			        			       
 				      	</tr>		      	
