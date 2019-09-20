@@ -11,8 +11,7 @@ public class ScheduleVO {
 	private String time;
 	private String status;
 	private String homeTeam;
-	private int homeTeamGoal;
-	private int awayTeamGoal;
+	private String score;
 	private String awayTeam;
 	private String stadium;
 	
@@ -70,17 +69,11 @@ public class ScheduleVO {
 	public void setHomeTeam(String homeTeam) {
 		this.homeTeam = homeTeam;
 	}
-	public int getHomeTeamGoal() {
-		return homeTeamGoal;
+	public String getScore() {
+		return score;
 	}
-	public void setHomeTeamGoal(int homeTeamGoal) {
-		this.homeTeamGoal = homeTeamGoal;
-	}
-	public int getAwayTeamGoal() {
-		return awayTeamGoal;
-	}
-	public void setAwayTeamGoal(int awayTeamGoal) {
-		this.awayTeamGoal = awayTeamGoal;
+	public void setScore(String score) {
+		this.score = score;
 	}
 	public String getAwayTeam() {
 		return awayTeam;
@@ -98,9 +91,8 @@ public class ScheduleVO {
 	public String toString() {
 		return "ScheduleVO [num=" + num + ", leagueNum=" + leagueNum + ", seasonStart=" + seasonStart + ", seasonEnd="
 				+ seasonEnd + ", roundNum=" + roundNum + ", date=" + date + ", time=" + time + ", status=" + status
-				+ ", homeTeam=" + homeTeam + ", homeTeamGoal=" + homeTeamGoal + ", awayTeamGoal=" + awayTeamGoal
-				+ ", awayTeam=" + awayTeam + ", stadium=" + stadium + "]";
+				+ ", homeTeam=" + homeTeam + ", score=" + score + ", awayTeam=" + awayTeam + ", stadium=" + stadium
+				+ "]";
 	}
-	
 	
 }

@@ -40,6 +40,9 @@ public interface LeagueService {
 
 	ArrayList<TeamVO> getRank(String league);
 
+	void getScheduleData(Integer leagueNum, Integer seasonStart, Integer seasonEnd, Integer roundNum, String date,
+			String time, String status, String homeTeam, String awayTeam, String stadium);
+
 	
 
 	

@@ -26,5 +26,10 @@ public interface LeagueDAO {
 
 	ArrayList<String> getSeasonList(@Param("league")String league);
 
+	void getScheduleData(@Param("leagueNum")Integer leagueNum,@Param("seasonStart")Integer seasonStart,
+			@Param("seasonEnd")Integer seasonEnd,@Param("roundNum")Integer roundNum,@Param("date")String date,
+			@Param("time")String time,@Param("status")String status,@Param("homeTeam")String homeTeam,
+			@Param("awayTeam")String awayTeam,@Param("stadium")String stadium);
+
 	
 }

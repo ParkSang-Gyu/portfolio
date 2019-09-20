@@ -109,6 +109,12 @@ public class LeagueServiceImp implements LeagueService{
 		return teamDao.getRank(league);
 	}
 
+	@Override
+	public void getScheduleData(Integer leagueNum, Integer seasonStart, Integer seasonEnd, Integer roundNum, String date,
+			String time, String status, String homeTeam, String awayTeam, String stadium) {
+		leagueDao.getScheduleData(leagueNum, seasonStart, seasonEnd, roundNum, date, time, status, homeTeam, awayTeam, stadium);
+	}
+
 	
 
 }
