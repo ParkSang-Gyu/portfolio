@@ -11,22 +11,21 @@ div{
 </style>
 <script type="text/javascript">
 $(document).ready(function () {
-	$('button[name=btn1]').click(function () {
+	$('button[name=btn2]').click(function () {
 		var leagueNum = $('input[name=leagueNum]').val();
 		var seasonStart = $('input[name=seasonStart]').val();
-		var seasonEnd = $('input[name=seasonEnd]').val();
 		var roundNum = $('input[name=roundNum]').val();
-		var date = $('input[name=date]').val();
-		var time = $('input[name=time]').val();
 		var status = $('input[name=status]').val();
 		var homeTeam = $('input[name=homeTeam]').val();
+		var homeTeamGoal = $('input[name=homeTeamGoal]').val();
+		var score = $('input[name=score]').val();
+		var awayTeamGoal = $('input[name=awayTeamGoal]').val();
 		var awayTeam = $('input[name=awayTeam]').val();
-		var stadium = $('input[name=stadium]').val();
 		$.ajax({
 	        async:true,
 	        type:'POST',
-	        data:{"leagueNum":leagueNum,"seasonStart":seasonStart,"seasonEnd":seasonEnd,"roundNum":roundNum,
-	        	"date":date,"time":time,"status":status,"homeTeam":homeTeam,"awayTeam":awayTeam,"stadium":stadium},
+	        data:{"leagueNum":leagueNum,"seasonStart":seasonStart,"roundNum":roundNum,"status":status,"homeTeam":homeTeam,
+	        	"homeTeamGoal":homeTeamGoal,"score":score,"awayTeamGoal":awayTeamGoal,"awayTeam":awayTeam,"stadium":stadium},
 	        url:"<%=request.getContextPath()%>/admin",
 	        dataType:"json",
 	        contentType:"application/json; charset=UTF-8",
@@ -44,30 +43,54 @@ $(document).ready(function () {
 </head>
 <body>
 <h2>스케쥴 입력</h2>
-	<form action="<%=request.getContextPath()%>/admin" method="post" id="scheduleData">
+	<form action="<%=request.getContextPath()%>/admin-insert" method="post" id="scheduleInsert">
 		<div>
 			<label>리그번호</label>
-			<input name="leagueNum" style="width: 30px;">
+			<input name="leagueNum" style="width: 20px;">
 		</div>
 		<div>
 			<label>시작시즌</label>
-			<input name="seasonStart" style="width: 50px;">
-		</div>
-		<div>
-			<label>종료시즌</label>
-			<input name="seasonEnd" style="width: 50px;">
+			<input name="seasonStart" style="width: 40px;">
 		</div>
 		<div>
 			<label>라운드</label>
-			<input name="roundNum" style="width: 30px;">
+			<input name="roundNum" style="width: 25px;">
 		</div>
 		<div>
 			<label>날짜</label>
-			<input name="date" style="width: 50px;">
+			<input name="date" style="width: 55px;">
 		</div>
 		<div>
 			<label>시간</label>
 			<input name="time" style="width: 50px;">
+		</div>
+		<div>
+			<label>홈팀</label>
+			<input name="homeTeam" style="width: 135px;">
+		</div>
+		<div>
+			<label>원정팀</label>
+			<input name="awayTeam" style="width: 135px;">
+		</div>
+		<div>
+			<label>경기장</label>
+			<input name="stadium" style="width: 190px;">
+		</div><br>
+		<button name="btn1">입력</button>
+	</form>
+<h2>스케쥴 업데이트</h2>
+	<form action="<%=request.getContextPath()%>/admin-update" method="post" id="scheduleUpdate">
+		<div>
+			<label>리그번호</label>
+			<input name="leagueNum" style="width: 20px;">
+		</div>
+		<div>
+			<label>시작시즌</label>
+			<input name="seasonStart" style="width: 40px;">
+		</div>
+		<div>
+			<label>라운드</label>
+			<input name="roundNum" style="width: 25px;">
 		</div>
 		<div>
 			<label>완료여부</label>
@@ -75,113 +98,81 @@ $(document).ready(function () {
 		</div>
 		<div>
 			<label>홈팀</label>
-			<input name="homeTeam">
+			<input name="homeTeam" style="width: 135px;">
+		</div>
+		<div>
+			<label>홈팀득점</label>
+			<input name="homeTeamGoal" style="width: 40px;">
+		</div>
+		<div>
+			<label>스코어</label>
+			<input name="score" style="width: 40px;">
+		</div>
+		<div>
+			<label>원정팀득점</label>
+			<input name="awayTeamGoal" style="width: 40px;">
 		</div>
 		<div>
 			<label>원정팀</label>
-			<input name="awayTeam">
-		</div>
-		<div>
-			<label>경기장</label>
-			<input name="stadium">
-		</div>
-		<button name="btn1">입력</button>
+			<input name="awayTeam" style="width: 135px;">
+		</div><br>
+		<button name="btn2">입력</button>
 	</form>
-<h2>경기데이터 입력</h2>
-	<form action="<%=request.getContextPath()%>/admin" method="post" id="matchData">
+<h2>경기 상세 결과 입력</h2>
+	<form>
 		<div>
-			<label>홈팀득점자</label><br>
-			<input name="HTGPlayer"><br>
-			<input name="HTGPlayer"><br>
-			<input name="HTGPlayer"><br>
-			<input name="HTGPlayer"><br>
-			<input name="HTGPlayer"><br>
-			<input name="HTGPlayer"><br>
-			<input name="HTGPlayer"><br>
-			<input name="HTGPlayer"><br>
-			<input name="HTGPlayer"><br>
-			<input name="HTGPlayer">
+			<label>경기번호</label><br>
+			<input name="matchNum">
 		</div>
 		<div>
-			<label>홈팀어시스트</label><br>
-			<input name="HTAPlayer"><br>
-			<input name="HTAPlayer"><br>
-			<input name="HTAPlayer"><br>
-			<input name="HTAPlayer"><br>
-			<input name="HTAPlayer"><br>
-			<input name="HTAPlayer"><br>
-			<input name="HTAPlayer"><br>
-			<input name="HTAPlayer"><br>
-			<input name="HTAPlayer"><br>
-			<input name="HTAPlayer">
+			<label>팀</label><br>
+			<input name="team">
 		</div>
 		<div>
-			<label>원정팀득점자</label><br>
-			<input name="ATGPlayer"><br>
-			<input name="ATGPlayer"><br>
-			<input name="ATGPlayer"><br>
-			<input name="ATGPlayer"><br>
-			<input name="ATGPlayer"><br>
-			<input name="ATGPlayer"><br>
-			<input name="ATGPlayer"><br>
-			<input name="ATGPlayer"><br>
-			<input name="ATGPlayer"><br>
-			<input name="ATGPlayer">
+			<label>이름</label><br>
+			<input name="player">
 		</div>
 		<div>
-			<label>원정팀어시스트</label><br>
-			<input name="ATAPlayer"><br>
-			<input name="ATAPlayer"><br>
-			<input name="ATAPlayer"><br>
-			<input name="ATAPlayer"><br>
-			<input name="ATAPlayer"><br>
-			<input name="ATAPlayer"><br>
-			<input name="ATAPlayer"><br>
-			<input name="ATAPlayer"><br>
-			<input name="ATAPlayer"><br>
-			<input name="ATAPlayer">
-		</div>
-		<div>
-			<label>홈팀선발</label><br>
-			<input name="homeStarting"><br>
-			<input name="homeStarting"><br>
-			<input name="homeStarting"><br>
-			<input name="homeStarting"><br>
-			<input name="homeStarting"><br>
-			<input name="homeStarting"><br>
-			<input name="homeStarting"><br>
-			<input name="homeStarting"><br>
-			<input name="homeStarting"><br>
-			<input name="homeStarting"><br>
+			<label>선발</label><br>
 			<input name="homeStarting">
 		</div>
 		<div>
-			<label>홈팀교체</label><br>
-			<input name="homeSub"><br>
-			<input name="homeSub"><br>
+			<label>교체</label><br>
 			<input name="homeSub">
 		</div>
 		<div>
-			<label>원정팀선발</label><br>
-			<input name="awayStarting"><br>
-			<input name="awayStarting"><br>
-			<input name="awayStarting"><br>
-			<input name="awayStarting"><br>
-			<input name="awayStarting"><br>
-			<input name="awayStarting"><br>
-			<input name="awayStarting"><br>
-			<input name="awayStarting"><br>
-			<input name="awayStarting"><br>
-			<input name="awayStarting"><br>
-			<input name="awayStarting">
+			<label>출전시간</label><br>
+			<input name="playingTime">
 		</div>
 		<div>
-			<label>원정팀교체</label><br>
-			<input name="awaySub"><br>
-			<input name="awaySub"><br>
-			<input name="awaySub">
+			<label>득점</label><br>
+			<input name="homeGoal">
 		</div>
-		<button name="btn2">입력</button>
+		<div>
+			<label>어시스트</label><br>
+			<input name="homeAssist">
+		</div>
+		<div>
+			<label>옐로카드</label><br>
+			<input name="homeYc">
+		</div>
+		<div>
+			<label>레드카드</label><br>
+			<input name="homeRc">
+		</div>
+		<div>
+			<label>패스시도</label><br>
+			<input name="homePassApt">
+		</div>
+		<div>
+			<label>패스성공</label><br>
+			<input name="homePassScc">
+		</div>
+		<div>
+			<label>평점</label><br>
+			<input name="rating">
+		</div><br>
+		<button name="btn3">입력</button>
 	</form>
 </body>
 </html>

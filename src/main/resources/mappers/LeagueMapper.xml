@@ -21,9 +21,9 @@
   <select id="getSeasonList" resultType="String">
     select season from leaguepart where league = #{league}
   </select>
-  <insert id="getScheduleData">
+  <insert id="getScheduleInsert">
   	insert into 
-  		schedule(leagueNum, seasonStart, seasonEnd, roundNum, date, time, status, homeTeam, awayTeam, stadium)
-	values(#{leagueNum},#{seasonStart},#{seasonEnd},#{roundNum},#{date},#{time},#{status},#{homeTeam},#{awayTeam},#{stadium})	
+  		schedule(leagueNum,seasonStart,roundNum,date,time,homeTeam,awayTeam,stadium)
+	values(#{leagueNum},#{seasonStart},#{roundNum},#{date},#{time},#{homeTeam},#{awayTeam},#{stadium})	
   </insert>
 </mapper>

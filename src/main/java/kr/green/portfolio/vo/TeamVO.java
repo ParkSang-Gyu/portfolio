@@ -3,6 +3,7 @@ package kr.green.portfolio.vo;
 public class TeamVO {
 
 	private int num;
+	private int teamNum;
 	private String name;
 	private int leagueNum;
 	private String league;
@@ -26,6 +27,12 @@ public class TeamVO {
 	}
 	public void setNum(int num) {
 		this.num = num;
+	}
+	public int getTeamNum() {
+		return teamNum;
+	}
+	public void setTeamNum(int teamNum) {
+		this.teamNum = teamNum;
 	}
 	public String getName() {
 		return name;
@@ -131,11 +138,11 @@ public class TeamVO {
 	}
 	@Override
 	public String toString() {
-		return "TeamVO [num=" + num + ", name=" + name + ", leagueNum=" + leagueNum + ", league=" + league
-				+ ", seasonStart=" + seasonStart + ", hometown=" + hometown + ", establishment=" + establishment
-				+ ", stadium=" + stadium + ", coach=" + coach + ", rank=" + rank + ", played=" + played + ", win=" + win
-				+ ", draw=" + draw + ", lose=" + lose + ", goalFor=" + goalFor + ", goalAgainst=" + goalAgainst
-				+ ", goalDifference=" + goalDifference + ", points=" + points + "]";
+		return "TeamVO [num=" + num + ", teamNum=" + teamNum + ", name=" + name + ", leagueNum=" + leagueNum
+				+ ", league=" + league + ", seasonStart=" + seasonStart + ", hometown=" + hometown + ", establishment="
+				+ establishment + ", stadium=" + stadium + ", coach=" + coach + ", rank=" + rank + ", played=" + played
+				+ ", win=" + win + ", draw=" + draw + ", lose=" + lose + ", goalFor=" + goalFor + ", goalAgainst="
+				+ goalAgainst + ", goalDifference=" + goalDifference + ", points=" + points + "]";
 	}
 	
 	

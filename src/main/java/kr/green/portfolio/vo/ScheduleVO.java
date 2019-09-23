@@ -5,16 +5,16 @@ public class ScheduleVO {
 	private int num;
 	private int leagueNum;
 	private int seasonStart;
-	private int seasonEnd;
 	private int roundNum;
 	private String date;
 	private String time;
 	private String status;
 	private String homeTeam;
+	private int homeTeamGoal;
 	private String score;
+	private int awayTeamGoal;
 	private String awayTeam;
 	private String stadium;
-	
 	public int getNum() {
 		return num;
 	}
@@ -32,12 +32,6 @@ public class ScheduleVO {
 	}
 	public void setSeasonStart(int seasonStart) {
 		this.seasonStart = seasonStart;
-	}
-	public int getSeasonEnd() {
-		return seasonEnd;
-	}
-	public void setSeasonEnd(int seasonEnd) {
-		this.seasonEnd = seasonEnd;
 	}
 	public int getRoundNum() {
 		return roundNum;
@@ -69,11 +63,23 @@ public class ScheduleVO {
 	public void setHomeTeam(String homeTeam) {
 		this.homeTeam = homeTeam;
 	}
+	public int getHomeTeamGoal() {
+		return homeTeamGoal;
+	}
+	public void setHomeTeamGoal(int homeTeamGoal) {
+		this.homeTeamGoal = homeTeamGoal;
+	}
 	public String getScore() {
 		return score;
 	}
 	public void setScore(String score) {
 		this.score = score;
+	}
+	public int getAwayTeamGoal() {
+		return awayTeamGoal;
+	}
+	public void setAwayTeamGoal(int awayTeamGoal) {
+		this.awayTeamGoal = awayTeamGoal;
 	}
 	public String getAwayTeam() {
 		return awayTeam;
@@ -89,10 +95,12 @@ public class ScheduleVO {
 	}
 	@Override
 	public String toString() {
-		return "ScheduleVO [num=" + num + ", leagueNum=" + leagueNum + ", seasonStart=" + seasonStart + ", seasonEnd="
-				+ seasonEnd + ", roundNum=" + roundNum + ", date=" + date + ", time=" + time + ", status=" + status
-				+ ", homeTeam=" + homeTeam + ", score=" + score + ", awayTeam=" + awayTeam + ", stadium=" + stadium
-				+ "]";
+		return "ScheduleVO [num=" + num + ", leagueNum=" + leagueNum + ", seasonStart=" + seasonStart + ", roundNum="
+				+ roundNum + ", date=" + date + ", time=" + time + ", status=" + status + ", homeTeam=" + homeTeam
+				+ ", homeTeamGoal=" + homeTeamGoal + ", score=" + score + ", awayTeamGoal=" + awayTeamGoal
+				+ ", awayTeam=" + awayTeam + ", stadium=" + stadium + "]";
 	}
+	
+	
 	
 }
