@@ -26,8 +26,13 @@ public interface LeagueDAO {
 
 	ArrayList<String> getSeasonList(@Param("league")String league);
 
-	void getScheduleInsert(@Param("leagueNum")Integer leagueNum,@Param("seasonStart")Integer seasonStart,
-			@Param("roundNum")Integer roundNum, @Param("date")String date,@Param("time")String time,
-			@Param("homeTeam")String homeTeam,@Param("awayTeam")String awayTeam,@Param("stadium")String stadium);
+	void getScheduleInsert(@Param("leagueNum")Integer leagueNum,@Param("seasonStart")Integer seasonStart,@Param("roundNum")Integer roundNum,
+			@Param("date")String date,@Param("time")String time,@Param("status")String status,@Param("homeTeam")String homeTeam,
+			@Param("homeTeamGoal")Integer homeTeamGoal,@Param("score")String score,@Param("awayTeamGoal")Integer awayTeamGoal,
+			@Param("awayTeam")String awayTeam,@Param("stadium")String stadium);
+
+	void getScheduleUpdate(@Param("leagueNum")Integer leagueNum,@Param("seasonStart")Integer seasonStart,
+			@Param("roundNum")Integer roundNum,@Param("status")String status,@Param("homeTeam")String homeTeam,
+			@Param("homeTeamGoal")Integer homeTeamGoal,@Param("score")String score,@Param("awayTeamGoal")Integer awayTeamGoal);
 	
 }

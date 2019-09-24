@@ -40,11 +40,11 @@ public interface LeagueService {
 
 	ArrayList<TeamVO> getRank(String league);
 
-	void getScheduleInsert(Integer leagueNum, Integer seasonStart, Integer roundNum, String date, String time,
-			String homeTeam,String awayTeam, String stadium);
+	void getScheduleInsert(Integer leagueNum,Integer seasonStart,Integer roundNum,String date,String time,String status,
+			String homeTeam,Integer homeTeamGoal,String score,Integer awayTeamGoal,String awayTeam,String stadium);
 
-	void getScheduleUpdate(Integer leagueNum, Integer seasonStart, Integer roundNum, String status, String homeTeam,
-			Integer homeTeamGoal, String score, Integer awayTeamGoal, String awayTeam);
+	void getScheduleUpdate(Integer leagueNum, Integer seasonStart, Integer roundNum, String status, String homeTeam, 
+			Integer homeTeamGoal, String score, Integer awayTeamGoal);
 
 	
 

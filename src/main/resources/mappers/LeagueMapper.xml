@@ -22,8 +22,12 @@
     select season from leaguepart where league = #{league}
   </select>
   <insert id="getScheduleInsert">
-  	insert into 
-  		schedule(leagueNum,seasonStart,roundNum,date,time,homeTeam,awayTeam,stadium)
+  	insert into schedule(leagueNum,seasonStart,roundNum,date,time,homeTeam,awayTeam,stadium)
 	values(#{leagueNum},#{seasonStart},#{roundNum},#{date},#{time},#{homeTeam},#{awayTeam},#{stadium})	
   </insert>
+  <update id="getScheduleUpdate">
+  	update schedule
+	set status = #{status},homeTeamGoal = #{homeTeamGoal},score = #{score},awayTeamGoal = #{awayTeamGoal}
+	where leagueNum = #{leagueNum} and seasonStart = #{seasonStart} and roundNum = #{roundNum} and homeTeam = #{homeTeam}
+  </update>
 </mapper>

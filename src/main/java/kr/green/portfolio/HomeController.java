@@ -42,26 +42,29 @@ public class HomeController {
 	
 	@RequestMapping(value= {"/admin-insert"},method = RequestMethod.POST)
 	public ModelAndView adminInsertPost(ModelAndView mv,Integer leagueNum,Integer seasonStart,Integer roundNum, String date,
-			String time,String homeTeam,String awayTeam,String stadium){
+			String time,String status,String homeTeam,Integer homeTeamGoal,String score,Integer awayTeamGoal,String awayTeam,String stadium){
 		
 		mv.addObject("leagueNum", leagueNum);
 		mv.addObject("seasonStart", seasonStart);
 		mv.addObject("roundNum", roundNum);
 		mv.addObject("date", date);
 		mv.addObject("time", time);
+		mv.addObject("status", status);
 		mv.addObject("homeTeam", homeTeam);
-		mv.addObject("awayTeam", awayTeam);
+		mv.addObject("homeTeamGoal", homeTeamGoal);
+		mv.addObject("score", score);
+		mv.addObject("awayTeamGoal", awayTeamGoal);
 		mv.addObject("stadium", stadium);
 		mv.setViewName("/admin");
 	    
-		leagueService.getScheduleInsert(leagueNum, seasonStart, roundNum, date, time,
-				 homeTeam,awayTeam, stadium);
+		leagueService.getScheduleInsert(leagueNum,seasonStart,roundNum,date,time,status,homeTeam,homeTeamGoal,score,awayTeamGoal,awayTeam,stadium);
+		
 		return mv;
 	}
 	
 	@RequestMapping(value= {"/admin-update"},method = RequestMethod.POST)
-	public ModelAndView adminUpdatePost(ModelAndView mv,Integer leagueNum,Integer seasonStart,Integer roundNum, String status,
-			String homeTeam, Integer homeTeamGoal, String score, Integer awayTeamGoal, String awayTeam){
+	public ModelAndView adminUpdatePost(ModelAndView mv,Integer leagueNum,Integer seasonStart,Integer roundNum,String status,String homeTeam,
+			Integer homeTeamGoal,String score,Integer awayTeamGoal){
 		
 		mv.addObject("leagueNum", leagueNum);
 		mv.addObject("seasonStart", seasonStart);
@@ -71,10 +74,10 @@ public class HomeController {
 		mv.addObject("homeTeamGoal", homeTeamGoal);
 		mv.addObject("score", score);
 		mv.addObject("awayTeamGoal", awayTeamGoal);
-		mv.addObject("awayTeam", awayTeam);
 		mv.setViewName("/admin");
 	    
-		leagueService.getScheduleUpdate(leagueNum,seasonStart,roundNum,status,homeTeam,homeTeamGoal,score,awayTeamGoal,awayTeam);
+		leagueService.getScheduleUpdate(leagueNum,seasonStart,roundNum,status,homeTeam,homeTeamGoal,score,awayTeamGoal);
+		
 		return mv;
 	}
 	/*

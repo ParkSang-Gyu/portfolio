@@ -9,37 +9,6 @@ div{
 	display: inline-block;
 }
 </style>
-<script type="text/javascript">
-$(document).ready(function () {
-	$('button[name=btn2]').click(function () {
-		var leagueNum = $('input[name=leagueNum]').val();
-		var seasonStart = $('input[name=seasonStart]').val();
-		var roundNum = $('input[name=roundNum]').val();
-		var status = $('input[name=status]').val();
-		var homeTeam = $('input[name=homeTeam]').val();
-		var homeTeamGoal = $('input[name=homeTeamGoal]').val();
-		var score = $('input[name=score]').val();
-		var awayTeamGoal = $('input[name=awayTeamGoal]').val();
-		var awayTeam = $('input[name=awayTeam]').val();
-		$.ajax({
-	        async:true,
-	        type:'POST',
-	        data:{"leagueNum":leagueNum,"seasonStart":seasonStart,"roundNum":roundNum,"status":status,"homeTeam":homeTeam,
-	        	"homeTeamGoal":homeTeamGoal,"score":score,"awayTeamGoal":awayTeamGoal,"awayTeam":awayTeam,"stadium":stadium},
-	        url:"<%=request.getContextPath()%>/admin",
-	        dataType:"json",
-	        contentType:"application/json; charset=UTF-8",
-	        success : function(data){
-	            alert('전송을 완료하였습니다');
-			},
-			error:function(request,status,error){
-	    		console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-	    		alert('전송을 실패하였습니다.');
-			}
-		})
-	})
-})
-</script>
 </head>
 <body>
 <h2>스케쥴 입력</h2>
@@ -65,8 +34,24 @@ $(document).ready(function () {
 			<input name="time" style="width: 50px;">
 		</div>
 		<div>
+			<label>완료여부</label>
+			<input name="status" style="width: 30px;">
+		</div>
+		<div>
 			<label>홈팀</label>
 			<input name="homeTeam" style="width: 135px;">
+		</div>
+		<div>
+			<label>홈팀득점</label>
+			<input name="homeTeamGoal" style="width: 40px;">
+		</div>
+		<div>
+			<label>스코어</label>
+			<input name="score" style="width: 40px;">
+		</div>
+		<div>
+			<label>원정팀득점</label>
+			<input name="awayTeamGoal" style="width: 40px;">
 		</div>
 		<div>
 			<label>원정팀</label>
@@ -111,10 +96,6 @@ $(document).ready(function () {
 		<div>
 			<label>원정팀득점</label>
 			<input name="awayTeamGoal" style="width: 40px;">
-		</div>
-		<div>
-			<label>원정팀</label>
-			<input name="awayTeam" style="width: 135px;">
 		</div><br>
 		<button name="btn2">입력</button>
 	</form>
