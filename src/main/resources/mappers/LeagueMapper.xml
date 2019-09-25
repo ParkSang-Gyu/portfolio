@@ -27,7 +27,7 @@
   </insert>
   <update id="getScheduleUpdate">
   	update schedule
-	set status = #{status},homeTeamGoal = #{homeTeamGoal},score = #{score},awayTeamGoal = #{awayTeamGoal}
-	where leagueNum = #{leagueNum} and seasonStart = #{seasonStart} and roundNum = #{roundNum} and homeTeam = #{homeTeam}
+	set date = #{sVo.date},time = #{sVo.time},status = #{sVo.status},homeTeamGoal = #{sVo.homeTeamGoal},score = #{sVo.score},awayTeamGoal = #{sVo.awayTeamGoal}
+	where leagueNum = #{sVo.leagueNum} and seasonStart = #{sVo.seasonStart} and roundNum = #{sVo.roundNum} and homeTeam = #{sVo.homeTeam}
   </update>
 </mapper>

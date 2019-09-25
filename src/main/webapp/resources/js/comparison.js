@@ -64,6 +64,7 @@ $(document).ready(function () {
 			cnt.push(num);
 			cnt.sort();
 		}
+		console.log(num)
 	})
     $('.plus-btn').click(function () {
     	click++;
@@ -82,7 +83,7 @@ $(document).ready(function () {
 		var index = 0;
 		$('select[name=player]').each(function(){
 			var playerName = $('select[name=player]').eq(index).val();
-			//var img = '<img alt="사진을 불러올 수 없습니다." src="${pageContext.request.contextPath}/resources/img/players/${playerImg}.jpg">';
+			console.log(playerName)
 			if(playerName != null && playerName !=''){
 				$.ajax({
 			        async:false,
@@ -106,7 +107,6 @@ $(document).ready(function () {
 						var rating = data.playerStat.rating;
 						var motm = data.playerStat.motm;
 						if(index == 0){
-							//$('.player-info1').find('.player-info-left').html(img);
 							$('.player-info1').find('.player-name').html(player);
 							$('.player-info1').find('.team-name').html(team);
 							$('.player-info1').find('.tournament-name').html(league);
@@ -124,7 +124,6 @@ $(document).ready(function () {
 							$('.player-stat1').find('.player-data-motm').html(motm);
 							box[0].removeClass('display-none');
 						}else if(index == 1){
-							$('.player-info2').find('.player-info-left').html(img);
 							$('.player-info2').find('.player-name').html(player);
 			  			    $('.player-info2').find('.team-name').html(team);
 			  			    $('.player-info2').find('.tournament-name').html(league);
@@ -142,7 +141,6 @@ $(document).ready(function () {
 			  			    $('.player-stat2').find('.player-data-motm').html(motm);
 			  			    box[1].removeClass('display-none');
 						}else if(index == 2){
-							$('.player-info3').find('.player-info-left').html(img);
 							$('.player-info3').find('.player-name').html(player);
 			  			    $('.player-info3').find('.team-name').html(team);
 			  			    $('.player-info3').find('.tournament-name').html(league);
@@ -162,7 +160,6 @@ $(document).ready(function () {
 						    	box[2].removeClass('display-none');
 						    }
 						}else if(index == 3){
-							$('.player-info4').find('.player-info-left').html(img);
 							$('.player-info4').find('.player-name').html(player);
 			  			    $('.player-info4').find('.team-name').html(team);
 			  			    $('.player-info4').find('.tournament-name').html(league);

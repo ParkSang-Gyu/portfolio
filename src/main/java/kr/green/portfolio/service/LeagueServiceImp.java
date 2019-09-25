@@ -110,19 +110,22 @@ public class LeagueServiceImp implements LeagueService{
 	}
 
 	@Override
-	public void getScheduleInsert(Integer leagueNum,Integer seasonStart,Integer roundNum,String date,String time,String status,
-			 String homeTeam,Integer homeTeamGoal,String score,Integer awayTeamGoal,String awayTeam,String stadium) {
+	public void getScheduleInsert(Integer leagueNum,Integer seasonStart,Integer roundNum,String date,String time,
+			String homeTeam,String awayTeam,String stadium) {
 		
-		leagueDao.getScheduleInsert(leagueNum,seasonStart,roundNum,date,time,status,homeTeam,homeTeamGoal,score,awayTeamGoal,awayTeam,stadium);
+		leagueDao.getScheduleInsert(leagueNum,seasonStart,roundNum,date,time,homeTeam,awayTeam,stadium);
+		
+	}
+	
+	@Override
+	public void getScheduleUpdate(ScheduleVO sVo) {
+		
+		leagueDao.getScheduleUpdate(sVo);
 	}
 
-	@Override
-	public void getScheduleUpdate(Integer leagueNum,Integer seasonStart,Integer roundNum,String status,String homeTeam,Integer homeTeamGoal,
-			String score,Integer awayTeamGoal) {
-		
-		leagueDao.getScheduleUpdate(leagueNum,seasonStart,roundNum,status,homeTeam,homeTeamGoal,score,awayTeamGoal);
-		
-	}
+	
+
+	
 
 	
 

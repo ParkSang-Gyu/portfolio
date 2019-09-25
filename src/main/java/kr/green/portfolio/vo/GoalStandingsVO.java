@@ -3,7 +3,7 @@ package kr.green.portfolio.vo;
 public class GoalStandingsVO {
 
 	private int num;
-	private int rank;
+	private int ranking;
 	private String player;
 	private String team;
 	private int goals;
@@ -15,11 +15,11 @@ public class GoalStandingsVO {
 	public void setNum(int num) {
 		this.num = num;
 	}
-	public int getRank() {
-		return rank;
+	public int getRanking() {
+		return ranking;
 	}
-	public void setRank(int rank) {
-		this.rank = rank;
+	public void setRanking(int ranking) {
+		this.ranking = ranking;
 	}
 	public String getPlayer() {
 		return player;
@@ -47,7 +47,7 @@ public class GoalStandingsVO {
 	}
 	@Override
 	public String toString() {
-		return "GoalStandingsVO [num=" + num + ", rank=" + rank + ", player=" + player + ", team=" + team + ", goals="
+		return "GoalStandingsVO [num=" + num + ", ranking=" + ranking + ", player=" + player + ", team=" + team + ", goals="
 				+ goals + ", appearances=" + appearances + "]";
 	}
 	

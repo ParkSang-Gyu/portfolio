@@ -12,7 +12,7 @@ div{
 </head>
 <body>
 <h2>스케쥴 입력</h2>
-	<form action="<%=request.getContextPath()%>/admin-insert" method="post" id="scheduleInsert">
+	<form action="<%=request.getContextPath()%>/admin-insert" method="post">
 		<div>
 			<label>리그번호</label>
 			<input name="leagueNum" style="width: 20px;">
@@ -64,7 +64,7 @@ div{
 		<button name="btn1">입력</button>
 	</form>
 <h2>스케쥴 업데이트</h2>
-	<form action="<%=request.getContextPath()%>/admin-update" method="post" id="scheduleUpdate">
+	<form action="<%=request.getContextPath()%>/admin-update" method="post">
 		<div>
 			<label>리그번호</label>
 			<input name="leagueNum" style="width: 20px;">
@@ -76,6 +76,14 @@ div{
 		<div>
 			<label>라운드</label>
 			<input name="roundNum" style="width: 25px;">
+		</div>
+		<div>
+			<label>날짜</label>
+			<input name="date" style="width: 55px;">
+		</div>
+		<div>
+			<label>시간</label>
+			<input name="time" style="width: 50px;">
 		</div>
 		<div>
 			<label>완료여부</label>

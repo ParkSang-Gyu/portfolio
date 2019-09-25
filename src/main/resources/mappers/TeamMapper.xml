@@ -17,8 +17,8 @@
   </select>
   <select id="getRank" resultType="kr.green.portfolio.vo.TeamVO">
     select 
-    	teams.rank, name, played, win, draw, lose, goalFor, goalAgainst, goalDifference, points 
+    	teams.ranking, name, played, win, draw, lose, goalFor, goalAgainst, goalDifference, points 
    	from teams 
-   	where league = #{league} order by teams.rank
+   	where league = #{league} order by teams.ranking
   </select>
 </mapper>

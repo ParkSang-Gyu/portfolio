@@ -140,7 +140,7 @@ $(document).ready(function () {
 				<table class="tablesorter table table-striped table-hover" id="tbl">			 
 			      	<thead>
 			      		<tr>
-			      			<th class="sort-alpha"><button class="rank" value="rank">순위</button></th>
+			      			<th class="sort-alpha"><button class="ranking" value="ranking">순위</button></th>
 			      			<th class="sort-alpha"><button class="team" value="team">팀</button></th>
 			      			<th class="sort-alpha"><button class="played" value="played">경기수</button></th>
 			      			<th class="sort-alpha"><button class="win" value="win">승</button></th>
@@ -155,7 +155,7 @@ $(document).ready(function () {
 		      		<tbody>
 		      			<c:forEach var="tmp" items="${teamTable}">
 		      				<tr>
-		      					<td>${tmp.rank}</td>
+		      					<td>${tmp.ranking}</td>
 			      				<td><a href="<%=request.getContextPath()%>/teams?team=${tmp.name}">${tmp.name}</a></td>
 			      				<td>${tmp.played}</td>
 			      				<td>${tmp.win}</td>
@@ -186,7 +186,7 @@ $(document).ready(function () {
 						<tbody>
 							<c:forEach var="tmp" items="${goals}">
 								<tr>
-									<td>${tmp.rank}</td>
+									<td>${tmp.ranking}</td>
 									<td><a href="<%=request.getContextPath()%>/players?player=${tmp.player}">${tmp.player}</a></td>
 									<td><a href="<%=request.getContextPath()%>/teams?team=${tmp.team}">${tmp.team}</a></td>
 									<td>${tmp.goals}</td>
@@ -210,7 +210,7 @@ $(document).ready(function () {
 						<tbody>
 							<c:forEach var="tmp" items="${assists}">
 								<tr>
-									<td>${tmp.rank}</td>
+									<td>${tmp.ranking}</td>
 									<td><a href="<%=request.getContextPath()%>/players?player=${tmp.player}">${tmp.player}</a></td>
 									<td><a href="<%=request.getContextPath()%>/teams?team=${tmp.team}">${tmp.team}</a></td>
 									<td>${tmp.assists}</td>
@@ -234,7 +234,7 @@ $(document).ready(function () {
 						<tbody>
 							<c:forEach var="tmp" items="${rating}">
 								<tr>
-									<td>${tmp.rank}</td>
+									<td>${tmp.ranking}</td>
 									<td><a href="<%=request.getContextPath()%>/players?player=${tmp.player}">${tmp.player}</a></td>
 									<td><a href="<%=request.getContextPath()%>/teams?team=${tmp.team}">${tmp.team}</a></td>
 									<td>${tmp.rating}</td>

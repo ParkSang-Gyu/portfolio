@@ -12,7 +12,7 @@ public class TeamVO {
 	private int establishment;
 	private String stadium;
 	private String coach;
-	private int rank;
+	private int ranking;
 	private int played;
 	private int win;
 	private int draw;
@@ -82,11 +82,11 @@ public class TeamVO {
 	public void setCoach(String coach) {
 		this.coach = coach;
 	}
-	public int getRank() {
-		return rank;
+	public int getRanking() {
+		return ranking;
 	}
-	public void setRank(int rank) {
-		this.rank = rank;
+	public void setRanking(int ranking) {
+		this.ranking = ranking;
 	}
 	public int getPlayed() {
 		return played;
@@ -140,7 +140,7 @@ public class TeamVO {
 	public String toString() {
 		return "TeamVO [num=" + num + ", teamNum=" + teamNum + ", name=" + name + ", leagueNum=" + leagueNum
 				+ ", league=" + league + ", seasonStart=" + seasonStart + ", hometown=" + hometown + ", establishment="
-				+ establishment + ", stadium=" + stadium + ", coach=" + coach + ", rank=" + rank + ", played=" + played
+				+ establishment + ", stadium=" + stadium + ", coach=" + coach + ", ranking=" + ranking + ", played=" + played
 				+ ", win=" + win + ", draw=" + draw + ", lose=" + lose + ", goalFor=" + goalFor + ", goalAgainst="
 				+ goalAgainst + ", goalDifference=" + goalDifference + ", points=" + points + "]";
 	}
