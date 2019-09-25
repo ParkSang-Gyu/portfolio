@@ -82,8 +82,7 @@ $(document).ready(function () {
 		var index = 0;
 		$('select[name=player]').each(function(){
 			var playerName = $('select[name=player]').eq(index).val();
-			console.log(playerName)
-			if(/*playerName != null && */playerName !=''){
+			if(playerName != null && playerName !=''){
 				$.ajax({
 			        async:false,
 					type:'POST',
@@ -105,7 +104,6 @@ $(document).ready(function () {
 						var psr = data.playerStat.psr;
 						var rating = data.playerStat.rating;
 						var motm = data.playerStat.motm;
-						console.log(index)
 						if(index == 0){
 							$('.player-info1').find('.player-name').html(player);
 							$('.player-info1').find('.team-name').html(team);

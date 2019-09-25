@@ -178,7 +178,6 @@ public class StatController {
 		ArrayList<String> teamList = leagueService.getTeamList(season,league);
 		ArrayList<String> playerList = leagueService.getPlayerList(team,season,league);
 		PlayerVO playerStat = leagueService.getPlayerStat(playerName);
-		PlayerVO playerImg = leagueService.getPlayerImg(playerName);
 		
 		map.put("seasonList", seasonList);
 		map.put("teamList", teamList);
