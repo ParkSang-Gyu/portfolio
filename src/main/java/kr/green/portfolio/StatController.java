@@ -184,7 +184,6 @@ public class StatController {
 		map.put("teamList", teamList);
 		map.put("playerList", playerList);
 		map.put("playerStat", playerStat);
-		map.put("playerImg", playerImg);
 		
 		return map;
 	}

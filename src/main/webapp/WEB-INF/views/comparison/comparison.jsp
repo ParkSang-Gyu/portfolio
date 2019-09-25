@@ -317,7 +317,7 @@ i{
 					</div>
 					<div class="player-info-bottom">
 						<div class="player-info-left">
-							<img alt="사진을 불러올 수 없습니다." src="${pageContext.request.contextPath}/resources/img/players/${playerImg}.jpg">
+							<img alt="사진을 불러올 수 없습니다." src="${pageContext.request.contextPath}/resources/img/players/${playername}.jpg">
 						</div>
 						<div class="player-info-right">
 							<div class="player-info-teamimage">
