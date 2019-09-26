@@ -17,7 +17,7 @@
 	<div class="jumbotron jumbotron-fluid mb-0">
 	  <div class="container" style="position: absolute;">
 	    <a href="<%=request.getContextPath()%>/">
-			<div class="sitename" style="float: left;">!!SoccerCompare!!</div>
+			<div class="sitename" style="margin-left: 140px;display: inline-block;">!!SoccerCompare!!</div>
 		</a>
 	    <a href="#"><div class="display">회사소개</div></a>
 	    <a href="#"><div class="display">이용약관</div></a>

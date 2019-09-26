@@ -43,8 +43,17 @@
 	width: 1140px;
 	height: 100%;
 }
+.squad button{
+	background-color: white;
+	border: white;
+}
 </style>
 <script type="text/javascript" src="<%=request.getContextPath()%>/resources/js/team.js"></script>
+<script type="text/javascript">
+$(document).ready(function () {
+	$('#tbl2').tablesorter();
+})
+</script>
 </head>
 <body>
 	<div class="container">
@@ -107,20 +116,20 @@
 		</div>
 		<h2>Team Squad</h2>
 		<div class="squad">
-			<table class="table table-striped table-hover">
+			<table class="tablesorter table table-striped table-hover" id="tbl2">
 		      	<thead>
 			      	<tr>
-			      		<th>순위</th>
-			      		<th>이름</th>
-			      		<th>출전수</th>
-			      		<th>출전시간</th>
-			      		<th>득점</th>
-			      		<th>어시스트</th>
-			      		<th>옐로카드</th>
-			      		<th>레드카드</th>
-			      		<th>패스성공률(%)</th>
-			      		<th>평점</th>
-			      		<th>경기최우수선수</th>
+			      		<th><button>순위</button></th>
+			      		<th><button>이름</button></th>
+			      		<th><button>출전수</button></th>
+			      		<th><button>출전시간</button></th>
+			      		<th><button>득점</button></th>
+			      		<th><button>어시스트</button></th>
+			      		<th><button>옐로카드</button></th>
+			      		<th><button>레드카드</button></th>
+			      		<th><button>패스성공률(%)</button></th>
+			      		<th><button>평점</button></th>
+			      		<th><button>경기최우수선수</button></th>
 			      	</tr>
 		      	</thead>
 		      	<tbody>
