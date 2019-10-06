@@ -102,7 +102,8 @@ i{
 .resultPlayer{
 	display: inline-block;
     width: 80px;
-    margin-right: 2px; 
+    margin-right: 2px;
+    border: 1px solid gray;
 }
 #comparisonTable{
 	font-weight: bold;

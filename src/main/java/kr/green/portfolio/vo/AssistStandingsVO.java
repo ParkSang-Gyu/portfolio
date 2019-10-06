@@ -1,5 +1,12 @@
 package kr.green.portfolio.vo;
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
+@Getter
+@Setter
+@ToString
 public class AssistStandingsVO {
 
 	private int num;
@@ -8,47 +15,5 @@ public class AssistStandingsVO {
 	private String team;
 	private int assists;
 	private int appearances;
-	
-	public int getNum() {
-		return num;
-	}
-	public void setNum(int num) {
-		this.num = num;
-	}
-	public int getRanking() {
-		return ranking;
-	}
-	public void setRanking(int ranking) {
-		this.ranking = ranking;
-	}
-	public String getPlayer() {
-		return player;
-	}
-	public void setPlayer(String player) {
-		this.player = player;
-	}
-	public String getTeam() {
-		return team;
-	}
-	public void setTeam(String team) {
-		this.team = team;
-	}
-	public int getAssists() {
-		return assists;
-	}
-	public void setAssists(int assists) {
-		this.assists = assists;
-	}
-	public int getAppearances() {
-		return appearances;
-	}
-	public void setAppearances(int appearances) {
-		this.appearances = appearances;
-	}
-	@Override
-	public String toString() {
-		return "GoalStandingsVO [num=" + num + ", ranking=" + ranking + ", player=" + player + ", team=" + team + ", assists="
-				+ assists + ", appearances=" + appearances + "]";
-	}
 	
 }
