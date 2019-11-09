@@ -56,7 +56,7 @@ $(document).ready(function () {
 </script>
 </head>
 <body>
-	<div class="container">
+	<section class="container">
 		<div>
 			<button type="button" class="btn btn-dark dropdown-toggle list1" data-toggle="collapse" data-target="#leaguelist">leaguelist</button>	
 		 	<%-- <button type="button" class="btn btn-dark dropdown-toggle list2" data-toggle="collapse" data-target="#tournamentlist">tournamentlist</button>	
@@ -151,6 +151,6 @@ $(document).ready(function () {
 		      	</tbody>	    
 	  		</table>
 		</div>
-	</div>
+	</section>
 </body>
 </html>

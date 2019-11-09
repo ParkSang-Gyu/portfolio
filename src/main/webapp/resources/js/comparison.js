@@ -19,7 +19,7 @@ $(document).ready(function () {
 	        },
 	        error:function(request,status,error){
 	            console.log( request.responseText ); // 실패 시 처리
-	           }
+           }
 	    });
 	});
 	$('select[name=season]').change(function(){

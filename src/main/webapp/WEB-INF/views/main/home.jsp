@@ -34,9 +34,6 @@ $(document).ready(function(){
    		$('#tournamentlist').collapse('show')
    		$('#leaguelist').collapse('hide')
    	})
-   	$('#tournamentlist').click(function () {
-		alert('클릭했으니 천만원')
-	})
 })
 </script>
 </head>
